@@ -1,0 +1,21 @@
+.priority-announcement {
+    background-color: aqua;
+}
+
+.priority-announcement-text {
+    font-size: 24px;
+    width: 800px;
+    height: 300px;
+    overflow: auto;
+    background-color: lightgray;
+    
+}
+
+h1 {
+    font-family: Arial;
+    font-size: 64px;
+}
+
+div {
+    font-family: Arial;
+}
