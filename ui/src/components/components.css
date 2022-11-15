@@ -1,5 +1,6 @@
 .priority-announcement {
     background-color: aqua;
+    margin-top: 10px;
 }
 
 .priority-announcement-text {
@@ -18,4 +19,8 @@ h1 {
 
 div {
     font-family: Arial;
+}
+
+.custom-navbar {
+    background-color: #962D38;
 }
