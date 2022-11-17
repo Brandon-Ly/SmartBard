@@ -1,16 +1,19 @@
-import './App.css';
-import NavBar from './components/Navbar'
-import PriorityAnnouncement from './components/PriorityAnnouncement';
-import Announcements from './components/Announcements';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import Home from "./pages/Home.js";
+import Post from "./pages/Post.js"
+import NavBar from "./components/Navbar"
+import {Routes, Route} from "react-router-dom"
 
 
 function App() {
   return (
     <div>
       <NavBar />
-      <PriorityAnnouncement />
-      <Announcements />
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/post/:postID" element={<Post />} />
+      </Routes>
     </div>
   );
 }

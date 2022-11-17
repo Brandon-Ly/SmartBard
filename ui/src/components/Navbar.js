@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar, Nav,  Container} from 'react-bootstrap'
+import {Navbar,  Container} from 'react-bootstrap'
 import "./components.css"
 import logoPath from "../images/overbrook.png"
 

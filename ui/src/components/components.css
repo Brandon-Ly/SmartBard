@@ -1,6 +1,6 @@
 .priority-announcement {
-    background-color: aqua;
     margin-top: 10px;
+    padding: 50px;
 }
 
 .priority-announcement-text {
@@ -12,7 +12,7 @@
     
 }
 
-h1 {
+.priority-announcement-title{
     font-family: Arial;
     font-size: 64px;
 }
@@ -24,3 +24,15 @@ div {
 .custom-navbar {
     background-color: #962D38;
 }
+
+.slide-post {
+    padding: 20px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+
+

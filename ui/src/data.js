@@ -7,7 +7,8 @@ const data = [
         img: "https://i.imgflip.com/2oll23.jpg", 
         startDate: "15 Nov, 2000", 
         endDate: "16 Nov, 2000", 
-        priority: true 
+        priority: true, 
+        id: 1
     },
         {title: "Dummy 2", 
         body: `If you're looking for random paragraphs, you've come to the right place. 
@@ -18,7 +19,8 @@ const data = [
         img: "https://i.imgur.com/y9bjxz1_d.webp?maxwidth=520&shape=thumb&fidelity=high", 
         startDate: "29 Nov, 2000", 
         endDate: "2 Dec, 2000", 
-        priority: false 
+        priority: false,
+        id: 2 
     },
     {
         title: "Dummy 3", 
@@ -27,7 +29,8 @@ const data = [
         img: "https://i.imgflip.com/70jk3k.jpg", 
         startDate: "2 Dec, 2000", 
         endDate: "4 Dec, 2000", 
-        priority: false 
+        priority: false,
+        id: 3 
     },
     {
         title: "Dummy 4", 
@@ -38,7 +41,8 @@ const data = [
         img: "https://i.imgflip.com/70jv73.jpg", 
         startDate: "2 Dec, 2000", 
         endDate: "6 Dec, 2000", 
-        priority: false 
+        priority: false,
+        id: 4 
     },
     {
         title: "Dummy 5", 
@@ -48,7 +52,8 @@ const data = [
         img: "https://i.imgflip.com/70jvln.jpg", 
         startDate: "10 Dec, 2000", 
         endDate: "11 Dec, 2000", 
-        priority: false 
+        priority: false,
+        id: 5 
     },
     {
         title: "Dummy 6", 
@@ -59,7 +64,8 @@ const data = [
         img: "https://i.imgflip.com/70g3us.jpg", 
         startDate: "12 Dec, 2000", 
         endDate: "17 Dec, 2000", 
-        priority: false 
+        priority: false,
+        id: 6 
     },
     {
         title: "Dummy 7", 
@@ -70,7 +76,8 @@ const data = [
         img: "https://i.imgflip.com/706dol.jpg", 
         startDate: "17 Dec, 2000", 
         endDate: "20 Dec, 2000", 
-        priority: false 
+        priority: false,
+        id: 7 
     },
     {
         title: "Dummy 8", 
@@ -81,7 +88,8 @@ const data = [
         img: "https://i.imgflip.com/70bg0t.jpg", 
         startDate: "21 Dec, 2000", 
         endDate: "2 Jan, 2001", 
-        priority: false 
+        priority: false,
+        id: 8 
     },
 ]
 
