@@ -8,8 +8,6 @@ import "./pages.css"
 export default function Post() {
 
     const {postID} = useParams();
-    console.log(postID)
-
     const post = data.find(postInArray => postInArray.id === parseInt(postID))
 
     
