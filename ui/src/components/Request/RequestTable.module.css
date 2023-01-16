@@ -7,7 +7,7 @@
   }
   
   .reactTable {
-    height: 70vh;
+    height: 55vh;
     overflow-y: auto;
     overflow-x: hidden;
   }

@@ -4,8 +4,8 @@ import {Card, Container} from "react-bootstrap"
 import {useNavigate} from "react-router-dom"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import "./components.css"
-import data from "../data.js"
+import "../Interface/style.css"
+import data from "../../data.js"
 
 export default function Announcements() {
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Container, Col as Column, Row, Image} from 'react-bootstrap';
-import "./components.css";
-import posts from "../data.js"
+import "../Interface/style.css";
+import posts from "../../data.js"
 
 export default function PriorityAnnouncement() {
     

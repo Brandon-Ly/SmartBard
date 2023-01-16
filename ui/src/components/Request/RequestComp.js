@@ -6,13 +6,14 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import RequestTable from "./RequestTable";
-import classes from "./Request.module.css";
+import classes from "./RequestComp.module.css";
+import "../Interface/style.css"
 
-
-export default function Requests() {
+export default function RequestComp() {
   return (
-    <Container>
+    <Container className="priority-announcement">
       <Card className="shadow-sm">
         <Card.Body>
           <Row>

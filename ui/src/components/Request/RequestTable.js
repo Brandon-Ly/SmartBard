@@ -20,52 +20,6 @@ const data = [
     title: "Dummy 4",
     status: "Accepted",
   },
-  {
-    title: "Dummy 1",
-    status: "Pending",
-  },
-  {
-    title: "Dummy 2",
-    status: "Pending",
-  },
-  {
-    title: "Dummy 1",
-    status: "Pending",
-  },
-  {
-    title: "Dummy 2",
-    status: "Pending",
-  }, {
-    title: "Dummy 1",
-    status: "Pending",
-  },
-  {
-    title: "Dummy 2",
-    status: "Pending",
-  },
-  {
-    title: "Dummy 1",
-    status: "Pending",
-  },
-  {
-    title: "Dummy 2",
-    status: "Pending",
-  }, {
-    title: "Dummy 1",
-    status: "Pending",
-  },
-  {
-    title: "Dummy 2",
-    status: "Pending",
-  },
-  {
-    title: "Dummy 1",
-    status: "Pending",
-  },
-  {
-    title: "Dummy 2",
-    status: "Pending",
-  },
 ];
 
 export default function RequestTable(props) {

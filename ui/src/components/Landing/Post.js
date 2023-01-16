@@ -1,8 +1,8 @@
 import React from 'react'
-import data from "../data.js"
+import data from "../../data.js"
 import {useParams} from 'react-router-dom'
 import {Container, Row, Image, Button} from 'react-bootstrap'
-import "./pages.css"
+import "../Interface/pages.css"
 
 
 export default function Post() {
