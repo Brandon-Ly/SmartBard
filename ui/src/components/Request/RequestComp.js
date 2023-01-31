@@ -36,7 +36,7 @@ export default function RequestComp() {
           </Row>
           <Row className="float-end">
             <Col>
-              <Button href="#">Create</Button>
+              <Button href="#">Create New Request</Button>
             </Col>
           </Row>
         </Card.Body>
