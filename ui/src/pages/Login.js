@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import  { Form, Button, Container, Row} from 'react-bootstrap';
 import logo from '../images/overbrook.png';
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+        
+
 
     function handleSubmit(event) { }
 
     return (
+
+
         <div className='Login'>
 
             <Container>
@@ -39,7 +45,7 @@ export default function Login() {
                 </Form.Group>
 
                 {/* Button will temporarily just change the URL right now */}
-                <Button variant="warning" href="/home" type='submit'>Login</Button>
+                <Button style={{cursor:'pointer'}} variant="warning" onClick={() => navigate('/home')} type='submit'>Login</Button>
             </Form>
             </Container>
         </div>

@@ -21,9 +21,7 @@ div {
     font-family: Arial;
 }
 
-.custom-navbar {
-    background-color: #962D38;
-}
+
 
 .slide-post {
     padding: 20px;
@@ -34,9 +32,26 @@ div {
     color: black;
 }
 
-.button {
-    padding: 10px;
+.yellowredButton {
+    height: 50px;
+    width: 100px;
+    background: linear-gradient(-90deg, #962D38 50%, #EAB547 50%);
+
 }
+
+.purpleblackButton{
+    height: 50px;
+    width: 100px;
+    background: linear-gradient(-90deg, #000000 50%, #490092 50%);
+}
+
+.orangeblueButton {
+    height: 50px;
+    width: 100px;
+    background: linear-gradient(-90deg, #006ddb 50%, #db6d00 50%);
+}
+
+
 
 
 

@@ -17,7 +17,7 @@ export default function PriorityAnnouncement() {
   return (
     
     
-    <Container className="priority-announcement" onDoubleClick={() => navigate(`/post/${priority.id}`)}>
+    <Container className="priority-announcement" onDoubleClick={() => navigate(`post/${priority.id}`)}>
 
         
     { priority.img !== "" ? 

@@ -1,0 +1,37 @@
+* {
+    font-family: Arial;
+}
+
+.fontName {
+    padding-bottom: 50px;
+}
+
+.fontSize {
+    padding-bottom: 50px;
+}
+
+.slider {
+    max-width: 300px;
+}
+
+.customSlider-track {
+    top: 8px;
+    height: 4px;
+    background: #ddd;
+}
+
+.customSlider-track.customSlider-track-0 {
+    background: rgb(104, 117, 217);
+}
+
+.contrastSlider {
+    padding-bottom: 50px;
+}
+
+.volumeSlider {
+    padding-bottom: 50px;
+}
+
+.delaySlider {
+    padding-bottom: 50px;
+}
