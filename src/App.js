@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React, {useState, useEffect} from 'react'
-import {Routes, Route, useLocation} from 'react-router-dom'
+import React, {useState} from 'react'
+import {Routes, Route} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
@@ -42,6 +42,8 @@ function App() {
       case 'orange':
         setTheme(themes.orange);
         localStorage.setItem('theme', JSON.stringify(color));
+        break;
+      default:
         break;
     }
   }
