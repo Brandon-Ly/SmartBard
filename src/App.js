@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
@@ -11,46 +11,59 @@ import Post from './pages/Post.js'
 import Request from './pages/Request.js'
 import RequestCreate from './pages/RequestCreate.js'
 import NavBar from './components/Interface/Navbar'
-import ThemeContext, {themes} from './themes/theme-context'
+import ThemeContext, {Themes} from './SettingFeatures/themes/theme-context'
 import Font from './components/Settings/Font';
 import FontSize from './components/Settings/FontSize';
 import Slider from './components/Settings/Slider';
+import FontContext, {fontNumber} from './SettingFeatures/fonts/font-context.js'
 
 
 
 
 function App() {
 
-  const [theme, setTheme] = useState(themes.main);
+
+  const [theme, setTheme] = useState(Themes.main);
   const [show, setShow] = useState(false);
+  const [fontSize, setFontSize] = useState(24);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
 
-
   function handleTheme(color) {
     switch(color) {
       case 'main':
-        setTheme(themes.main);
-        localStorage.setItem('theme', JSON.stringify(color));
+        setTheme(Themes.main);
+        localStorage.setItem('theme', JSON.stringify(Themes.main));
         break;
       case 'purple':
-        setTheme(themes.purple);
-        localStorage.setItem('theme', JSON.stringify(color));
+        setTheme(Themes.purple);
+        localStorage.setItem('theme', JSON.stringify(Themes.purple));
         break;
       case 'orange':
-        setTheme(themes.orange);
-        localStorage.setItem('theme', JSON.stringify(color));
+        setTheme(Themes.orange);
+        localStorage.setItem('theme', JSON.stringify(Themes.orange));
         break;
       default:
         break;
     }
   }
 
+
+  useEffect(() => {
+    const retrievedTheme = JSON.parse(localStorage.getItem('theme'));
+    const retrievedFontSize = localStorage.getItem('fontSize');
+    setTheme(retrievedTheme);
+    setFontSize(parseInt(retrievedFontSize));
+  }, [])
+
+
+
   return (
     
     <div>
+    <FontContext.Provider value={fontSize}>
         <ThemeContext.Provider value={theme}>
           <NavBar />
           <Routes>
@@ -70,7 +83,14 @@ function App() {
             </Modal.Header>
             <Modal.Body>
               <Font />
-              <FontSize />
+              <FontSize 
+              fontSize={fontSize}
+              setFontSize={(number) => 
+                {
+                  localStorage.setItem('fontSize', number);
+                  setFontSize(number);}
+              }
+              />
               <Slider />
               <h1>Select Theme</h1>
               <div>
@@ -87,6 +107,7 @@ function App() {
 
           <Button className='border border-success rounded-circle float-end' size='sm' onClick={handleShow}>Settings</Button>
         </ThemeContext.Provider>
+        </FontContext.Provider>
     </div>
     
   );

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Container, Col as Column, Row, Image} from 'react-bootstrap';
 import "../Interface/style.css";
 import posts from "../../data.js"
+import FontContext from '../../SettingFeatures/fonts/font-context';
 
 export default function PriorityAnnouncement() {
     
@@ -13,6 +14,7 @@ export default function PriorityAnnouncement() {
     const priority = posts.find(post => post.priority === true) 
 
     const navigate = useNavigate()
+    const fontSizeNumber = useContext(FontContext);
 
   return (
     
@@ -27,7 +29,7 @@ export default function PriorityAnnouncement() {
             </Row>        
             <Row>
                 <Column >
-                    <div className="priority-announcement-text">{priority.body}</div>
+                    <div className="priority-announcement-text" style={{fontSize: fontSizeNumber}} >{priority.body}</div>
                 </Column>
                 <Column className="m-auto" >               
                     <Image src={priority.img} className="d-block mx-auto" style={{

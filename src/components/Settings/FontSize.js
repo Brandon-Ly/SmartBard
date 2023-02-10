@@ -3,9 +3,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import './Settings.css';
 
-export default function FontSize() {
-    const [fontSize, setFontSize] = useState(18);
-
+export default function FontSize({fontSize, setFontSize}) {
+    
     return (
         <div className='fontSize'>
             <h2>FontSize</h2>

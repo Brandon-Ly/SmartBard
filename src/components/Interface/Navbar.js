@@ -3,7 +3,7 @@ import {useLocation, useNavigate} from 'react-router-dom'
 import {Navbar,  Container, Button} from 'react-bootstrap'
 import "./style.css"
 import logoPath from "../../images/overbrook.png"
-import ThemeContext from '../../themes/theme-context'
+import ThemeContext from '../../SettingFeatures/themes/theme-context'
 
 export default function NavBar() {
 
