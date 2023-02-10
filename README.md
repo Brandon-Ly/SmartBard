@@ -22,8 +22,5 @@ Senior Project Design
 - An Tran
 - Ricky Taing
 
-## License
-See [`License`](LICENSE.md).
-
 ## Supported Browsers
 The platform is only tested in Mozilla Firefox, Google Chrome, and Safari. Other browsers might not render all pages correctly.
