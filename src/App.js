@@ -51,6 +51,9 @@ function App() {
 
 
   useEffect(() => {
+    if ((JSON.parse(localStorage.getItem('theme'))) == null) {
+      localStorage.setItem('theme', JSON.stringify(Themes.main));
+    }
     const retrievedTheme = JSON.parse(localStorage.getItem('theme'));
     const retrievedFontSize = localStorage.getItem('fontSize');
     setTheme(retrievedTheme);
