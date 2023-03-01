@@ -1,61 +1,88 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import { Form, Button, Container, Row } from "react-bootstrap";
-import { CognitoUser } from 'amazon-cognito-identity-js';
-import queryString from 'query-string';
-
-import pool from './UserPool'
+import queryString from "query-string";
+import axios from "axios";
 // import logo from "../../images/overbrook.png";
-
 
 function LoginComp() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  const clientId = '6t7iieu7iapoadjqj20di1j33h';
+  const redirectUri = 'http://localhost:3000';
+
   useEffect(() => {
-    async function handleCallback() {
-      const { code } = queryString.parse(window.location.search);
+    const { code } = queryString.parse(window.location.search);
 
-      if (code) {
-        setIsLoading(true);
-        const cognitoUser = new CognitoUser({
-          Username: 'dummy',
-          Pool: pool,
+    if (code) {
+      setIsLoading(true);
+      exchangeAuthorizationCodeForToken(clientId, code, redirectUri)
+        .then((tokens) => {
+          console.log(tokens);
+          setIsLoading(false);
+          // Save the tokens to local storage, context, or state
+        })
+        .catch((error) => {
+          console.error(error);
+          setIsLoading(false);
         });
-        cognitoUser.confirmRegistration(code, true, function (err, result) {
-          if (err) {
-            console.error('Failed to confirm registration', err);
-            setIsLoading(false);
-            return;
-          }
-          cognitoUser.getSession(function (err, session) {
-            if (err) {
-              console.error('Failed to retrieve session', err);
-              setIsLoading(false);
-              return;
-            }
-            localStorage.setItem('access_token', session.getAccessToken().getJwtToken());
-            localStorage.setItem('id_token', session.getIdToken().getJwtToken());
-            localStorage.setItem('refresh_token', session.getRefreshToken().getToken());
-            setIsLoading(false);
-
-            //redirect the user to page
-            navigate("/home")
-
-          });
-        });
-      }
     }
-
-    handleCallback();
-  });
+  }, []);
 
   function handleLoginClick() {
-
     const cognitoAuthUrl = `https://smbd-test.auth.us-east-1.amazoncognito.com/login?client_id=6t7iieu7iapoadjqj20di1j33h&response_type=code&scope=email+openid+phone+profile&redirect_uri=http%3A%2F%2Flocalhost%3A3000`;
 
     window.location.replace(cognitoAuthUrl);
   }
+
+  const exchangeAuthorizationCodeForToken = (clientId, code, redirectUri) => {
+    const tokenEndpoint =
+      `https://smbd-test.auth.us-east-1.amazoncognito.com/oauth2/token`;
+
+    const requestBody = {
+      grant_type: 'authorization_code',
+      client_id: clientId,
+      redirect_uri: redirectUri,
+      code: code,
+    };
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    };
+
+    const urlEncodedBody = Object.keys(requestBody)
+      .map(
+        (key) =>
+          encodeURIComponent(key) + "=" + encodeURIComponent(requestBody[key])
+      )
+      .join("&");
+
+    return axios
+      .post(tokenEndpoint, urlEncodedBody, config)
+      .then((res) => {
+        const accessToken = res.data.access_token;
+        const idToken = res.data.id_token;
+        const refreshToken = res.data.refresh_token;
+        return { accessToken, idToken, refreshToken };
+      })
+      .catch((err) => {
+        console.log(err);
+        return {};
+      });
+
+    // const urlEncodedBody = Object.keys(requestBody)
+    //   .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(requestBody[key]))
+    //   .join('&');
+
+    // return axios.post(tokenEndpoint, urlEncodedBody, config).then((response) => {
+    //   const accessToken = response.data.access_token;
+    //   const idToken = response.data.id_token;
+    //   const refreshToken = response.data.refresh_token;
+    //   return { accessToken, idToken, refreshToken };
+    // });
+  };
 
   return (
     <div>
