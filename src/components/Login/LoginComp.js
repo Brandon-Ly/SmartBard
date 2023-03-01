@@ -18,8 +18,11 @@ function LoginComp() {
       setIsLoading(true);
       exchangeAuthorizationCodeForToken(clientId, code, redirectUri)
         .then((tokens) => {
-          console.log(tokens);
+          localStorage.setItem('access_token', tokens.accessToken);
+          localStorage.setItem('id_token', tokens.idToken);
+          localStorage.setItem('refresh_token', tokens.refreshToken);
           setIsLoading(false);
+          navigate('/home')
           // Save the tokens to local storage, context, or state
         })
         .catch((error) => {
@@ -27,7 +30,7 @@ function LoginComp() {
           setIsLoading(false);
         });
     }
-  }, []);
+  }, [navigate]);
 
   function handleLoginClick() {
     const cognitoAuthUrl = `https://smbd-test.auth.us-east-1.amazoncognito.com/login?client_id=6t7iieu7iapoadjqj20di1j33h&response_type=code&scope=email+openid+phone+profile&redirect_uri=http%3A%2F%2Flocalhost%3A3000`;
