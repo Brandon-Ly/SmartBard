@@ -4,6 +4,7 @@ import {Navbar,  Container, Button} from 'react-bootstrap'
 import "./style.css"
 import logoPath from "../../images/overbrook.png"
 import ThemeContext from '../../SettingFeatures/themes/theme-context'
+import useAuth from '../../CustomHooks/useAuth'
 
 
 export default function NavBar() {
@@ -11,9 +12,17 @@ export default function NavBar() {
 
   const {pathname} = useLocation();
   const navigate = useNavigate();
+  const { logout } = useAuth();
   const theme = useContext(ThemeContext);
 
   const LoginPage = (pathname === "/" ? true : false)
+
+  const handleLogout = function() {
+    navigate('/');
+    logout();
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('refresh_token');
+  }
   
 
   return (
@@ -32,7 +41,7 @@ export default function NavBar() {
             <React.Fragment></React.Fragment>
           :
           <React.Fragment>
-            <Button onClick={() => navigate('/')} style={{backgroundColor: theme.foreground, color: theme.text, border:theme.foreground, padding: "10px", margin: "10px"}} >Logout</Button>
+            <Button onClick={handleLogout} style={{backgroundColor: theme.foreground, color: theme.text, border:theme.foreground, padding: "10px", margin: "10px"}} >Logout</Button>
             <Button onClick={() => navigate('/request')} style={{backgroundColor: theme.foreground, color: theme.text, border:theme.foreground, padding: "10px", margin: "10px"}} >New Request</Button>
           </React.Fragment>
           }  

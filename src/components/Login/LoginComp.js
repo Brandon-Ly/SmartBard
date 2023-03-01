@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import queryString from "query-string";
 import axios from "axios";
+import useAuth from '../../CustomHooks/useAuth.js'
 // import logo from "../../images/overbrook.png";
 
 function LoginComp() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const clientId = '6t7iieu7iapoadjqj20di1j33h';
   const redirectUri = 'http://localhost:3000';
@@ -18,7 +20,7 @@ function LoginComp() {
       setIsLoading(true);
       exchangeAuthorizationCodeForToken(clientId, code, redirectUri)
         .then((tokens) => {
-          localStorage.setItem('access_token', tokens.accessToken);
+          login(tokens.accessToken);
           localStorage.setItem('id_token', tokens.idToken);
           localStorage.setItem('refresh_token', tokens.refreshToken);
           setIsLoading(false);
