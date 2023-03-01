@@ -1,62 +1,71 @@
-import React, { useState } from "react";
-//import { useNavigate } from "react-router-dom";
-import { Form, Button, Container, Row } from "react-bootstrap";
-import logo from "../../images/overbrook.png";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+// import { Form, Button, Container, Row } from "react-bootstrap";
+import { CognitoUser } from 'amazon-cognito-identity-js';
+import queryString from 'query-string';
 
-// import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
-// import UserPool from "../UserPool";
+import pool from './UserPool'
+// import logo from "../../images/overbrook.png";
 
-export default function LoginComp() {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  //const navigate = useNavigate();
 
-  function handleSubmit(event) {
-    const URL = `https://smbd-test.auth.us-east-1.amazoncognito.com/login?client_id=6t7iieu7iapoadjqj20di1j33h&response_type=code&scope=email+openid+phone+profile&redirect_uri=http%3A%2F%2Flocalhost%3A3000`;
-    window.location.href = URL;
+function LoginComp() {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function handleCallback() {
+      const { code } = queryString.parse(window.location.search);
+
+      if (code) {
+        setIsLoading(true);
+        const cognitoUser = new CognitoUser({
+          Username: 'dummy',
+          Pool: pool,
+        });
+        cognitoUser.confirmRegistration(code, true, function (err, result) {
+          if (err) {
+            console.error('Failed to confirm registration', err);
+            setIsLoading(false);
+            return;
+          }
+          cognitoUser.getSession(function (err, session) {
+            if (err) {
+              console.error('Failed to retrieve session', err);
+              setIsLoading(false);
+              return;
+            }
+            localStorage.setItem('access_token', session.getAccessToken().getJwtToken());
+            localStorage.setItem('id_token', session.getIdToken().getJwtToken());
+            localStorage.setItem('refresh_token', session.getRefreshToken().getToken());
+            setIsLoading(false);
+
+            //redirect the user to page
+            navigate("/home")
+
+          });
+        });
+      }
+    }
+
+    handleCallback();
+  });
+
+  function handleLoginClick() {
+
+    const cognitoAuthUrl = `https://smbd-test.auth.us-east-1.amazoncognito.com/login?client_id=6t7iieu7iapoadjqj20di1j33h&response_type=code&scope=email+openid+phone+profile&redirect_uri=http%3A%2F%2Flocalhost%3A3000`;
+
+    window.location.replace(cognitoAuthUrl);
   }
 
   return (
-    <div className="Login">
-      <Container>
-        <Row>
-          <img
-            src={logo}
-            alt="Overbrook School of the Blind Logo"
-            style={{ width: "800px", height: "200px" }}
-          />
-        </Row>
-
-        {/* <Form onSubmit={handleSubmit}>
-          <Form.Group controlID="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              autoFocus
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlID="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              autoFocus
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
-          <Button
-            style={{ cursor: "pointer" }}
-            variant="warning"
-            onClick={() => navigate("/home")}
-            type="submit"
-          >
-            Login
-          </Button>
-        </Form> */}
-        <Button onClick={handleSubmit}>Login</Button>
-      </Container>
+    <div>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <button onClick={handleLoginClick}>Login</button>
+      )}
     </div>
   );
 }
+
+export default LoginComp;
