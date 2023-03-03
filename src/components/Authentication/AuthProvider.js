@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import AuthContext from './AuthContext.js'
 
 const AuthProvider = ({children}) => {
@@ -35,6 +35,6 @@ const AuthProvider = ({children}) => {
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 
-};  
+};
 
 export default AuthProvider;

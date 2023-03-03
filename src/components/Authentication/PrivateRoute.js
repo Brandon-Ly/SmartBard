@@ -1,11 +1,11 @@
-import useAuth from '../../CustomHooks/useAuth'
-import { Navigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth'
+import {Navigate} from 'react-router-dom';
 
-const PrivateRoute = ({ children }) => {
-    
-    const { isAuthenticated } = useAuth();
+const PrivateRoute = ({children}) => {
 
-    return isAuthenticated ? children : <Navigate to='/' /> 
+    const {isAuthenticated} = useAuth();
+
+    return isAuthenticated ? children : <Navigate to='/'/>
 
 }
 
