@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import RequestTable from "./RequestTable";
-import classes from "./RequestComp.module.css";
+import classes from "./RequestComp.css";
 import "../Interface/Style.css"
 
 export default function RequestComp() {

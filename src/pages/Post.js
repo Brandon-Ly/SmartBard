@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import data from "../data.js"
 import {useParams} from 'react-router-dom'
 import {Button, Container, Image, Row} from 'react-bootstrap'
-
+import '../components/Interface/Pages.css';
 import FontContext from '../components/Settings/Font-Context';
 import TextToSpeech from '../components/Settings/TextToSpeech'
 

@@ -30,20 +30,20 @@ div {
     color: black;
 }
 
-.yellowRedButton {
+.yellow-red-button {
     height: 50px;
     width: 100px;
     background: linear-gradient(-90deg, #962D38 50%, #EAB547 50%);
 
 }
 
-.purpleBlackButton {
+.purple-black-button {
     height: 50px;
     width: 100px;
     background: linear-gradient(-90deg, #000000 50%, #490092 50%);
 }
 
-.orangeBlueButton {
+.orange-blue-button {
     height: 50px;
     width: 100px;
     background: linear-gradient(-90deg, #006ddb 50%, #db6d00 50%);
@@ -54,6 +54,14 @@ div {
 }
 
 .font-size-description {
+    text-align: center;
+}
+
+.theme-setting {
+    padding-bottom: 20px;
+}
+
+.theme-description {
     text-align: center;
 }
 

@@ -29,27 +29,27 @@ export default function UserTheme({theme, setTheme}) {
     }
 
     return (
-        <div>
+        <div className='theme-setting'>
             <Container>
                 <Row>
                     <Col xs={6} md={4}>
-                        <DropdownButton className='' title='Default'>
+                        <DropdownButton className='theme-dropdown' title="Theme">
                             <Dropdown.Item as="button">
-                                <button className='yellowRedButton'
+                                <button className='yellow-red-button'
                                         onClick={() => handleTheme('main')}></button>
                             </Dropdown.Item>
                             <Dropdown.Item as="button">
-                                <button className='purpleBlackButton'
+                                <button className='purple-black-button'
                                         onClick={() => handleTheme('purple')}></button>
                             </Dropdown.Item>
                             <Dropdown.Item as="button">
-                                <button className='orangeBlueButton'
+                                <button className='orange-blue-button'
                                         onClick={() => handleTheme('orange')}></button>
                             </Dropdown.Item>
                         </DropdownButton>
                     </Col>
                     <Col xs={12} md={8}>
-                        <h5 className='color-theme-description'> Adjust Color Theme</h5>
+                        <h5 className='theme-description'> Adjust Color Theme</h5>
                     </Col>
                 </Row>
             </Container>

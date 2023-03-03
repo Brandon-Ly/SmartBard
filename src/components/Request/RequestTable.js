@@ -1,6 +1,6 @@
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import classes from "./RequestTable.module.css";
+import classes from "./RequestTable.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const data = [

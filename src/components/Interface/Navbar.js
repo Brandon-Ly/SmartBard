@@ -7,7 +7,6 @@ import useAuth from '../../hooks/UseAuth'
 import "./Style.css"
 
 export default function NavBar() {
-
     const {pathname} = useLocation();
     const navigate = useNavigate();
     const {logout} = useAuth();
@@ -21,7 +20,6 @@ export default function NavBar() {
         localStorage.removeItem('id_token');
         localStorage.removeItem('refresh_token');
     }
-
 
     return (
         <Navbar style={{backgroundColor: theme.background}} className="custom-navbar" variant="light" expand="lg">
