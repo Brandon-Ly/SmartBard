@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import RequestTable from "./RequestTable";
 import classes from "./RequestComp.module.css";
-import "../Interface/style.css"
+import "../Interface/Style.css"
 
 export default function RequestComp() {
     return (

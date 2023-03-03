@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import queryString from "query-string";
 import axios from "axios";
-import useAuth from '../../hooks/useAuth.js'
+import useAuth from '../../hooks/UseAuth.js'
 
 function LoginComp() {
 

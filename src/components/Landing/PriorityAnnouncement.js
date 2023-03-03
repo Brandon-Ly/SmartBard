@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Col as Column, Container, Image, Row} from 'react-bootstrap';
-import "../Interface/style.css";
+import "../Interface/Style.css";
 import posts from "../../data.js"
-import FontContext from '../Settings/font-context';
+import FontContext from '../Settings/Font-Context';
 
 export default function PriorityAnnouncement() {
 

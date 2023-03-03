@@ -3,7 +3,7 @@ import data from "../data.js"
 import {useParams} from 'react-router-dom'
 import {Button, Container, Image, Row} from 'react-bootstrap'
 
-import FontContext from '../components/Settings/font-context';
+import FontContext from '../components/Settings/Font-Context';
 import TextToSpeech from '../components/Settings/TextToSpeech'
 
 export default function Post() {

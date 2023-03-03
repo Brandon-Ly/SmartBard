@@ -4,7 +4,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import '../Interface/style.css';
+import '../Interface/Style.css';
 
 export default function FontSize({fontSize, setFontSize}) {
 

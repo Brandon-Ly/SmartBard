@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {Button, Container, Navbar} from 'react-bootstrap'
-import ThemeContext from '../Settings/theme-context'
+import ThemeContext from '../Settings/Theme-Context'
 import logoPath from "../../images/overbrook.png"
-import useAuth from '../../hooks/useAuth'
-import "./style.css"
+import useAuth from '../../hooks/UseAuth'
+import "./Style.css"
 
 export default function NavBar() {
 
