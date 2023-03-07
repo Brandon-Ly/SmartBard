@@ -7,9 +7,14 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import RequestTable from "./RequestTable";
+import {useNavigate} from "react-router-dom";
 import "../Interface/Style.css"
 
 export default function RequestComp() {
+    const navigate = useNavigate();
+    const handleCreateRequest = function () {
+        navigate('/create');
+    }
 
     return (
         <Container className="priority-announcement">
@@ -35,7 +40,7 @@ export default function RequestComp() {
                     </Row>
                     <Row className="float-end">
                         <Col>
-                            <Button href="/create">Create New Request</Button>
+                            <Button onClick={handleCreateRequest}>Create New Request</Button>
                         </Col>
                     </Row>
                 </Card.Body>
