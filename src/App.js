@@ -38,8 +38,9 @@ function App() {
             localStorage.setItem('theme', JSON.stringify(Themes.main));
         }
         if ((JSON.parse(localStorage.getItem('fontSize'))) == null) {
-            localStorage.setItem('fontSize', JSON.stringify(fontSize));
+            localStorage.setItem('fontSize', JSON.stringify(20));
         }
+
         const retrievedTheme = JSON.parse(localStorage.getItem('theme'));
         const retrievedFontSize = localStorage.getItem('fontSize');
         setTheme(retrievedTheme);
