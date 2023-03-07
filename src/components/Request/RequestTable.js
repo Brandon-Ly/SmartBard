@@ -1,7 +1,7 @@
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import classes from "./RequestTable.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../Interface/Style.css"
 
 const data = [
     {
@@ -29,27 +29,24 @@ export default function RequestTable(props) {
 
     return (
         <section>
-            <div className={classes.reactTable}>
+            <div className="requestTableDiv">
                 <Table
-                    striped
                     bordered
-                    className={classes.bdr}
+                    className="requestTable"
                     size="sm"
                 >
                     <thead>
                     <tr>
-                        <th width="70%">Request Name</th>
-                        <th width="20%">Status</th>
+                        <th width="90%">Request Name</th>
                         <th width="10%">Details</th>
                     </tr>
                     </thead>
                     <tbody>
                     {requests.map((request) => (
-                        <tr key={request.title} className={classes.row}>
-                            <td className={classes.td}>{request.title}</td>
-                            <td className={classes.td}>{request.status}</td>
-                            <td className={`${classes.td} ${classes.button}`}>
-                                <Button variant="success">Details</Button>
+                        <tr key={request.title} className="requestTableRow">
+                            <td>{request.title}</td>
+                            <td>
+                                <Button className="requestDetailButton" variant="success">Details</Button>
                             </td>
                         </tr>
                     ))}

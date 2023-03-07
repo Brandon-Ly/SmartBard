@@ -76,17 +76,6 @@ function LoginComp() {
                 console.log(err);
                 return {};
             });
-
-        // const urlEncodedBody = Object.keys(requestBody)
-        //   .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(requestBody[key]))
-        //   .join('&');
-
-        // return axios.post(tokenEndpoint, urlEncodedBody, config).then((response) => {
-        //   const accessToken = response.data.access_token;
-        //   const idToken = response.data.id_token;
-        //   const refreshToken = response.data.refresh_token;
-        //   return { accessToken, idToken, refreshToken };
-        // });
     };
 
     return (
