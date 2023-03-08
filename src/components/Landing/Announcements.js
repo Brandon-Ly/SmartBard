@@ -25,7 +25,7 @@ export default function Announcements() {
     };
 
     const announcements = data.map((announcement) => {
-        return <Card className="slide-post" onDoubleClick={() => navigate(`post/${announcement.id}`)}>
+        return <Card className="slide-post" onDoubleClick={() => navigate(`/home/${announcement.id}`)}>
             <h1>{announcement.title}</h1>
             <Card.Body>
                 <p style={{

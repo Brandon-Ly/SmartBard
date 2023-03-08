@@ -8,10 +8,11 @@ const data = [
         startDate: "15 Nov, 2000",
         endDate: "16 Nov, 2000",
         priority: true,
-        id: 1
+        id: 1,
+        status: 'accepted'
     },
     {
-        title: "Dummy 2",
+        title: "It's not time to rewind",
         body: `If you're looking for random paragraphs, you've come to the right place. 
         When a random word or a random sentence isn't quite enough, the next logical step is to find a random paragraph. 
         We created the Random Paragraph Generator with you in mind. The process is quite simple. 
@@ -21,7 +22,8 @@ const data = [
         startDate: "29 Nov, 2000",
         endDate: "2 Dec, 2000",
         priority: false,
-        id: 2
+        id: 2,
+        status: 'requested'
     },
     {
         title: "Dummy 3",
@@ -31,7 +33,8 @@ const data = [
         startDate: "2 Dec, 2000",
         endDate: "4 Dec, 2000",
         priority: false,
-        id: 3
+        id: 3,
+        status: 'requested'
     },
     {
         title: "Dummy 4",
@@ -43,7 +46,8 @@ const data = [
         startDate: "2 Dec, 2000",
         endDate: "6 Dec, 2000",
         priority: false,
-        id: 4
+        id: 4,
+        status: 'accepted'
     },
     {
         title: "Dummy 5",
@@ -54,7 +58,8 @@ const data = [
         startDate: "10 Dec, 2000",
         endDate: "11 Dec, 2000",
         priority: false,
-        id: 5
+        id: 5,
+        status: 'accepted'
     },
     {
         title: "Dummy 6",
@@ -66,7 +71,8 @@ const data = [
         startDate: "12 Dec, 2000",
         endDate: "17 Dec, 2000",
         priority: false,
-        id: 6
+        id: 6,
+        status: 'accepted'
     },
     {
         title: "Dummy 7",
@@ -78,7 +84,8 @@ const data = [
         startDate: "17 Dec, 2000",
         endDate: "20 Dec, 2000",
         priority: false,
-        id: 7
+        id: 7,
+        status: 'rejected'
     },
     {
         title: "Dummy 8",
@@ -90,7 +97,8 @@ const data = [
         startDate: "21 Dec, 2000",
         endDate: "2 Jan, 2001",
         priority: false,
-        id: 8
+        id: 8,
+        status: 'rejected'
     },
 ]
 

@@ -18,6 +18,7 @@ import Home from './pages/Home.js';
 import Post from './pages/Post.js';
 import Request from './pages/Request.js';
 import RequestCreate from './pages/RequestCreate.js';
+import RequestDetails from './pages/RequestDetails.js';
 
 import settingsCog from "./images/settings-cog.png"
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -66,10 +67,11 @@ function App() {
                                         <Home/>
                                     </PrivateRoute>}/>
                                 <Route path='/home' element={<Home/>} onEnter={window.speechSynthesis.cancel()}/>
-                                <Route path='/home/post/:postID' element={<Post/>}
+                                <Route path='/home/:postID' element={<Post/>}
                                        onEnter={window.speechSynthesis.cancel()}
                                        onLeave={window.speechSynthesis.cancel()}/>
                                 <Route path='/request' element={<Request/>}/>
+                                <Route path='/request/:postID' element={<RequestDetails />} />
                                 <Route path='/create' element={<RequestCreate/>}/>
                             </Routes>
                         )}

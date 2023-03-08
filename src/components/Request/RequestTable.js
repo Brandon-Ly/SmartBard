@@ -2,30 +2,18 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Interface/Style.css"
-
-const data = [
-    {
-        title: "Dummy 1",
-        status: "Pending",
-    },
-    {
-        title: "Dummy 2",
-        status: "Pending",
-    },
-    {
-        title: "Dummy 3",
-        status: "Rejected",
-    },
-    {
-        title: "Dummy 4",
-        status: "Accepted",
-    },
-];
+import {useNavigate} from "react-router-dom";
+import data from '../../data.js'
 
 export default function RequestTable(props) {
     const requests = data.filter((request) => {
         return request.status === props.status;
     });
+
+    const navigate = useNavigate();
+    function handleCreateDetails(announcementId) {
+        navigate(`/request/${announcementId}`);
+    }
 
     return (
         <section>
@@ -46,7 +34,7 @@ export default function RequestTable(props) {
                         <tr key={request.title} className="requestTableRow">
                             <td>{request.title}</td>
                             <td>
-                                <Button className="requestDetailButton" variant="success">Details</Button>
+                                <Button className="requestDetailButton" variant="success" onClick={() => handleCreateDetails(request.id)}>Details</Button>
                             </td>
                         </tr>
                     ))}
