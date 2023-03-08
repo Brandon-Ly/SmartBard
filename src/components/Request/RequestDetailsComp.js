@@ -6,10 +6,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import data from '../../data.js';
 import {useParams} from 'react-router-dom';
+import {useNavigate} from "react-router-dom";
 import "../Interface/Style.css";
 
 export default function RequestDetailsComp() {
 
+    const navigate = useNavigate();
     const {postID} = useParams();
     const post = data.find(postInArray => postInArray.id === parseInt(postID));
 
@@ -52,11 +54,15 @@ export default function RequestDetailsComp() {
                             <Form.Label className="fw-bold">Date Range</Form.Label>
                             <Row xs="auto" className="align-items-center">
                                 <Col>
-                                    <Form.Control required type="date"/>
+                                    <Form.Control required type="text"
+                                    value={post.fromdate.substring(0, 10)}
+                                    readOnly/>
                                 </Col>
                                 <Col>To</Col>
                                 <Col>
-                                    <Form.Control required type="date"/>
+                                    <Form.Control required type="text"
+                                    value={post.todate.substring(0, 10)}
+                                    readOnly/>
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -64,8 +70,8 @@ export default function RequestDetailsComp() {
                         <Form.Group className="mb-3">
                             <Row className="float-end">
                                 <Col>
-                                    <Button variant="primary" type="submit">
-                                        Submit
+                                    <Button variant="primary" onClick={() => {navigate(-1)}}>
+                                        Return
                                     </Button>
                                 </Col>
                             </Row>

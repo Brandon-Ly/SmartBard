@@ -5,8 +5,8 @@ const data = [
         Daylight Saving Time is ending this Sunday, November 7, at 2 a.m.
         Most digital clocks and electronics automatically change the time, but some clocks may need to be manually rewound.`,
         img: "https://i.imgflip.com/2oll23.jpg",
-        startDate: "15 Nov, 2000",
-        endDate: "16 Nov, 2000",
+        fromdate: "2011-10-05T14:48:00.000Z",
+        todate: "2012-10-05T14:48:00.000Z",
         priority: true,
         id: 1,
         status: 'accepted'
@@ -19,8 +19,8 @@ const data = [
         Choose the number of random paragraphs you'd like to see and click the button. 
         Your chosen number of paragraphs will instantly appear.`,
         img: "https://i.imgur.com/y9bjxz1_d.webp?maxwidth=520&shape=thumb&fidelity=high",
-        startDate: "29 Nov, 2000",
-        endDate: "2 Dec, 2000",
+        fromdate: "2011-10-05T14:48:00.000Z",
+        todate: "2012-10-05T14:48:00.000Z",
         priority: false,
         id: 2,
         status: 'requested'
@@ -30,8 +30,8 @@ const data = [
         body: `While it may not be obvious to everyone, there are a number of reasons creating random paragraphs can be useful. 
         A few examples of how some people use this generator are listed in the following paragraphs.`,
         img: "https://i.imgflip.com/70jk3k.jpg",
-        startDate: "2 Dec, 2000",
-        endDate: "4 Dec, 2000",
+        fromdate: "2011-10-05T14:48:00.000Z",
+        todate: "2012-10-05T14:48:00.000Z",
         priority: false,
         id: 3,
         status: 'requested'
@@ -43,8 +43,8 @@ const data = [
         This forces the writer to use creativity to complete one of three common writing challenges. 
         The writer can use the paragraph as the first one of a short story and build upon it.`,
         img: "https://i.imgflip.com/70jv73.jpg",
-        startDate: "2 Dec, 2000",
-        endDate: "6 Dec, 2000",
+        fromdate: "2011-10-05T14:48:00.000Z",
+        todate: "2012-10-05T14:48:00.000Z",
         priority: false,
         id: 4,
         status: 'accepted'
@@ -55,8 +55,8 @@ const data = [
         The third option is to have the random paragraph be the ending paragraph in a short story. 
         No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing.`,
         img: "https://i.imgflip.com/70jvln.jpg",
-        startDate: "10 Dec, 2000",
-        endDate: "11 Dec, 2000",
+        fromdate: "2011-10-05T14:48:00.000Z",
+        todate: "2012-10-05T14:48:00.000Z",
         priority: false,
         id: 5,
         status: 'accepted'
@@ -68,8 +68,8 @@ const data = [
         By inserting a completely random paragraph from which to begin, 
         it can take down some of the issues that may have been causing the writers' block in the first place.`,
         img: "https://i.imgflip.com/70g3us.jpg",
-        startDate: "12 Dec, 2000",
-        endDate: "17 Dec, 2000",
+        fromdate: "2011-10-05T14:48:00.000Z",
+        todate: "2012-10-05T14:48:00.000Z",
         priority: false,
         id: 6,
         status: 'accepted'
@@ -81,8 +81,8 @@ const data = [
         The purpose here is to just get the writing started so that when the writer goes onto their day's writing projects, 
         words are already flowing from their fingers.`,
         img: "https://i.imgflip.com/706dol.jpg",
-        startDate: "17 Dec, 2000",
-        endDate: "20 Dec, 2000",
+        fromdate: "2011-10-05T14:48:00.000Z",
+        todate: "2012-10-05T14:48:00.000Z",
         priority: false,
         id: 7,
         status: 'rejected'
@@ -94,8 +94,8 @@ const data = [
         this tool can be a great way to get that. 
         It's a good way to test your programming and that the tool being created is working well.`,
         img: "https://i.imgflip.com/70bg0t.jpg",
-        startDate: "21 Dec, 2000",
-        endDate: "2 Jan, 2001",
+        fromdate: "2011-10-05T14:48:00.000Z",
+        todate: "2012-10-05T14:48:00.000Z",
         priority: false,
         id: 8,
         status: 'rejected'
