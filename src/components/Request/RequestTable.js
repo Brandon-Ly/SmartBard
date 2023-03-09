@@ -11,6 +11,7 @@ export default function RequestTable(props) {
     });
 
     const navigate = useNavigate();
+
     function handleCreateDetails(announcementId) {
         navigate(`/request/${announcementId}`);
     }
@@ -34,7 +35,8 @@ export default function RequestTable(props) {
                         <tr key={request.title} className="requestTableRow">
                             <td>{request.title}</td>
                             <td>
-                                <Button className="requestDetailButton" variant="success" onClick={() => handleCreateDetails(request.id)}>Details</Button>
+                                <Button className="requestDetailButton" variant="success"
+                                        onClick={() => handleCreateDetails(request.id)}>Details</Button>
                             </td>
                         </tr>
                     ))}

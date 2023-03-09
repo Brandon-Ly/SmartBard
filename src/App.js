@@ -73,10 +73,10 @@ function App() {
                                        onEnter={window.speechSynthesis.cancel()}
                                        onLeave={window.speechSynthesis.cancel()}/>
                                 <Route path='/request' element={<Request/>}/>
-                                <Route path='/request/:postID' element={<RequestDetails />} />
+                                <Route path='/request/:postID' element={<RequestDetails/>}/>
                                 <Route path='/create' element={<RequestCreate/>}/>
                                 <Route path='/admin' element={<Admin/>}/>
-                                <Route path='/adminrequest/:postID' element={<AdminRequestDetails />} />
+                                <Route path='/adminrequest/:postID' element={<AdminRequestDetails/>}/>
                             </Routes>
                         )}
 

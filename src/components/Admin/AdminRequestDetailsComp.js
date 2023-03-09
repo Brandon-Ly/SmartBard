@@ -5,8 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import data from '../../data.js';
-import {useParams} from 'react-router-dom';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from 'react-router-dom';
 import "../Interface/Style.css";
 
 export default function RequestDetailsComp() {
@@ -70,16 +69,21 @@ export default function RequestDetailsComp() {
                         <Form.Group className="mb-3">
                             <Row className="float-end">
                                 <Col>
-                                    <Button className="adminButtons" variant="success" onClick={() => {}}>
+                                    <Button className="adminButtons" variant="success" onClick={() => {
+                                    }}>
                                         Accept
                                     </Button>
-                                    <Button className="adminButtons" variant="danger" onClick={() => {}}>
+                                    <Button className="adminButtons" variant="danger" onClick={() => {
+                                    }}>
                                         Reject
                                     </Button>
-                                    <Button className="adminButtons" variant="primary" onClick={() => {}}>
+                                    <Button className="adminButtons" variant="primary" onClick={() => {
+                                    }}>
                                         Edit
                                     </Button>
-                                    <Button className="adminButtons" variant="secondary" onClick={() => {navigate(-1)}}>
+                                    <Button className="adminButtons" variant="secondary" onClick={() => {
+                                        navigate(-1)
+                                    }}>
                                         Return
                                     </Button>
                                 </Col>
