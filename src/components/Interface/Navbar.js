@@ -44,13 +44,13 @@ export default function NavBar() {
                                 padding: "10px",
                                 margin: "10px"
                             }}>Logout</Button>
-                            <Button onClick={() => navigate('/request')} style={{
+                            <Button onClick={() => navigate('/admin')} style={{
                                 backgroundColor: theme.foreground,
                                 color: theme.text,
                                 border: theme.foreground,
                                 padding: "10px",
                                 margin: "10px"
-                            }}>New Request</Button>
+                            }}>Admin</Button>
                         </React.Fragment>
                     }
                 </Navbar.Collapse>

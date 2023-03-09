@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import RequestTable from "./RequestTable";
+import RequestTable from "./AdminRequestTable";
 import {useNavigate} from "react-router-dom";
 import "../Interface/Style.css"
 
@@ -28,13 +28,13 @@ export default function RequestComp() {
                     <Row className="formGroup">
                         <Tabs defaultActiveKey="pending" id="table-tabs" className="mb-3">
                             <Tab eventKey="pending" title="Pending">
-                                <RequestTable status="Pending"/>
+                                <RequestTable status="requested"/>
                             </Tab>
                             <Tab eventKey="accepted" title="Accepted">
-                                <RequestTable status="Accepted"/>
+                                <RequestTable status="accepted"/>
                             </Tab>
                             <Tab eventKey="rejected" title="Rejected">
-                                <RequestTable status="Rejected"/>
+                                <RequestTable status="rejected"/>
                             </Tab>
                         </Tabs>
                     </Row>

@@ -94,3 +94,7 @@ div {
     margin: auto;
     display: block;
 }
+
+.adminButtons {
+    margin-left: 10px;
+}

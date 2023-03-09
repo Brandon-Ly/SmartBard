@@ -19,6 +19,8 @@ import Post from './pages/Post.js';
 import Request from './pages/Request.js';
 import RequestCreate from './pages/RequestCreate.js';
 import RequestDetails from './pages/RequestDetails.js';
+import Admin from './pages/Admin.js';
+import AdminRequestDetails from './pages/AdminRequestDetails.js';
 
 import settingsCog from "./images/settings-cog.png"
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -73,6 +75,8 @@ function App() {
                                 <Route path='/request' element={<Request/>}/>
                                 <Route path='/request/:postID' element={<RequestDetails />} />
                                 <Route path='/create' element={<RequestCreate/>}/>
+                                <Route path='/admin' element={<Admin/>}/>
+                                <Route path='/adminrequest/:postID' element={<AdminRequestDetails />} />
                             </Routes>
                         )}
 
