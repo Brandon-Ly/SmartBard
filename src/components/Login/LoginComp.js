@@ -23,8 +23,10 @@ function LoginComp() {
                     login(tokens.accessToken);
                     localStorage.setItem('id_token', tokens.idToken);
                     localStorage.setItem('refresh_token', tokens.refreshToken);
-                    setIsLoading(false);
-                    navigate('/home')
+                    setTimeout(() => {
+                        setIsLoading(false);
+                        navigate('/home')
+                    }, 500);
                     // Save the tokens to local storage, context, or state
                 })
                 .catch((error) => {

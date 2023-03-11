@@ -4,6 +4,7 @@ import {Fragment, React} from "react";
 import AdminRequestDetailsComp from "../components/Admin/AdminRequestDetailsComp.js"
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
+import {API_URL} from "../common/constants";
 
 export default function AdminRequestDetails(props) {
 
@@ -12,7 +13,12 @@ export default function AdminRequestDetails(props) {
 
     const fetchData = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/announcements?status=${status}&datefrom=2000-01-01&dateto=2050-01-01`);
+          const response = await axios.get(`${API_URL}/announcements?status=${status}&datefrom=2000-01-01&dateto=2050-01-01`, {
+              headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+              },
+              withCredentials: true,
+          });
           setData(response.data);
         } catch (error) {
           console.log(error);

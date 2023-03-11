@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../Interface/Style.css";
 import axios from 'axios';
+import {API_URL} from "../../common/constants";
 
 export default function AdminRequestDetailsComp(props) {
 
@@ -33,8 +34,13 @@ export default function AdminRequestDetailsComp(props) {
         const foundPriorityPost= data.find(item => item.priority === true);
         console.log(foundPriorityPost);
         if (foundPriorityPost !== undefined){
-        axios.put(`http://localhost:5000/announcements/${foundPriorityPost.announcementid}`, {
+        axios.put(`${API_URL}/announcements/${foundPriorityPost.announcementid}`, {
             priority: false
+        }, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+            },
+            withCredentials: true,
         })
         .then(response => {
             console.log(response.data)
@@ -44,8 +50,13 @@ export default function AdminRequestDetailsComp(props) {
         })}
 
         //Set the new post to be priority
-        axios.put(`http://localhost:5000/announcements/${postID}`, {
+        axios.put(`${API_URL}/announcements/${postID}`, {
             priority: true
+        }, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+            },
+            withCredentials: true,
         })
         .then(response => {
             console.log(response.data)
@@ -57,8 +68,13 @@ export default function AdminRequestDetailsComp(props) {
     }
 
     const handleAccept = () => {
-        axios.put(`http://localhost:5000/announcements/${postID}`, {
+        axios.put(`${API_URL}/announcements/${postID}`, {
             "status": "approved" 
+        }, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+            },
+            withCredentials: true,
         })
         .then(response => {
             console.log(response.data)
@@ -70,9 +86,14 @@ export default function AdminRequestDetailsComp(props) {
     }
 
     const handleReject = () => {
-        axios.put(`http://localhost:5000/announcements/${postID}`, {
+        axios.put(`${API_URL}/announcements/${postID}`, {
             "status": "denied", 
             "priority": false
+        }, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+            },
+            withCredentials: true,
         })
         .then(response => {
             console.log(response.data)
@@ -90,7 +111,12 @@ export default function AdminRequestDetailsComp(props) {
 
     const handleSubmit = () => {
         formData.status = "requested"
-        axios.put(`http://localhost:5000/announcements/${postID}`, formData)
+        axios.put(`${API_URL}/announcements/${postID}`, formData, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+            },
+            withCredentials: true,
+        })
         .then(response => {
             console.log(response.data)
         })
