@@ -31,7 +31,7 @@ export default function RequestComp() {
                                 <RequestTable status="requested"/>
                             </Tab>
                             <Tab eventKey="accepted" title="Accepted">
-                                <RequestTable status="accepted"/>
+                                <RequestTable status="approved"/>
                             </Tab>
                             <Tab eventKey="rejected" title="Rejected">
                                 <RequestTable status="rejected"/>

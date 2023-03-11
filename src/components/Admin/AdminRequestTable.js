@@ -1,19 +1,34 @@
+import { useState, useEffect} from 'react';
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Interface/Style.css"
 import {useNavigate} from "react-router-dom";
-import data from '../../data.js'
+import axios from 'axios';
 
-export default function RequestTable(props) {
-    const requests = data.filter((request) => {
-        return request.status === props.status;
-    });
+
+export default function AdminRequestTable(props) {
+
+    const [requests, setRequests] = useState([]);
+
+    const fetchData = async () => {
+        try {
+          const response = await axios.get(`http://localhost:5000/announcements?status=${props.status}&datefrom=2000-01-01&dateto=2050-01-01`);
+          setRequests(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+  
+      useEffect(() => {
+          fetchData();
+        }, [])
+
 
     const navigate = useNavigate();
 
-    function handleCreateDetails(announcementId) {
-        navigate(`/adminrequest/${announcementId}`);
+    function handleCreateDetails(announcementid) {
+        navigate(`/adminrequest/${props.status}/${announcementid}`);
     }
 
     return (
@@ -36,7 +51,7 @@ export default function RequestTable(props) {
                             <td>{request.title}</td>
                             <td>
                                 <Button className="requestDetailButton" variant="success"
-                                        onClick={() => handleCreateDetails(request.id)}>Details</Button>
+                                        onClick={() => handleCreateDetails(request.announcementid)}>Details</Button>
                             </td>
                         </tr>
                     ))}

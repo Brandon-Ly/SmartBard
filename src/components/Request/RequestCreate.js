@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -5,19 +7,53 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../Interface/Style.css";
+import axios from 'axios';
 
 export default function RequestCreate() {
+
+    const navigate = useNavigate();
+
+    const [formData, setFormData] = useState({
+        "priority": false
+      });
+    
+      const handleInputChange = (event) => {
+        setFormData((prevState) => (
+          {...prevState,
+          [event.target.name]: event.target.value}
+        ))
+      };
+      
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        //POST request
+        console.log(formData);
+        axios.post('http://localhost:5000/announcements', formData, {headers: {
+            'Content-Type': 'application/json'
+        }})
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+        navigate(-1);
+      };
+
     return (
         <Container className="priority-announcement">
             <Card className="shadow-sm">
                 <Card.Body>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formTitle">
                             <Form.Label className="fw-bold">Title</Form.Label>
                             <Form.Control
                                 required
                                 type="text"
+                                name="title"
                                 placeholder="Enter post title"
+                                value={formData.title || ''}
+                                onChange={handleInputChange}
                             />
                         </Form.Group>
 
@@ -26,8 +62,11 @@ export default function RequestCreate() {
                             <Form.Control
                                 required
                                 as="textarea"
+                                name="body"
                                 style={{height: "200px"}}
                                 placeholder="Enter post body"
+                                value={formData.body || ''}
+                                onChange={handleInputChange}
                             />
                         </Form.Group>
 
@@ -35,7 +74,8 @@ export default function RequestCreate() {
                             <Form.Label className="fw-bold">Media</Form.Label>
                             <Row xs="auto">
                                 <Col>
-                                    <Form.Control type="file"/>
+                                    <Form.Control type="file"
+                                    />
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -44,11 +84,21 @@ export default function RequestCreate() {
                             <Form.Label className="fw-bold">Date Range</Form.Label>
                             <Row xs="auto" className="align-items-center">
                                 <Col>
-                                    <Form.Control required type="date"/>
+                                    <Form.Control required 
+                                    type="date"
+                                    name="datefrom"
+                                    placeholder="Date from"
+                                    value={formData.datefrom || ''}
+                                    onChange={handleInputChange}/>
                                 </Col>
                                 <Col>To</Col>
                                 <Col>
-                                    <Form.Control required type="date"/>
+                                    <Form.Control required 
+                                    type="date"
+                                    name="dateto"
+                                    placeholder="Date to"
+                                    value={formData.dateto || ''}
+                                    onChange={handleInputChange}/>
                                 </Col>
                             </Row>
                         </Form.Group>

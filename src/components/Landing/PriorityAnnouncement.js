@@ -2,25 +2,25 @@ import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Col as Column, Container, Image, Row} from 'react-bootstrap';
 import "../Interface/Style.css";
-import posts from "../../data.js"
 import FontContext from '../Settings/Font-Context';
 
-export default function PriorityAnnouncement() {
+export default function PriorityAnnouncement(props) {
 
-    /*
-    Find the first post where the priority is true. This is assuming that there can only ever be one post with a true property 
-    (This should always be the case with a priority announcement) 
-    */
-    const priority = posts.find(post => post.priority === true)
+    let priority = props.priorityPost;
 
     const navigate = useNavigate()
     const fontSizeNumber = useContext(FontContext);
 
+    //If the announcement isn't loaded, then it'll temporarily say loading
+    if (!priority || priority == null) {
+        return <></>;
+    }
+
     return (
 
-        <Container className="priority-announcement" onDoubleClick={() => navigate(`/home/${priority.id}`)}>
+        <Container className="priority-announcement" onDoubleClick={() => navigate(`/home/${priority.announcementid}`)}>
 
-            {priority.img !== "" ?
+            {priority.img  ?
                 <React.Fragment>
                     <Row>
                         <h1 className="priority-announcement-title">{priority.title}</h1>
@@ -41,11 +41,12 @@ export default function PriorityAnnouncement() {
                     </Row>
                 </React.Fragment>
                 :
-
+                <React.Fragment>
                 <Row>
                     <h1>{priority.title}</h1>
-                    <div className="priority-announcement-text">{priority.body}</div>
+                    <div className="priority-announcement-text" style={{fontSize: fontSizeNumber}}>{priority.body}</div>
                 </Row>
+                </React.Fragment>
             }
 
         </Container>

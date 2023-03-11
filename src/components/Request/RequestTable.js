@@ -1,11 +1,29 @@
+import { useState, useEffect } from 'react';
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Interface/Style.css"
+import "../Interface/Style.css";
 import {useNavigate} from "react-router-dom";
-import data from '../../data.js'
+import axios from 'axios';
 
 export default function RequestTable(props) {
+
+    const [data, setData] = useState([]);
+
+    const fetchData = async () => {
+        try {
+          const response = await axios.get(`http://localhost:5000/announcements?status=${props.status}&datefrom=2000-01-01&dateto=2050-01-01`);
+          setData(response.data);
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+  
+      useEffect(() => {
+          fetchData();
+        }, [data])
+
     const requests = data.filter((request) => {
         return request.status === props.status;
     });

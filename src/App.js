@@ -76,7 +76,7 @@ function App() {
                                 <Route path='/request/:postID' element={<RequestDetails/>}/>
                                 <Route path='/create' element={<RequestCreate/>}/>
                                 <Route path='/admin' element={<Admin/>}/>
-                                <Route path='/adminrequest/:postID' element={<AdminRequestDetails/>}/>
+                                <Route path='/adminrequest/:status/:postID' element={<AdminRequestDetails/>}/>
                             </Routes>
                         )}
 
