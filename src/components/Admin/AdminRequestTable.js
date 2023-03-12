@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Interface/Style.css"
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
+import {API_URL} from "../../common/constants";
 
 
 export default function AdminRequestTable(props) {
@@ -13,7 +14,12 @@ export default function AdminRequestTable(props) {
 
     const fetchData = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/announcements?status=${props.status}&datefrom=2000-01-01&dateto=2050-01-01`);
+          const response = await axios.get(`${API_URL}/announcements?status=${props.status}&datefrom=2000-01-01&dateto=2050-01-01`, {
+              headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+              },
+              withCredentials: true,
+          });
           setRequests(response.data);
         } catch (error) {
           console.log(error);
