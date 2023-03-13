@@ -6,7 +6,6 @@ SmartBard is a bulletin board web application for Overbrook School of the Blind 
 - [About](#about)
 - [Documentation](#documentation)
 - [Team](#team)
-- [License](#license)
 - [Supported-Browsers](#supported-browsers)
 
 ## About
@@ -21,9 +20,6 @@ Senior Project Design
 - Sandy Yang
 - An Tran
 - Ricky Taing
-
-## License
-See [`License`](LICENSE.md).
 
 ## Supported Browsers
 The platform is only tested in Mozilla Firefox, Google Chrome, and Safari. Other browsers might not render all pages correctly.

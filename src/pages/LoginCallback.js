@@ -1,10 +1,10 @@
 import React, {Fragment} from "react";
-import LoginComp from "../components/Login/LoginComp";
+import LoginCallbackComp from "../components/Login/LoginCallbackComp";
 
 export default function Login() {
     return (
         <Fragment>
-            <LoginComp/>
+            <LoginCallbackComp/>
         </Fragment>
     );
 }

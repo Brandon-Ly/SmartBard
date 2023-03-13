@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Interface/Style.css";
+import "../Interface/Style.css"
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import {API_URL} from "../../common/constants";
 
-export default function RequestTable(props) {
 
-    const [data, setData] = useState([]);
+export default function AdminRequestTable(props) {
+
+    const [requests, setRequests] = useState([]);
 
     const fetchData = async () => {
         try {
@@ -19,8 +20,7 @@ export default function RequestTable(props) {
               },
               withCredentials: true,
           });
-          setData(response.data);
-          console.log(data);
+          setRequests(response.data);
         } catch (error) {
           console.log(error);
         }
@@ -28,16 +28,13 @@ export default function RequestTable(props) {
   
       useEffect(() => {
           fetchData();
-        }, [data])
+        }, [])
 
-    const requests = data.filter((request) => {
-        return request.status === props.status;
-    });
 
     const navigate = useNavigate();
 
-    function handleCreateDetails(announcementId) {
-        navigate(`/request/${announcementId}`);
+    function handleCreateDetails(announcementid) {
+        navigate(`/adminrequest/${props.status}/${announcementid}`);
     }
 
     return (
@@ -60,7 +57,7 @@ export default function RequestTable(props) {
                             <td>{request.title}</td>
                             <td>
                                 <Button className="requestDetailButton" variant="success"
-                                        onClick={() => handleCreateDetails(request.id)}>Details</Button>
+                                        onClick={() => handleCreateDetails(request.announcementid)}>Details</Button>
                             </td>
                         </tr>
                     ))}

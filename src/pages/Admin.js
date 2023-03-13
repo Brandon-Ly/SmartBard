@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Fragment, React} from "react";
-import RequestComp from "../components/Request/RequestComp";
+import AdminRequestComp from "../components/Admin/AdminRequestComp";
 
-export default function Request() {
+export default function Admin() {
     return (
         <Fragment>
-            <RequestComp/>
+            <AdminRequestComp/>
         </Fragment>
     );
 }

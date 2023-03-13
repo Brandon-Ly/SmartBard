@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Themes =  {
+export const Themes = {
     main: {
         background: '#962D38',
         foreground: '#EAB547',
@@ -16,8 +16,8 @@ export const Themes =  {
     orange: {
         background: '#006ddb',
         foreground: '#db6d00',
-        text:'#FFFFFF'
-    } 
+        text: '#FFFFFF'
+    }
 }
 
 const ThemeContext = React.createContext(Themes);

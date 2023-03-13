@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Tab from "react-bootstrap/Tab";
@@ -6,15 +7,17 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import RequestTable from "./RequestTable";
+import AdminRequestTable from "./AdminRequestTable";
 import {useNavigate} from "react-router-dom";
 import "../Interface/Style.css"
 
 export default function RequestComp() {
+
     const navigate = useNavigate();
     const handleCreateRequest = function () {
         navigate('/create');
     }
+
 
     return (
         <Container className="priority-announcement">
@@ -22,19 +25,19 @@ export default function RequestComp() {
                 <Card.Body>
                     <Row>
                         <div>
-                            <h2>Your Requests</h2>
+                            <h2>Announcements</h2>
                         </div>
                     </Row>
                     <Row className="formGroup">
                         <Tabs defaultActiveKey="pending" id="table-tabs" className="mb-3">
                             <Tab eventKey="pending" title="Pending">
-                                <RequestTable status="requested"/>
+                                <AdminRequestTable status="requested"/>
                             </Tab>
                             <Tab eventKey="accepted" title="Accepted">
-                                <RequestTable status="approved"/>
+                                <AdminRequestTable status="approved"/>
                             </Tab>
                             <Tab eventKey="rejected" title="Rejected">
-                                <RequestTable status="rejected"/>
+                                <AdminRequestTable status="denied"/>
                             </Tab>
                         </Tabs>
                     </Row>

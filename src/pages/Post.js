@@ -1,29 +1,68 @@
-import React, {useContext} from 'react'
-import data from "../data.js"
+import React, { useState, useEffect, useContext } from 'react'
 import {useParams} from 'react-router-dom'
-import {Container, Row, Image, Button} from 'react-bootstrap'
-import "../components/Interface/pages.css"
-import FontContext from '../SettingFeatures/fonts/font-context';
-
+import {Button, Container, Image, Row} from 'react-bootstrap'
+import '../components/Interface/Pages.css';
+import FontContext from '../components/Settings/Font-Context';
+import TextToSpeech from '../components/Settings/TextToSpeech'
+import {API_URL} from "../common/constants";
 
 export default function Post() {
 
+    const [data, setData] = useState([]);
+    const [post, setPost] = useState(null);
     const {postID} = useParams();
-    const post = data.find(postInArray => postInArray.id === parseInt(postID))
     const fontSizeNumber = useContext(FontContext);
-    
 
-  return (
-    <Container className="entire-post">
+    //API GET request
+    useEffect(() => {
+        fetch(`${API_URL}/announcements?status=approved&datefrom=2000-01-01&dateto=2050-01-01`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+            },
+            withCredentials: true,
+        })
+        .then(response => response.json())
+        .then(data => setData(data))
+        .catch(error => console.error(error))
+    }, [])
+
+     //Finding the right post to display
+    useEffect(() => {
+        if (data.length > 0) {
+        const foundItem = data.find(item => item.announcementid === parseInt(postID))
+        if (foundItem) {
+            setPost(foundItem);
+        } else {
+            console.log("No item with priority found");
+        }
+        } else {
+        console.log("Data is empty");
+        }
+    }, [data])
+
+
+    //If the post isn't loaded, then it'll temporarily say loading
+    if (!post || post == null) {
+        return <div>Loading. . .</div>;
+    }
+
+    return (
+        <Container className="entire-post">
+            <Row><h1 className="text-center" style={{fontSize: 48}} >{post.title}</h1></Row>
+            <Row><p style={{fontSize: fontSizeNumber, padding: 100}}>{post.body}</p></Row>
+            <Row><Button size="lg" variant="warning" style={{marginTop:20}}>Attached Documents</Button></Row>
+        </Container>
+    )
+}
+
+/*<Container className="entire-post">
     <Row><h1 className="text-center" style={{fontSize: 48}} >{post.title}</h1></Row>
     <Row><p style={{fontSize: fontSizeNumber, padding: 100}}>{post.body}</p></Row>
     <Row><Image src={post.img} className="d-block mx-auto" style={{
-        maxHeight: '500px', 
-        maxWidth: '50px', 
-        minHeight: '500px', 
+        maxHeight: '500px',
+        maxWidth: '50px',
+        minHeight: '500px',
         minWidth: '500px'}} /> </Row>
     <Row><Button size="lg" variant="warning" style={{marginTop:20}}>Attached Documents</Button></Row>
-    
-    </Container>
-  )
-}
+
+    </Container>*/
