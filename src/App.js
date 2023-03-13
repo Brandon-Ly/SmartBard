@@ -8,6 +8,7 @@ import AuthProvider from './components/Authentication/AuthProvider';
 import PrivateRoute from './components/Authentication/PrivateRoute.js';
 import NavBar from './components/Interface/Navbar';
 import FontSize from './components/Settings/FontSize';
+import SpeechVoices from './components/Settings/SpeechVoices';
 import Theme from './components/Settings/Theme';
 import ThemeContext, {Themes} from './components/Settings/Theme-Context';
 import FontContext from './components/Settings/Font-Context.js';
@@ -106,6 +107,9 @@ function App() {
                                         }
                                         }
                                     />
+                                </Container>
+                                <Container>
+                                    <SpeechVoices/>
                                 </Container>
                             </Modal.Body>
                         </Modal>
