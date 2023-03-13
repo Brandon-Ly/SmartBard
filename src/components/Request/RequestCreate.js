@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../Interface/Style.css";
 import axios from 'axios';
+import {API_URL} from "../../common/constants";
 
 export default function RequestCreate() {
 
@@ -28,9 +29,14 @@ export default function RequestCreate() {
         event.preventDefault();
         //POST request
         console.log(formData);
-        axios.post('http://localhost:5000/announcements', formData, {headers: {
-            'Content-Type': 'application/json'
-        }})
+        formData.media = ''; // temporary until file upload is done
+        axios.post(`${API_URL}/announcements`, formData, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('id_token')}`,
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true,
+        })
         .then(response => {
             console.log(response.data);
             navigate(-1);
