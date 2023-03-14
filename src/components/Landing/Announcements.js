@@ -15,6 +15,28 @@ export default function Announcements(props) {
     const fontSizeNumber = useContext(FontContext);
     var slidesPerScreen = Math.min(data.length, 3)
 
+    function PrevArrow(props) {
+        const { className, style, onClick } = props;
+        return (
+            <div
+            className={className}
+            style={{ ...style, display: "block", background: "black" }}
+            onClick={onClick}
+            />
+            );
+    }
+
+    function NextArrow(props) {
+        const { className, style, onClick } = props;
+        return (
+            <div
+            className={className}
+            style={{ ...style, display: "block", background: "black" }}
+            onClick={onClick}
+            />
+            );
+    }
+
     var settings = {
 
         infinite: true,
@@ -23,16 +45,23 @@ export default function Announcements(props) {
         speed: 500,
         slidesToShow: slidesPerScreen,
         slidesToScroll: 3,
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
 
     };
 
+
+
     const announcements = data.map((announcement) => {
-        return <Card className="slide-post" onDoubleClick={() => navigate(`/home/${announcement.announcementid}`)}>
-            <h1>{announcement.title}</h1>
-            <Card.Body>
+        return <Card style={{border: '2px solid black'}} className="slide-post" onDoubleClick={() => navigate(`/home/${announcement.announcementid}`)}>
+            <h1 style={{ 
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+                        overflow: 'hidden'
+                        }}>{announcement.title}</h1>
+            <Card.Body >
                 <p style={{
                     fontSize: fontSizeNumber,
-                    width: '300px',
                     height: '300px',
                     overflow: 'auto'
                 }}>{announcement.body}</p>
