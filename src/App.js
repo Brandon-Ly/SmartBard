@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Container from 'react-bootstrap/Container'
+import Container from 'react-bootstrap/Container';
 
 import AuthProvider from './components/Authentication/AuthProvider';
 import PrivateRoute from './components/Authentication/PrivateRoute.js';
@@ -21,7 +21,7 @@ import RequestDetails from './pages/RequestDetails.js';
 import Admin from './pages/Admin.js';
 import AdminRequestDetails from './pages/AdminRequestDetails.js';
 
-import settingsCog from "./images/settings-cog.png"
+import settingsCog from "./images/settings-cog.png";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 

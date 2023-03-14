@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import Container from 'react-bootstrap/Container';
 import queryString from "query-string";
 import axios from "axios";
 import useAuth from '../../hooks/UseAuth.js'
@@ -81,13 +82,15 @@ function LoginComp() {
     };
 
     return (
-        <div>
+        <Container centered style={{height: '300px'}}>
+        
             {isLoading ? (
                 <div>Loading...</div>
             ) : (
-                <button onClick={handleLoginClick}>Login</button>
+                <button style={{display: 'block', margin: 'auto'}} onClick={handleLoginClick}>Login</button>
             )}
-        </div>
+        
+        </Container>
     );
 }
 
