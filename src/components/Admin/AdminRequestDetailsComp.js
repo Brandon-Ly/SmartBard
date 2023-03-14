@@ -79,6 +79,7 @@ export default function AdminRequestDetailsComp(props) {
         .then(response => {
             console.log(response.data)
             navigate('/admin');
+
         })
         .catch(error => {
             console.error(error);
