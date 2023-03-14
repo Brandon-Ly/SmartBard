@@ -60,11 +60,11 @@ export default function AdminRequestDetailsComp(props) {
         })
         .then(response => {
             console.log(response.data)
+            navigate(-1);
         })
         .catch(error => {
             console.error(error);
         })
-        navigate(-1);
     }
 
     const handleAccept = () => {
@@ -78,11 +78,11 @@ export default function AdminRequestDetailsComp(props) {
         })
         .then(response => {
             console.log(response.data)
+            navigate(-1);
         })
         .catch(error => {
             console.error(error);
         })
-        navigate(-1);
     }
 
     const handleReject = () => {
@@ -97,11 +97,11 @@ export default function AdminRequestDetailsComp(props) {
         })
         .then(response => {
             console.log(response.data)
+            navigate(-1);
         })
         .catch(error => {
             console.error(error);
         })
-        navigate(-1);
     }
 
 
@@ -119,11 +119,11 @@ export default function AdminRequestDetailsComp(props) {
         })
         .then(response => {
             console.log(response.data)
+            navigate(-1);
         })
         .catch(error => {
             console.error(error);
         })
-        navigate(-1);
     }
 
     const handleInputChange = (event) => {

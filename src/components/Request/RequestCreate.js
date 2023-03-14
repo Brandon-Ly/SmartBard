@@ -39,11 +39,11 @@ export default function RequestCreate() {
         })
         .then(response => {
             console.log(response.data);
+            navigate(-1);
         })
         .catch(error => {
             console.error(error);
         })
-        navigate(-1);
       };
 
     return (
