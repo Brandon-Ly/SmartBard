@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Tab from "react-bootstrap/Tab";

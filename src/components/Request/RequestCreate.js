@@ -39,7 +39,7 @@ export default function RequestCreate() {
         })
         .then(response => {
             console.log(response.data);
-            navigate(-1);
+            navigate('/admin');
         })
         .catch(error => {
             console.error(error);

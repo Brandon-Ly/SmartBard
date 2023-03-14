@@ -60,7 +60,7 @@ export default function AdminRequestDetailsComp(props) {
         })
         .then(response => {
             console.log(response.data)
-            navigate(-1);
+            navigate('/admin');
         })
         .catch(error => {
             console.error(error);
@@ -78,7 +78,7 @@ export default function AdminRequestDetailsComp(props) {
         })
         .then(response => {
             console.log(response.data)
-            navigate(-1);
+            navigate('/admin');
         })
         .catch(error => {
             console.error(error);
@@ -97,7 +97,7 @@ export default function AdminRequestDetailsComp(props) {
         })
         .then(response => {
             console.log(response.data)
-            navigate(-1);
+            navigate('/admin');
         })
         .catch(error => {
             console.error(error);
@@ -111,6 +111,7 @@ export default function AdminRequestDetailsComp(props) {
 
     const handleSubmit = () => {
         formData.status = "requested"
+        formData.priority = false
         axios.put(`${API_URL}/announcements/${postID}`, formData, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('id_token')}`
@@ -119,7 +120,7 @@ export default function AdminRequestDetailsComp(props) {
         })
         .then(response => {
             console.log(response.data)
-            navigate(-1);
+            navigate('/admin');
         })
         .catch(error => {
             console.error(error);

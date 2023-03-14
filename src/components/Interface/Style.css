@@ -1,3 +1,7 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
 .priority-announcement {
     margin-top: 10px;
     padding: 20px;
@@ -20,9 +24,18 @@ div {
     font-family: Arial;
 }
 
+.card {
+    border: 2px solid black;
+}
+
 .slide-post {
     padding: 20px;
 }
+
+.slick-slide .card {
+    border: 1px solid black;
+}
+
 
 .link {
     text-decoration: none;
