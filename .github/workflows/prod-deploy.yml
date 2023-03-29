@@ -15,6 +15,11 @@ jobs:
           node-version: 18.x
       - name: Install Dependencies
         run: npm install
+      - name: Get Secret Environment Vars
+        run: 'echo "$PROD_ENV_VARS" > ./.env.dev'
+        shell: bash
+        env:
+          DEV_ENV_VARS: ${{ secrets.PROD_ENV_VARS }}
       - name: Start Build
         run: npm run build:prod
       - name: Deploy to S3
