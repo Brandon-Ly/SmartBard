@@ -1,1 +1,1 @@
-export const API_URL = "http://localhost:5001";
+export const API_URL = process.env.REACT_APP_SMARTBARD_API_URL;
