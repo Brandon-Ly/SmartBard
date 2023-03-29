@@ -207,7 +207,7 @@ export default function AdminRequestDetailsComp(props) {
                             {readMode ? <Row className="float-end">
                                 <Col>
 
-                                { status === "approved" ? 
+                                { status === "approved" && post.priority != true ? 
                                 <Button className="adminButtons" variant="info" onClick={() => { handleMakePriority()
                                 }}>
                                     Make Priority

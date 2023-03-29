@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import Container from 'react-bootstrap/Container';
 import queryString from "query-string";
 import axios from "axios";
 import useAuth from '../../hooks/UseAuth.js'
@@ -10,8 +11,8 @@ function LoginComp() {
     const navigate = useNavigate();
     const {login} = useAuth();
 
-    const clientId = '6t7iieu7iapoadjqj20di1j33h';
-    const redirectUri = 'http://localhost:3000';
+    const clientId = process.env.REACT_APP_COGNITO_CLIENTID;
+    const redirectUri = process.env.REACT_APP_SMARTBARD_UI_URL;
 
     useEffect(() => {
         const {code} = queryString.parse(window.location.search);
@@ -37,14 +38,19 @@ function LoginComp() {
     }, [navigate]);
 
     function handleLoginClick() {
-        const cognitoAuthUrl = `https://smbd-test.auth.us-east-1.amazoncognito.com/login?client_id=6t7iieu7iapoadjqj20di1j33h&response_type=code&scope=email+openid+phone+profile&redirect_uri=http%3A%2F%2Flocalhost%3A3000`;
+        const cognitoAuthUrl = `${process.env.REACT_APP_SMARTBARD_LOGIN_URL}/login?client_id=${clientId}&response_type=code&scope=email+openid+phone+profile&redirect_uri=${replaceRedirectUrl(redirectUri)}`;
 
         window.location.replace(cognitoAuthUrl);
     }
 
+    function replaceRedirectUrl(url) {
+        url = url.replaceAll(":", "%3A");
+        return url.replaceAll("/", "%2F");
+    }
+
     const exchangeAuthorizationCodeForToken = (clientId, code, redirectUri) => {
         const tokenEndpoint =
-            `https://smbd-test.auth.us-east-1.amazoncognito.com/oauth2/token`;
+            `${process.env.REACT_APP_SMARTBARD_LOGIN_URL}/oauth2/token`;
 
         const requestBody = {
             grant_type: 'authorization_code',
@@ -81,13 +87,15 @@ function LoginComp() {
     };
 
     return (
-        <div>
+        <Container centered style={{height: '300px'}}>
+        
             {isLoading ? (
                 <div>Loading...</div>
             ) : (
-                <button onClick={handleLoginClick}>Login</button>
+                <button style={{display: 'block', margin: 'auto'}} onClick={handleLoginClick}>Login</button>
             )}
-        </div>
+        
+        </Container>
     );
 }
 
