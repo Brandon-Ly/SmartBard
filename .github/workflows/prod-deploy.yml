@@ -1,0 +1,34 @@
+name: Deploy Production
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Install Dependencies
+        run: npm install
+      - name: Get Secret Environment Vars
+        run: 'echo "$PROD_ENV_VARS" > ./.env.dev'
+        shell: bash
+        env:
+          DEV_ENV_VARS: ${{ secrets.PROD_ENV_VARS }}
+      - name: Start Build
+        run: npm run build:prod
+        env:
+          CI: false # tech debt needs to be fixed
+      - name: Deploy to S3
+        uses: shallwefootball/s3-upload-action@master
+        with:
+          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_bucket: ${{ secrets.AWS_PROD_S3_BUCKET }}
+          source_dir: build
+          destination_dir: ''
