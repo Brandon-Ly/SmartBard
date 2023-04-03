@@ -5,10 +5,10 @@ import Tabs from "react-bootstrap/Tabs";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
 import AdminRequestTable from "./AdminRequestTable";
-import {useNavigate} from "react-router-dom";
-import "../Interface/Style.css"
+import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../Interface/Style.css";
 
 export default function RequestComp() {
 
