@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import {Button, Container, Image, Row} from 'react-bootstrap'
+import {Button, Container, Row} from 'react-bootstrap'
 import '../components/Interface/Pages.css';
 import FontContext from '../components/Settings/Font-Context';
-import TextToSpeech from '../components/Settings/TextToSpeech'
 import {API_URL} from "../common/constants";
 
 export default function Post() {
@@ -21,22 +20,22 @@ export default function Post() {
             },
             withCredentials: true,
         })
-        .then(response => response.json())
-        .then(data => setData(data))
-        .catch(error => console.error(error))
+            .then(response => response.json())
+            .then(data => setData(data))
+            .catch(error => console.error(error))
     }, [])
 
-     //Finding the right post to display
+    //Finding the right post to display
     useEffect(() => {
         if (data.length > 0) {
-        const foundItem = data.find(item => item.announcementid === parseInt(postID))
-        if (foundItem) {
-            setPost(foundItem);
+            const foundItem = data.find(item => item.announcementid === parseInt(postID))
+            if (foundItem) {
+                setPost(foundItem);
+            } else {
+                console.log("No item with priority found");
+            }
         } else {
-            console.log("No item with priority found");
-        }
-        } else {
-        console.log("Data is empty");
+            console.log("Data is empty");
         }
     }, [data])
 
@@ -48,9 +47,9 @@ export default function Post() {
 
     return (
         <Container className="entire-post">
-            <Row><h1 className="text-center" style={{fontSize: 48}} >{post.title}</h1></Row>
+            <Row><h1 className="text-center" style={{fontSize: 48}}>{post.title}</h1></Row>
             <Row><p style={{fontSize: fontSizeNumber, padding: 100}}>{post.body}</p></Row>
-            <Row><Button size="lg" variant="warning" style={{marginTop:20}}>Attached Documents</Button></Row>
+            <Row><Button size="lg" variant="warning" style={{marginTop: 20}}>Attached Documents</Button></Row>
         </Container>
     )
 }

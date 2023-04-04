@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import PriorityAnnouncement from '../components/Landing/PriorityAnnouncement';
 import Announcements from '../components/Landing/Announcements';
 import axios from 'axios';
@@ -8,26 +8,26 @@ export default function Home() {
     window.speechSynthesis.cancel()
 
     const [data, setData] = useState([]);
-    const [foundPost, setFoundPost] =useState(null);
+    const [foundPost, setFoundPost] = useState(null);
 
     const fetchData = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/announcements?status=approved&datefrom=2000-01-01&dateto=2050-01-01`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('id_token')}`
-            },
-            withCredentials: true,
-        });
-        setData(response.data);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
+        try {
+            const response = await axios.get(`${API_URL}/announcements?status=approved&datefrom=2000-01-01&dateto=2050-01-01`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+                },
+                withCredentials: true,
+            });
+            setData(response.data);
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     useEffect(() => {
         fetchData();
-      }, [])
+    }, [])
 
     /*
     Find the first post where the priority is true. This is assuming that there can only ever be one post with a true property 
@@ -35,22 +35,22 @@ export default function Home() {
     */
     useEffect(() => {
         if (data.length > 0) {
-          const foundItem = data.find(item => item.priority === true);
-          if (foundItem) {
-            setFoundPost(foundItem);
-          } else {
-            console.log("No item with priority found");
-          }
+            const foundItem = data.find(item => item.priority === true);
+            if (foundItem) {
+                setFoundPost(foundItem);
+            } else {
+                console.log("No item with priority found");
+            }
         } else {
-          console.log("Data is empty");
+            console.log("Data is empty");
         }
-      }, [data])
+    }, [data])
 
 
     return (
         <React.Fragment>
             <PriorityAnnouncement priorityPost={foundPost}/>
-            <Announcements data={data} />
+            <Announcements data={data}/>
         </React.Fragment>
     )
 }

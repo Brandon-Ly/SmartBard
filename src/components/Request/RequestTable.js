@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,22 +13,22 @@ export default function RequestTable(props) {
 
     const fetchData = async () => {
         try {
-          const response = await axios.get(`${API_URL}/announcements?status=${props.status}&datefrom=2000-01-01&dateto=2050-01-01`, {
-              headers: {
-                  'Authorization': `Bearer ${localStorage.getItem('id_token')}`
-              },
-              withCredentials: true,
-          });
-          setData(response.data);
-          console.log(data);
+            const response = await axios.get(`${API_URL}/announcements?status=${props.status}&datefrom=2000-01-01&dateto=2050-01-01`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+                },
+                withCredentials: true,
+            });
+            setData(response.data);
+            console.log(data);
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
-      }
-  
-      useEffect(() => {
-          fetchData();
-        }, [data])
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [data])
 
     const requests = data.filter((request) => {
         return request.status === props.status;

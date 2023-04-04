@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import AdminRequestTable from "./AdminRequestTable";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Interface/Style.css";
 

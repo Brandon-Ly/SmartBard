@@ -88,13 +88,13 @@ function LoginComp() {
 
     return (
         <Container centered style={{height: '300px'}}>
-        
+
             {isLoading ? (
                 <div>Loading...</div>
             ) : (
                 <button style={{display: 'block', margin: 'auto'}} onClick={handleLoginClick}>Login</button>
             )}
-        
+
         </Container>
     );
 }

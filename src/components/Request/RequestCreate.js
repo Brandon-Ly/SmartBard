@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -16,16 +16,18 @@ export default function RequestCreate() {
 
     const [formData, setFormData] = useState({
         "priority": false
-      });
-    
-      const handleInputChange = (event) => {
+    });
+
+    const handleInputChange = (event) => {
         setFormData((prevState) => (
-          {...prevState,
-          [event.target.name]: event.target.value}
+            {
+                ...prevState,
+                [event.target.name]: event.target.value
+            }
         ))
-      };
-      
-      const handleSubmit = (event) => {
+    };
+
+    const handleSubmit = (event) => {
         event.preventDefault();
         //POST request
         console.log(formData);
@@ -37,14 +39,14 @@ export default function RequestCreate() {
             },
             withCredentials: true,
         })
-        .then(response => {
-            console.log(response.data);
-            navigate('/admin');
-        })
-        .catch(error => {
-            console.error(error);
-        })
-      };
+            .then(response => {
+                console.log(response.data);
+                navigate('/admin');
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    };
 
     return (
         <Container className="priority-announcement">
@@ -90,21 +92,21 @@ export default function RequestCreate() {
                             <Form.Label className="fw-bold">Date Range</Form.Label>
                             <Row xs="auto" className="align-items-center">
                                 <Col>
-                                    <Form.Control required 
-                                    type="date"
-                                    name="datefrom"
-                                    placeholder="Date from"
-                                    value={formData.datefrom || ''}
-                                    onChange={handleInputChange}/>
+                                    <Form.Control required
+                                                  type="date"
+                                                  name="datefrom"
+                                                  placeholder="Date from"
+                                                  value={formData.datefrom || ''}
+                                                  onChange={handleInputChange}/>
                                 </Col>
                                 <Col>To</Col>
                                 <Col>
-                                    <Form.Control required 
-                                    type="date"
-                                    name="dateto"
-                                    placeholder="Date to"
-                                    value={formData.dateto || ''}
-                                    onChange={handleInputChange}/>
+                                    <Form.Control required
+                                                  type="date"
+                                                  name="dateto"
+                                                  placeholder="Date to"
+                                                  value={formData.dateto || ''}
+                                                  onChange={handleInputChange}/>
                                 </Col>
                             </Row>
                         </Form.Group>

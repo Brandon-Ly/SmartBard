@@ -20,7 +20,7 @@ export default function PriorityAnnouncement(props) {
 
         <Container className="priority-announcement" onDoubleClick={() => navigate(`/home/${priority.announcementid}`)}>
 
-            {priority.img  ?
+            {priority.img ?
                 <React.Fragment>
                     <Row>
                         <h1 className="priority-announcement-title">{priority.title}</h1>
@@ -42,10 +42,11 @@ export default function PriorityAnnouncement(props) {
                 </React.Fragment>
                 :
                 <React.Fragment>
-                <Row>
-                    <h1>{priority.title}</h1>
-                    <div className="priority-announcement-text" style={{fontSize: fontSizeNumber}}>{priority.body}</div>
-                </Row>
+                    <Row>
+                        <h1>{priority.title}</h1>
+                        <div className="priority-announcement-text"
+                             style={{fontSize: fontSizeNumber}}>{priority.body}</div>
+                    </Row>
                 </React.Fragment>
             }
 
