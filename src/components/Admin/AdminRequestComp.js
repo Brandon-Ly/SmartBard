@@ -1,3 +1,4 @@
+import {useNavigate} from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Tab from "react-bootstrap/Tab";
@@ -6,9 +7,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import AdminRequestTable from "./AdminRequestTable";
-import {useNavigate} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Interface/Style.css";
+import "./Admin.css";
 
 export default function RequestComp() {
 
@@ -19,7 +19,7 @@ export default function RequestComp() {
 
 
     return (
-        <Container className="priority-announcement">
+        <Container className="admin-request-container">
             <Card className="shadow-sm">
                 <Card.Body>
                     <Row>
@@ -27,7 +27,7 @@ export default function RequestComp() {
                             <h2>Announcements</h2>
                         </div>
                     </Row>
-                    <Row className="formGroup">
+                    <Row className="admin-request-row">
                         <Tabs defaultActiveKey="pending" id="table-tabs" className="mb-3">
                             <Tab eventKey="pending" title="Pending">
                                 <AdminRequestTable status="requested"/>

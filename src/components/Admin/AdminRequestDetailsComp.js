@@ -6,10 +6,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "../Interface/Style.css";
 import axios from 'axios';
 import {API_URL} from "../../common/constants";
-
+import "./Admin.css";
 export default function AdminRequestDetailsComp(props) {
 
     const [formData, setFormData] = useState({
@@ -140,7 +139,7 @@ export default function AdminRequestDetailsComp(props) {
 
 
     return (
-        <Container className="priority-announcement">
+        <Container className="admin-request-container">
             <Card className="shadow-sm">
                 <Card.Body>
                     <Form>
@@ -210,7 +209,7 @@ export default function AdminRequestDetailsComp(props) {
                                     <Col>
 
                                         {status === "approved" && post.priority != true ?
-                                            <Button className="adminButtons" variant="info" onClick={() => {
+                                            <Button className="admin-request-buttons" variant="info" onClick={() => {
                                                 handleMakePriority()
                                             }}>
                                                 Make Priority
@@ -219,7 +218,7 @@ export default function AdminRequestDetailsComp(props) {
                                             <></>}
 
                                         {status === "requested" || status === "denied" ?
-                                            <Button className="adminButtons" variant="success" onClick={() => {
+                                            <Button className="admin-request-buttons" variant="success" onClick={() => {
                                                 handleAccept()
                                             }}>
                                                 Accept
@@ -230,7 +229,7 @@ export default function AdminRequestDetailsComp(props) {
                                         {status === "denied" ?
                                             <></>
                                             :
-                                            <Button className="adminButtons" variant="danger" onClick={() => {
+                                            <Button className="admin-request-buttons" variant="danger" onClick={() => {
                                                 handleReject()
                                             }}>
                                                 Reject
@@ -238,12 +237,12 @@ export default function AdminRequestDetailsComp(props) {
                                         }
 
 
-                                        <Button className="adminButtons" variant="primary" onClick={() => {
+                                        <Button className="admin-request-buttons" variant="primary" onClick={() => {
                                             handleEdit()
                                         }}>
                                             Edit
                                         </Button>
-                                        <Button className="adminButtons" variant="secondary" onClick={() => {
+                                        <Button className="admin-request-buttons" variant="secondary" onClick={() => {
                                             navigate(-1)
                                         }}>
                                             Return
@@ -253,9 +252,11 @@ export default function AdminRequestDetailsComp(props) {
                                 :
                                 <Row className="float-end">
                                     <Col>
-                                        <Button className="adminButtons" variant="primary" onClick={() => {
+                                        <Button className="admin-request-buttons" variant="primary" onClick={() => {
                                             handleSubmit()
-                                        }}>Submit Changes</Button>
+                                        }}>
+                                            Submit Changes
+                                        </Button>
                                     </Col>
                                 </Row>}
                         </Form.Group>
@@ -265,23 +266,3 @@ export default function AdminRequestDetailsComp(props) {
         </Container>
     );
 }
-
-/*
-<Button className="adminButtons" variant="success" onClick={() => {
-}}>
-    Accept
-</Button>
-<Button className="adminButtons" variant="danger" onClick={() => {
-}}>
-    Reject
-</Button>
-<Button className="adminButtons" variant="primary" onClick={() => {
-}}>
-    Edit
-</Button>
-<Button className="adminButtons" variant="secondary" onClick={() => {
-    navigate(-1)
-}}>
-    Return
-</Button>
-*/

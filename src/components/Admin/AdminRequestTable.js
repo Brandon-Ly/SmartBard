@@ -1,17 +1,16 @@
 import {useEffect, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Interface/Style.css"
-import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import {API_URL} from "../../common/constants";
+import "./Admin.css"
 
 
 export default function AdminRequestTable(props) {
 
     const [requests, setRequests] = useState([]);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(`${API_URL}/announcements?status=${props.status}&datefrom=2000-01-01&dateto=2050-01-01`, {
@@ -37,12 +36,13 @@ export default function AdminRequestTable(props) {
         navigate(`/adminrequest/${props.status}/${announcementid}`);
     }
 
+
     return (
         <section>
-            <div className="requestTableDiv">
+            <div className="admin-request-table-div">
                 <Table
                     bordered
-                    className="requestTable"
+                    className="admin-request-table"
                     size="sm"
                 >
                     <thead>
@@ -53,10 +53,10 @@ export default function AdminRequestTable(props) {
                     </thead>
                     <tbody>
                     {requests.map((request) => (
-                        <tr key={request.title} className="requestTableRow">
+                        <tr key={request.title} className="admin-request-table-row">
                             <td>{request.title}</td>
                             <td>
-                                <Button className="requestDetailButton" variant="success"
+                                <Button className="admin-request-details-button" variant="success"
                                         onClick={() => handleCreateDetails(request.announcementid)}>Details</Button>
                             </td>
                         </tr>
