@@ -1,23 +1,19 @@
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
-import RequestTable from "./RequestTable";
 import {useNavigate} from "react-router-dom";
-import "../Navbar/Style.css"
+import {Card, Container, Tab, Tabs, Col, Row, Button} from 'react-bootstrap';
+import RequestTable from "./RequestTable";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Request.css";
 
 export default function RequestComp() {
+
     const navigate = useNavigate();
     const handleCreateRequest = function () {
         navigate('/create');
     }
 
+
     return (
-        <Container className="priority-announcement">
+        <Container className="request-container">
             <Card className="shadow-sm">
                 <Card.Body>
                     <Row>
@@ -25,7 +21,7 @@ export default function RequestComp() {
                             <h2>Your Requests</h2>
                         </div>
                     </Row>
-                    <Row className="formGroup">
+                    <Row className="request-row">
                         <Tabs defaultActiveKey="pending" id="table-tabs" className="mb-3">
                             <Tab eventKey="pending" title="Pending">
                                 <RequestTable status="requested"/>

@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {Card, Container, Form, Col, Row, Button} from 'react-bootstrap'
+import {Card, Container, Form, Col, Row, Button} from 'react-bootstrap';
 import axios from 'axios';
 import {API_URL} from "../../common/constants";
 import "./Admin.css";

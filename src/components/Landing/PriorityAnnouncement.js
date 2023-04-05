@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Col as Column, Container, Image, Row} from 'react-bootstrap';
 import FontContext from '../Settings/Font-Context';
-import "./Landing.css"
+import "./Landing.css";
 
 export default function PriorityAnnouncement(props) {
 

@@ -4,7 +4,7 @@ import {Table, Button} from 'react-bootstrap'
 import axios from 'axios';
 import {API_URL} from "../../common/constants";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Admin.css"
+import "./Admin.css";
 
 export default function AdminRequestTable(props) {
 

@@ -1,4 +1,4 @@
-import useAuth from '../../hooks/UseAuth'
+import useAuth from '../../hooks/UseAuth';
 import {Navigate} from 'react-router-dom';
 
 const PrivateRoute = ({children}) => {

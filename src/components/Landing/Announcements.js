@@ -1,11 +1,11 @@
-import React, {useContext} from 'react'
-import {useNavigate} from "react-router-dom"
-import Slider from "react-slick"
-import {Card, Container} from "react-bootstrap"
+import React, {useContext} from 'react';
+import {useNavigate} from "react-router-dom";
+import Slider from "react-slick";
+import {Card, Container} from "react-bootstrap";
 import FontContext from '../Settings/Font-Context';
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-import "./Landing.css"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./Landing.css";
 
 
 export default function Announcements(props) {
