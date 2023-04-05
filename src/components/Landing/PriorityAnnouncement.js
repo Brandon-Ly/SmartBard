@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Col as Column, Container, Image, Row} from 'react-bootstrap';
-import "../Interface/Style.css";
 import FontContext from '../Settings/Font-Context';
+import "./Landing.css"
 
 export default function PriorityAnnouncement(props) {
 
@@ -16,10 +16,9 @@ export default function PriorityAnnouncement(props) {
         return <></>;
     }
 
+
     return (
-
-        <Container className="priority-announcement" onDoubleClick={() => navigate(`/home/${priority.announcementid}`)}>
-
+        <Container className="priority-announcement-container" onDoubleClick={() => navigate(`/home/${priority.announcementid}`)}>
             {priority.img ?
                 <React.Fragment>
                     <Row>
@@ -49,8 +48,6 @@ export default function PriorityAnnouncement(props) {
                     </Row>
                 </React.Fragment>
             }
-
         </Container>
-
     )
 }

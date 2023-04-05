@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import {Button, Container, Row} from 'react-bootstrap'
-import '../components/Interface/Pages.css';
+import '../components/Navbar/Pages.css';
 import FontContext from '../components/Settings/Font-Context';
 import {API_URL} from "../common/constants";
 

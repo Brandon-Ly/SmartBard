@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "../Interface/Style.css";
+import "../Navbar/Style.css";
 import axios from 'axios';
 import {API_URL} from "../../common/constants";
 

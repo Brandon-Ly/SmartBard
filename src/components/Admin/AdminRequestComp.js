@@ -1,11 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
+import {Card, Container, Tab, Tabs, Col, Row, Button} from 'react-bootstrap'
 import AdminRequestTable from "./AdminRequestTable";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Admin.css";

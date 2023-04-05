@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import RequestTable from "./RequestTable";
 import {useNavigate} from "react-router-dom";
-import "../Interface/Style.css"
+import "../Navbar/Style.css"
 
 export default function RequestComp() {
     const navigate = useNavigate();

@@ -2,8 +2,8 @@ import React, {useContext} from 'react'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {Button, Container, Navbar} from 'react-bootstrap'
 import ThemeContext from '../Settings/Theme-Context'
-import logoPath from "../../images/overbrook.png"
 import useAuth from '../../hooks/UseAuth'
+import logo from "../../images/overbrook.png"
 import "./Style.css"
 
 export default function NavBar() {
@@ -23,10 +23,9 @@ export default function NavBar() {
 
     return (
         <Navbar style={{backgroundColor: theme.background}} className="custom-navbar" variant="light" expand="lg">
-
             <Container>
                 <Navbar.Brand style={{cursor: 'pointer'}} onClick={() => LoginPage ? navigate('/') : navigate('/home')}>
-                    <img src={logoPath}
+                    <img src={logo}
                          alt="overbrook logo"
                          height="50px"
                          width="250px"/>

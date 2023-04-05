@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 
 import AuthProvider from './components/Authentication/AuthProvider';
 import PrivateRoute from './components/Authentication/PrivateRoute.js';
-import NavBar from './components/Interface/Navbar';
+import NavBar from './components/Navbar/Navbar';
 import FontSize from './components/Settings/FontSize';
 import Theme from './components/Settings/Theme';
 import ThemeContext, {Themes} from './components/Settings/Theme-Context';

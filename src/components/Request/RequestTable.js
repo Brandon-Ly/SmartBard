@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Interface/Style.css";
+import "../Navbar/Style.css";
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import {API_URL} from "../../common/constants";

@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import data from '../../data.js';
 import {useNavigate, useParams} from 'react-router-dom';
-import "../Interface/Style.css";
+import "../Navbar/Style.css";
 
 export default function RequestDetailsComp() {
 

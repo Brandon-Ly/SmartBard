@@ -1,11 +1,12 @@
 import React, {useContext} from 'react'
+import {useNavigate} from "react-router-dom"
 import Slider from "react-slick"
 import {Card, Container} from "react-bootstrap"
-import {useNavigate} from "react-router-dom"
+import FontContext from '../Settings/Font-Context';
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import "../Interface/Style.css"
-import FontContext from '../Settings/Font-Context';
+import "./Landing.css"
+
 
 export default function Announcements(props) {
 
@@ -38,7 +39,6 @@ export default function Announcements(props) {
     }
 
     var settings = {
-
         infinite: true,
         centerPadding: "60px",
         dots: true,
@@ -47,27 +47,19 @@ export default function Announcements(props) {
         slidesToScroll: 3,
         prevArrow: <PrevArrow/>,
         nextArrow: <NextArrow/>,
-
     };
 
 
     const announcements = data.map((announcement) => {
-        return <Card style={{border: '2px solid black'}} className="slide-post"
+        return <Card className="announcement-card"
                      onDoubleClick={() => navigate(`/home/${announcement.announcementid}`)}>
-            <h1 style={{
-                whiteSpace: 'nowrap',
-                textOverflow: 'ellipsis',
-                overflow: 'hidden'
-            }}>{announcement.title}</h1>
+            <h1 className="announcement-title">{announcement.title}</h1>
             <Card.Body>
-                <p style={{
-                    fontSize: fontSizeNumber,
-                    height: '300px',
-                    overflow: 'auto'
-                }}>{announcement.body}</p>
+                <p style={{fontSize: fontSizeNumber}} className="announcement-card-body" >{announcement.body}</p>
             </Card.Body>
         </Card>
     })
+
 
     return (
         <React.Fragment>
@@ -78,6 +70,5 @@ export default function Announcements(props) {
                 </Slider>
             </Container>
         </React.Fragment>
-
     )
 }

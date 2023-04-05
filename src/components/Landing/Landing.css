@@ -1,0 +1,36 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+.announcement-title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.announcement-card {
+    padding: 20px;
+    border: solid black 2px;
+}
+
+.announcement-card-body {
+    height: 300px;
+    overflow: auto;
+}
+
+.priority-announcement-container {
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.priority-announcement-text {
+    width: 800px;
+    height: 300px;
+    overflow: auto;
+    background-color: lightgray;
+
+}
+
+.priority-announcement-title {
+    font-family: Arial;
+    font-size: 64px;
+}
