@@ -1,9 +1,9 @@
 import {Fragment, React, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import AdminRequestDetailsComp from "../components/Admin/AdminRequestDetailsComp.js"
-import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import {API_URL} from "../common/constants";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function AdminRequestDetails(props) {
 

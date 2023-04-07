@@ -5,7 +5,6 @@ import axios from 'axios';
 import {API_URL} from "../common/constants";
 
 export default function Home() {
-    window.speechSynthesis.cancel()
 
     const [data, setData] = useState([]);
     const [foundPost, setFoundPost] = useState(null);
