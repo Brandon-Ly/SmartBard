@@ -1,11 +1,10 @@
 import {useEffect, useState} from 'react';
-import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../Navbar/Style.css";
 import {useNavigate} from "react-router-dom";
+import {Table, Button} from "react-bootstrap";
 import axios from 'axios';
 import {API_URL} from "../../common/constants";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Request.css";
 
 export default function RequestTable(props) {
 
@@ -40,12 +39,13 @@ export default function RequestTable(props) {
         navigate(`/request/${announcementId}`);
     }
 
+
     return (
         <section>
-            <div className="requestTableDiv">
+            <div className="request-table-div">
                 <Table
                     bordered
-                    className="requestTable"
+                    className="request-table"
                     size="sm"
                 >
                     <thead>
@@ -56,10 +56,10 @@ export default function RequestTable(props) {
                     </thead>
                     <tbody>
                     {requests.map((request) => (
-                        <tr key={request.title} className="requestTableRow">
+                        <tr key={request.title} className="request-table-row">
                             <td>{request.title}</td>
                             <td>
-                                <Button className="requestDetailButton" variant="success"
+                                <Button className="request-detail-button" variant="success"
                                         onClick={() => handleCreateDetails(request.id)}>Details</Button>
                             </td>
                         </tr>

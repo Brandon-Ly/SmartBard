@@ -1,11 +1,7 @@
 import React from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import {Dropdown, DropdownButton, Container, Col, Row} from 'react-bootstrap';
 import {Themes} from "./Theme-Context";
-import '../Navbar/Style.css';
+import './Settings.css';
 
 export default function UserTheme({theme, setTheme}) {
 
@@ -27,6 +23,7 @@ export default function UserTheme({theme, setTheme}) {
                 break;
         }
     }
+
 
     return (
         <div className='theme-setting'>

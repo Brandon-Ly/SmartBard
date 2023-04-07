@@ -1,13 +1,25 @@
+.font-size-setting {
+    padding-bottom: 20px;
+}
+
+.font-size-dropdown {
+
+}
+
+.font-size-description {
+    text-align: center;
+}
+
+.speech-voices-setting {
+    padding-bottom: 20px;
+}
+
+.speech-voices-description {
+    text-align: center;
+}
+
 .text-to-speech-setting {
-
-}
-
-.voices-setting {
-
-}
-
-.voices-description {
-
+    padding-bottom: 20px;
 }
 
 .speaker-logo {
@@ -15,3 +27,14 @@
     max-height: 35px;
 }
 
+.theme-setting {
+    padding-bottom: 20px;
+}
+
+.theme-dropdown {
+
+}
+
+.theme-description {
+    text-align: center;
+}

@@ -1,12 +1,7 @@
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import data from '../../data.js';
 import {useNavigate, useParams} from 'react-router-dom';
-import "../Navbar/Style.css";
+import {Card, Container, Col, Row, Button, Form} from "react-bootstrap";
+import data from '../../data.js';
+import "./Request.css";
 
 export default function RequestDetailsComp() {
 
@@ -14,8 +9,9 @@ export default function RequestDetailsComp() {
     const {postID} = useParams();
     const post = data.find(postInArray => postInArray.id === parseInt(postID));
 
+
     return (
-        <Container className="priority-announcement">
+        <Container className="request-details-container">
             <Card className="shadow-sm">
                 <Card.Body>
                     <Form>

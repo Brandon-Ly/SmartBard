@@ -1,6 +1,6 @@
 import React from 'react';
 import speaker from '../../images/speaker.png'
-import "Settings.css"
+import "./Settings.css"
 
 export default function TextToSpeech({text, setText}) {
 
