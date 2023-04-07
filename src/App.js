@@ -56,7 +56,7 @@ function App() {
 
 
     return (
-        <div>
+        <div className="app-div">
             <AuthProvider>
                 <FontContext.Provider value={fontSize}>
                     <ThemeContext.Provider value={theme}>

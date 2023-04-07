@@ -28,7 +28,7 @@ export default function NavBar() {
 
 
     return (
-        <Navbar style={{backgroundColor: theme.background}} className="custom-navbar" variant="light" expand="lg">
+        <Navbar style={{backgroundColor: theme.background}} className="custom-navbar" variant="light" expand="lg" fixed="top">
             <Container>
                 <Navbar.Brand style={{cursor: 'pointer'}} onClick={() => LoginPage ? navigate('/') : navigate('/home')}>
                     <img src={logo} className="navbar-logo"
