@@ -55,7 +55,7 @@ export default function Announcements(props) {
                      onDoubleClick={() => navigate(`/home/${announcement.announcementid}`)}>
             <h1 className="announcement-title">{announcement.title}</h1>
             <Card.Body>
-                <p style={{fontSize: fontSizeNumber}} className="announcement-card-body" >{announcement.body}</p>
+                <p style={{fontSize: fontSizeNumber}} className="announcement-card-body">{announcement.body}</p>
             </Card.Body>
         </Card>
     })

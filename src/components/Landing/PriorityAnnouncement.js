@@ -18,7 +18,8 @@ export default function PriorityAnnouncement(props) {
 
 
     return (
-        <Container className="priority-announcement-container" onDoubleClick={() => navigate(`/home/${priority.announcementid}`)}>
+        <Container className="priority-announcement-container"
+                   onDoubleClick={() => navigate(`/home/${priority.announcementid}`)}>
             {priority.img ?
                 <React.Fragment>
                     <Row>

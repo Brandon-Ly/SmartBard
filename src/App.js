@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Routes} from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Container from 'react-bootstrap/Container';
+import {Button, Container, Modal,} from 'react-bootstrap'
 
 import AuthProvider from './components/Authentication/AuthProvider';
 import PrivateRoute from './components/Authentication/PrivateRoute.js';
+import ThemeContext, {Themes} from './components/Settings/Theme-Context';
+import FontContext from './components/Settings/Font-Context.js';
+
 import NavBar from './components/Navbar/Navbar';
 import FontSize from './components/Settings/FontSize';
 import Theme from './components/Settings/Theme';
-import ThemeContext, {Themes} from './components/Settings/Theme-Context';
-import FontContext from './components/Settings/Font-Context.js';
 
 import Login from './pages/Login.js';
 import Home from './pages/Home.js';
@@ -26,6 +25,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+
     const [theme, setTheme] = useState(Themes.main);
     const [show, setShow] = useState(false);
     const [fontSize, setFontSize] = useState(24);
@@ -53,6 +53,7 @@ function App() {
             setIsLoading(false);
         }, 10);
     }, []);
+
 
     return (
         <div>

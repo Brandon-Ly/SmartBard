@@ -4,7 +4,6 @@ import {Button, Container, Navbar} from 'react-bootstrap';
 import ThemeContext from '../Settings/Theme-Context';
 import useAuth from '../../hooks/UseAuth';
 import logo from "../../images/overbrook.png";
-import "./Style.css";
 import "./Navbar.css";
 
 export default function NavBar() {
