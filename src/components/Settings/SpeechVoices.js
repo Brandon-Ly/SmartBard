@@ -1,11 +1,11 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import {Col, Container, Row} from 'react-bootstrap';
 import '../Navbar/Style.css';
 
 export default function SpeechVoices() {
+
     const voices = speechSynthesis.getVoices();
+
 
     return (
         <div className='voices-setting'>
