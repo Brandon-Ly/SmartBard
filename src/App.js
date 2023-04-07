@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Routes} from 'react-router-dom';
-import {Button, Container, Modal,} from 'react-bootstrap'
+import {Container, Modal,} from 'react-bootstrap'
 
 import AuthProvider from './components/Authentication/AuthProvider';
 import PrivateRoute from './components/Authentication/PrivateRoute.js';
-import ThemeContext, {Themes} from './components/Settings/Theme-Context';
-import FontContext from './components/Settings/Font-Context.js';
 
 import NavBar from './components/Navbar/Navbar';
+import FontContext from './components/Settings/Font-Context.js';
 import FontSize from './components/Settings/FontSize';
+import ThemeContext, {Themes} from './components/Settings/Theme-Context';
 import Theme from './components/Settings/Theme';
 
 import Login from './pages/Login.js';
@@ -68,10 +68,8 @@ function App() {
                                     <PrivateRoute>
                                         <Home/>
                                     </PrivateRoute>}/>
-                                <Route path='/home' element={<Home/>} onEnter={window.speechSynthesis.cancel()}/>
-                                <Route path='/home/:postID' element={<Post/>}
-                                       onEnter={window.speechSynthesis.cancel()}
-                                       onLeave={window.speechSynthesis.cancel()}/>
+                                <Route path='/home' element={<Home/>}/>
+                                <Route path='/home/:postID' element={<Post/>}/>
                                 <Route path='/request' element={<Request/>}/>
                                 <Route path='/request/:postID' element={<RequestDetails/>}/>
                                 <Route path='/create' element={<RequestCreate/>}/>
@@ -94,7 +92,7 @@ function App() {
                                         setFontSize={(number) => {
                                             localStorage.setItem('fontSize', number);
                                             setFontSize(number);
-                                        }
+                                            }
                                         }
                                     />
                                 </Container>
@@ -111,9 +109,7 @@ function App() {
                             </Modal.Body>
                         </Modal>
 
-                        <Button className='border border-success rounded-circle float-end' size='sm'
-                                onClick={handleShow}><img className='accessibility-logo' src={settingsCog}
-                                                          alt="accessibility button"/></Button>
+                        <img className='accessibility-button' src={settingsCog} alt="accessibility button" onClick={handleShow} />
                     </ThemeContext.Provider>
                 </FontContext.Provider>
             </AuthProvider>
