@@ -6,6 +6,9 @@
         transform: rotate(360deg);
     }
 }
+.app-div {
+    margin-top: 105px;
+}
 
 .accessibility-button {
     max-width: 50px;
