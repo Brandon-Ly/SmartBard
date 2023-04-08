@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dropdown, DropdownButton, Container, Col, Row} from 'react-bootstrap';
+import {Col, Container, Dropdown, DropdownButton, Row} from 'react-bootstrap';
 import {Themes} from "./Theme-Context";
 import './Settings.css';
 

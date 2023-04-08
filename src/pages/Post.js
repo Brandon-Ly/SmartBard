@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import {Button, Container, Row} from 'react-bootstrap'
 import FontContext from '../components/Settings/Font-Context';
 import {API_URL} from "../common/constants";
+import TextToSpeech from "../components/Settings/TextToSpeech";
 import "./Pages.css"
 
 export default function Post() {
@@ -49,6 +50,7 @@ export default function Post() {
         <Container className="entire-post">
             <Row><h1 className="text-center" style={{fontSize: 48}}>{post.title}</h1></Row>
             <Row><p style={{fontSize: fontSizeNumber, padding: 100}}>{post.body}</p></Row>
+            <Row><TextToSpeech text={post.body}/></Row>
             <Row><Button size="lg" variant="warning" style={{marginTop: 20}}>Attached Documents</Button></Row>
         </Container>
     )

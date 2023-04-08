@@ -92,7 +92,7 @@ function App() {
                                         setFontSize={(number) => {
                                             localStorage.setItem('fontSize', number);
                                             setFontSize(number);
-                                            }
+                                        }
                                         }
                                     />
                                 </Container>
@@ -109,7 +109,8 @@ function App() {
                             </Modal.Body>
                         </Modal>
 
-                        <img className='accessibility-button' src={settingsCog} alt="accessibility button" onClick={handleShow} />
+                        <img className='accessibility-button' src={settingsCog} alt="accessibility button"
+                             onClick={handleShow}/>
                     </ThemeContext.Provider>
                 </FontContext.Provider>
             </AuthProvider>

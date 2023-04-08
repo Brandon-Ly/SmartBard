@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dropdown, DropdownButton, Container, Col, Row} from 'react-bootstrap';
+import {Col, Container, Dropdown, DropdownButton, Row} from 'react-bootstrap';
 import './Settings.css';
 
 export default function FontSize({fontSize, setFontSize}) {
