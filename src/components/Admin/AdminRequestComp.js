@@ -4,7 +4,7 @@ import AdminRequestTable from "./AdminRequestTable";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Admin.css";
 
-export default function RequestComp() {
+export default function AdminRequestComp() {
 
     const navigate = useNavigate();
     const handleCreateRequest = function () {
