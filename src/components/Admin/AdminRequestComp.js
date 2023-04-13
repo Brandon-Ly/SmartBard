@@ -5,9 +5,13 @@ import Tabs from "react-bootstrap/Tabs";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Form from "react-bootstrap/Form";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import AdminRequestTable from "./AdminRequestTable";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Interface/Style.css"
 
 export default function RequestComp() {
@@ -22,21 +26,35 @@ export default function RequestComp() {
         <Container className="priority-announcement">
             <Card className="shadow-sm">
                 <Card.Body>
-                    <Row>
-                        <div>
-                            <h2>Announcements</h2>
+                    <Card.Title className="fw-bold">
+                        <div class="d-flex justify-content-between">
+                            Announcements
+                            <Dropdown>
+                                <Dropdown.Toggle variant="warning">Filter</Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Container>
+                                        <Row style={{ minWidth: "25vw" }}>
+                                            <div>hi</div>
+                                            <div>hi</div>
+                                            <div>hi</div>
+                                            <div>hi</div>
+                                            <div>hi</div>
+                                        </Row>
+                                    </Container>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </div>
-                    </Row>
+                    </Card.Title>
                     <Row className="formGroup">
                         <Tabs defaultActiveKey="pending" id="table-tabs" className="mb-3">
                             <Tab eventKey="pending" title="Pending">
-                                <AdminRequestTable status="requested"/>
+                                <AdminRequestTable status="requested" />
                             </Tab>
                             <Tab eventKey="accepted" title="Accepted">
-                                <AdminRequestTable status="approved"/>
+                                <AdminRequestTable status="approved" />
                             </Tab>
                             <Tab eventKey="rejected" title="Rejected">
-                                <AdminRequestTable status="denied"/>
+                                <AdminRequestTable status="denied" />
                             </Tab>
                         </Tabs>
                     </Row>
