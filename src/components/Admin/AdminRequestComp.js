@@ -9,6 +9,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
 import AdminRequestTable from "./AdminRequestTable";
 import { useNavigate } from "react-router-dom";
 import "../Interface/Style.css";
@@ -17,6 +18,20 @@ export default function RequestComp() {
   const navigate = useNavigate();
   const handleCreateRequest = function () {
     navigate("/create");
+  };
+
+  const [formData, setFormData] = useState({
+    title: "",
+    datefrom: "",
+    dateto: "",
+    priority: false,
+  });
+
+  const handleInputChange = (event) => {
+    const inputName = event.target.name;
+    const inputValue = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    setFormData({ ...formData, [inputName]: inputValue });
+    console.log(formData)
   };
 
   return (
@@ -30,7 +45,7 @@ export default function RequestComp() {
                 <Dropdown.Toggle variant="warning">Filter</Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Container>
-                    <Row style={{ minWidth: "25vw" }}>
+                    <Row style={{ minWidth: "30vw" }}>
                       <Form>
                         <Form.Group className="mb-3" controlId="formTitle">
                           <Form.Label className="fw-bold">Title</Form.Label>
@@ -38,6 +53,8 @@ export default function RequestComp() {
                             type="text"
                             name="title"
                             placeholder="Request title"
+                            value={formData.title || ""}
+                            onChange={handleInputChange}
                           />
                         </Form.Group>
 
@@ -50,6 +67,8 @@ export default function RequestComp() {
                               <Form.Control
                                 type="date"
                                 name="datefrom"
+                                value={formData.datefrom || ""}
+                                onChange={handleInputChange}
                               />
                             </Col>
                             <Col>To</Col>
@@ -57,9 +76,20 @@ export default function RequestComp() {
                               <Form.Control
                                 type="date"
                                 name="dateto"
+                                value={formData.dateto || ""}
+                                onChange={handleInputChange}
                               />
                             </Col>
                           </Row>
+                        </Form.Group>
+                        <Form.Group>
+                          <Form.Check
+                            type="checkbox"
+                            label='Priority'
+                            name='priority'
+                            checked={formData.priority}
+                            onChange={handleInputChange}
+                          />
                         </Form.Group>
                       </Form>
                     </Row>
