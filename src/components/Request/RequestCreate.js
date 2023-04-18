@@ -16,7 +16,7 @@ export default function RequestCreate() {
 
     const [formData, setFormData] = useState({
         "priority": false
-      });
+    });
     
       const handleInputChange = (event) => {
         setFormData((prevState) => (
