@@ -101,13 +101,13 @@ export default function RequestComp() {
           <Row className="formGroup">
             <Tabs defaultActiveKey="pending" id="table-tabs" className="mb-3">
               <Tab eventKey="pending" title="Pending">
-                <AdminRequestTable status="requested" />
+                <AdminRequestTable status="requested" filteredObject={formData} />
               </Tab>
               <Tab eventKey="accepted" title="Accepted">
-                <AdminRequestTable status="approved" />
+                <AdminRequestTable status="approved" filteredObject={formData} />
               </Tab>
               <Tab eventKey="rejected" title="Rejected">
-                <AdminRequestTable status="denied" />
+                <AdminRequestTable status="denied" filteredObject={formData} />
               </Tab>
             </Tabs>
           </Row>
