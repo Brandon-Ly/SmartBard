@@ -50,6 +50,8 @@ export default function Post() {
         <Container className="entire-post">
             <Row><h1 className="text-center" style={{fontSize: 48}} >{post.title}</h1></Row>
             <Row><p style={{fontSize: fontSizeNumber, padding: 100}}>{post.body}</p></Row>
+            <Row><img src={post.media} /></Row>
+
             <Row><Button size="lg" variant="warning" style={{marginTop:20}}>Attached Documents</Button></Row>
         </Container>
     )

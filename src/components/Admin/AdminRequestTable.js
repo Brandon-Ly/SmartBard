@@ -40,14 +40,9 @@ export default function AdminRequestTable(props) {
         });
 
     function isDateInRange(itemDateFrom, itemDateTo, filterDateFrom, filterDateTo) {
-        console.log("itemDateFrom:", itemDateFrom);
-        console.log("itemDateTo:", itemDateTo);
-        console.log("filterDateFrom:", filterDateFrom);
-        console.log("filterDateTo:", filterDateTo);
+
         const start = filterDateFrom ? new Date(filterDateFrom) : null;
         const end = filterDateTo ? new Date(filterDateTo) : null;
-        console.log("start:", start);
-        console.log("end:", end);
     
         if (start && end) {
             return new Date(itemDateFrom) >= start && new Date(itemDateTo) <= end;

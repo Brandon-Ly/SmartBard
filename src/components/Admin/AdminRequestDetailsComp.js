@@ -173,7 +173,7 @@ export default function AdminRequestDetailsComp(props) {
                             <Form.Label className="fw-bold">Media</Form.Label>
                             <Row xs="auto">
                                 <Col>
-                                    <Form.Control type="file" readOnly/>
+                                    <Form.Control type="file" disabled/>
                                 </Col>
                             </Row>
                         </Form.Group>

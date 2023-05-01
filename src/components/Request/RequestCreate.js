@@ -16,6 +16,11 @@ export default function RequestCreate() {
   const [formData, setFormData] = useState({
     priority: false,
   });
+  const [fileData, setFileData] = useState({
+    file: null,
+  })
+
+  
 
   const handleInputChange = (event) => {
     setFormData((prevState) => ({
@@ -24,13 +29,17 @@ export default function RequestCreate() {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    //POST request
-    console.log(formData);
-    formData.media = ""; // temporary until file upload is done
+  const handleFileChange = (event) => {
+    setFileData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.files[0],
+    }))
+    console.log(fileData.file);
+  }
+
+  const submitForm = (data) => {
     axios
-      .post(`${API_URL}/announcements`, formData, {
+      .post(`${API_URL}/announcements`, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("id_token")}`,
           "Content-Type": "application/json",
@@ -44,6 +53,35 @@ export default function RequestCreate() {
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //POST request
+    console.log(formData);
+    formData.media = "";
+    if (fileData.file) {
+      axios
+      .post(`${API_URL}/assets`, fileData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("id_token")}`,
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data);
+        formData.media = response.data.filename;
+        submitForm(formData);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+        
+    } else {
+      submitForm(formData);
+    }
+  
   };
 
   return (
@@ -80,7 +118,10 @@ export default function RequestCreate() {
               <Form.Label className="fw-bold">Media</Form.Label>
               <Row xs="auto">
                 <Col>
-                  <Form.Control type="file" />
+                  <Form.Control 
+                    name="file"
+                    type="file"
+                    onChange={handleFileChange} />
                 </Col>
               </Row>
             </Form.Group>
