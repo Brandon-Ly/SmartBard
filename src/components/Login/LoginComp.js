@@ -39,7 +39,7 @@ function LoginComp() {
   function handleLoginClick() {
     const cognitoAuthUrl = `${
       process.env.REACT_APP_SMARTBARD_LOGIN_URL
-    }/login?client_id=${clientId}&response_type=code&scope=email+openid+phone+profile&redirect_uri=${replaceRedirectUrl(
+    }/logout?client_id=${clientId}&response_type=code&scope=email+openid+phone+profile&redirect_uri=${replaceRedirectUrl(
       redirectUri
     )}`;
 
