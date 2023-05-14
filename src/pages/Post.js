@@ -15,7 +15,7 @@ export default function Post() {
 
     //API GET request
     useEffect(() => {
-        fetch(`${API_URL}/announcements?status=approved&datefrom=2000-01-01&dateto=2050-01-01`, {
+        fetch(`${API_URL}/announcements`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('id_token')}`
             },

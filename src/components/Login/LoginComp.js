@@ -12,29 +12,35 @@ function LoginComp() {
 
   const clientId = process.env.REACT_APP_COGNITO_CLIENTID;
   const redirectUri = process.env.REACT_APP_SMARTBARD_UI_URL;
+  let isFetchingToken = false;
 
   useEffect(() => {
     const { code } = queryString.parse(window.location.search);
 
-    if (code) {
+    if (code && !isFetchingToken) {
       setIsLoading(true);
+      isFetchingToken = true;
       exchangeAuthorizationCodeForToken(clientId, code, redirectUri)
         .then((tokens) => {
-          login(tokens.accessToken);
           localStorage.setItem("id_token", tokens.idToken);
           localStorage.setItem("refresh_token", tokens.refreshToken);
+          //Give more time to exchange tokens
           setTimeout(() => {
+            login(tokens.accessToken);
             setIsLoading(false);
             navigate("/home");
-          }, 500);
+          }, 1000);
           // Save the tokens to local storage, context, or state
+          isFetchingToken = false;
         })
         .catch((error) => {
           console.error(error);
           setIsLoading(false);
+          isFetchingToken = false;
         });
     }
-  }, [navigate]);
+    console.log("exchange called");
+  }, []);
 
   function handleLoginClick() {
     const cognitoAuthUrl = `${

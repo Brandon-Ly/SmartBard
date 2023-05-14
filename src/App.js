@@ -5,7 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 
 import AuthProvider from './components/Authentication/AuthProvider';
-import PrivateRoute from './components/Authentication/PrivateRoute.js';
+import AuthPrivateRoute from './components/Authentication/AuthPrivateRoute.js';
+import AdminPrivateRoute from './components/Authentication/AdminPrivateRoute';
 import NavBar from './components/Interface/Navbar';
 import FontSize from './components/Settings/FontSize';
 import Theme from './components/Settings/Theme';
@@ -62,20 +63,24 @@ function App() {
                         <NavBar/>
                         {isLoading ? (<div>Loading. . .</div>) : (
                             <Routes>
-                                <Route index element={<Login/>}/>
-                                <Route path='/home' element={
-                                    <PrivateRoute>
-                                        <Home/>
-                                    </PrivateRoute>}/>
-                                <Route path='/home' element={<Home/>} onEnter={window.speechSynthesis.cancel()}/>
-                                <Route path='/home/:postID' element={<Post/>}
-                                       onEnter={window.speechSynthesis.cancel()}
-                                       onLeave={window.speechSynthesis.cancel()}/>
-                                <Route path='/request' element={<Request/>}/>
-                                <Route path='/request/:postID' element={<RequestDetails/>}/>
-                                <Route path='/create' element={<RequestCreate/>}/>
-                                <Route path='/admin' element={<Admin/>}/>
-                                <Route path='/adminrequest/:status/:postID' element={<AdminRequestDetails/>}/>
+
+                                <Route index element={<Login/>} />
+                                <Route element={<AuthPrivateRoute />}>
+                                    <Route path='/home' element={<Home />}/>
+                                    <Route path='/home' element={<Home/>} onEnter={window.speechSynthesis.cancel()}/>
+                                    <Route path='/home/:postID' element={<Post/>}
+                                        onEnter={window.speechSynthesis.cancel()}
+                                        onLeave={window.speechSynthesis.cancel()}/>
+                                    <Route path='/request' element={<Request/>}/>
+                                    <Route path='/request/:status/:postID' element={<RequestDetails/>}/>
+                                    <Route path='/create' element={<RequestCreate/>}/>
+                                    <Route element={<AdminPrivateRoute/>}>
+                                        <Route path='/admin' element={<Admin/>}/>
+                                        <Route path='/adminrequest/:status/:postID' element={<AdminRequestDetails/>}/>
+                                    </Route>
+                                    <Route path="*" element={<Login />}/>
+                                </Route>
+
                             </Routes>
                         )}
 
