@@ -174,7 +174,7 @@ export default function AdminRequestDetailsComp(props) {
                             <Row xs="auto">
                                 <Col>
                                     <Form.Control type="file" disabled/>
-                                    <img src={post.media} style={{ width: '200px', height: '200px', marginTop: '10px' }}/>
+                                    {post.media ? <img src={post.media} style={{ width: '200px', height: '200px', marginTop: '10px' }}/> : <div style={{padding: 20}}>No image Found</div>}
                                 </Col>
                             </Row>
                         </Form.Group>

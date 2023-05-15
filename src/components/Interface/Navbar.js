@@ -11,7 +11,7 @@ import "./Style.css"
 export default function NavBar() {
     const {pathname} = useLocation();
     const navigate = useNavigate();
-    const {isAdmin,setIsAdmin,logout} = useAuth();
+    const {isAdmin, userID, setIsAdmin, setUserID, logout} = useAuth();
     const theme = useContext(ThemeContext);
 
     const LoginPage = (pathname === "/" ? true : false)
@@ -29,7 +29,7 @@ export default function NavBar() {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('id_token')}` }
             });
             setIsAdmin(response.data.admin);
-            localStorage.setItem('isAdmin', JSON.stringify(response.data.admin));
+            setUserID(response.data.userid);
         } catch (error) {
             console.error("Failed to fetch user info", error);
             logout(); // Logout if there's an error

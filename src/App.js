@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import AuthProvider from './components/Authentication/AuthProvider';
 import AuthPrivateRoute from './components/Authentication/AuthPrivateRoute.js';
 import AdminPrivateRoute from './components/Authentication/AdminPrivateRoute';
+import UserPrivateRoute from './components/Authentication/UserPrivateRoute';
 import NavBar from './components/Interface/Navbar';
 import FontSize from './components/Settings/FontSize';
 import Theme from './components/Settings/Theme';
@@ -54,6 +55,9 @@ function App() {
             setIsLoading(false);
         }, 10);
     }, []);
+    
+
+
 
     return (
         <div>
@@ -72,7 +76,9 @@ function App() {
                                         onEnter={window.speechSynthesis.cancel()}
                                         onLeave={window.speechSynthesis.cancel()}/>
                                     <Route path='/request' element={<Request/>}/>
-                                    <Route path='/request/:status/:postID' element={<RequestDetails/>}/>
+                                    <Route element={<UserPrivateRoute />}>
+                                        <Route path='/request/:status/:postID' element={<RequestDetails/>}/>
+                                    </Route>
                                     <Route path='/create' element={<RequestCreate/>}/>
                                     <Route element={<AdminPrivateRoute/>}>
                                         <Route path='/admin' element={<Admin/>}/>

@@ -7,6 +7,7 @@ const AuthProvider = ({children}) => {
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [userID, setUserID] = useState(null);
 
     const login = async (accessToken) => {
         localStorage.setItem('access_token', accessToken);
@@ -21,7 +22,8 @@ const AuthProvider = ({children}) => {
             
             
             setIsAdmin(response.data.admin);
-            localStorage.setItem('isAdmin', JSON.stringify(response.data.admin));
+            setUserID(response.data.userid);
+            localStorage.setItem('userid', JSON.stringify(response.data.userid));
         } catch (error) {
             console.error("Failed to fetch user info", error);
             logout(); // Logout if there's an error
@@ -52,7 +54,9 @@ const AuthProvider = ({children}) => {
     const value = {
         isAuthenticated,
         isAdmin,
+        userID,
         setIsAdmin,
+        setUserID,
         login,
         logout,
     };
