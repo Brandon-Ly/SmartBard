@@ -41,48 +41,43 @@ export default function NavBar() {
     }, [isAdmin])
 
     return (
-        <Navbar style={{backgroundColor: theme.background}} className="custom-navbar" variant="light" expand="lg">
-
-            <Container>
-                <Navbar.Brand style={{cursor: 'pointer'}} onClick={() => LoginPage ? navigate('/') : navigate('/home')}>
-                    <img src={logoPath}
-                         alt="overbrook logo"
-                         height="50px"
-                         width="250px"/>
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                <Navbar.Collapse id="basic-navbar-nav">
-                    {LoginPage ?
-                        <React.Fragment></React.Fragment>
-                        :
-                        <React.Fragment>
-                            <Button onClick={handleLogout} style={{
-                                backgroundColor: theme.foreground,
-                                color: theme.text,
-                                border: theme.foreground,
-                                padding: "10px",
-                                margin: "10px"
-                            }}>Logout</Button>
-                            {isAdmin ? 
-                            <Button onClick={() => navigate('/admin')} style={{
-                                backgroundColor: theme.foreground,
-                                color: theme.text,
-                                border: theme.foreground,
-                                padding: "10px",
-                                margin: "10px"
-                            }}>Admin</Button> :
-                            <Button onClick={() => navigate('/request')} style={{
-                                backgroundColor: theme.foreground,
-                                color: theme.text,
-                                border: theme.foreground,
-                                padding: "10px",
-                                margin: "10px"
-                            }}>Request</Button>
-                            }
-                        </React.Fragment>
-                    }
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <Navbar style={{ backgroundColor: theme.background }} className="custom-navbar" variant="light" expand="lg">
+  <Container>
+    <Navbar.Brand style={{ cursor: 'pointer' }} onClick={() => navigate(LoginPage ? '/' : '/home')}>
+      <img src={logoPath} alt="overbrook logo" height="50px" width="250px" />
+    </Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
+      {!LoginPage && (
+        <React.Fragment>
+          <Button onClick={handleLogout} style={{
+            backgroundColor: theme.foreground,
+            color: theme.text,
+            border: theme.foreground,
+            padding: "10px",
+            margin: "10px"
+          }}>Logout</Button>
+          {isAdmin ? (
+            <Button onClick={() => navigate('/admin')} style={{
+              backgroundColor: theme.foreground,
+              color: theme.text,
+              border: theme.foreground,
+              padding: "10px",
+              margin: "10px"
+            }}>Admin</Button>
+          ) : (
+            <Button onClick={() => navigate('/request')} style={{
+              backgroundColor: theme.foreground,
+              color: theme.text,
+              border: theme.foreground,
+              padding: "10px",
+              margin: "10px"
+            }}>Request</Button>
+          )}
+        </React.Fragment>
+      )}
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
     )
 }

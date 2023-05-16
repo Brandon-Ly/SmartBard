@@ -28,7 +28,7 @@ export default function PriorityAnnouncement(props) {
                     <Row>
                         <Column>
                             <div className="priority-announcement-text"
-                                 style={{fontSize: fontSizeNumber}}>{priority.body}</div>
+                                 style={{fontSize: fontSizeNumber, wordWrap: 'break-word'}}>{priority.body}</div>
                         </Column>
                         <Column className="m-auto">
                             <Image src={priority.media} className="d-block mx-auto" style={{

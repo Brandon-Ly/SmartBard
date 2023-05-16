@@ -121,6 +121,7 @@ export default function RequestCreateComp() {
                   <Form.Control 
                     name="file"
                     type="file"
+                    accept=".png, .jpg, .jpeg, .gif"
                     onChange={handleFileChange} />
                 </Col>
               </Row>
