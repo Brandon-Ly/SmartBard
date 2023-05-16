@@ -23,20 +23,20 @@ export default function PriorityAnnouncement(props) {
             {priority.media  ?
                 <React.Fragment>
                     <Row>
-                        {/* <h1>Priority Announcement</h1> */}
                         <h1 className="priority-announcement-title">{priority.title}</h1>
                     </Row>
                     <Row>
                         <Column>
                             <div className="priority-announcement-text"
-                                 style={{fontSize: fontSizeNumber, wordWrap: 'break-word'}}>{priority.body}</div>
+                                 style={{fontSize: fontSizeNumber, wordWrap: 'break-word', borderRadius: 10}}>{priority.body}</div>
                         </Column>
                         <Column className="m-auto">
                             <Image src={priority.media} className="d-block mx-auto" style={{
                                 maxHeight: '300px',
                                 maxWidth: '350px',
                                 minHeight: '300px',
-                                minWidth: '350px'
+                                minWidth: '350px',
+                                borderRadius: 10
                             }}/>
                         </Column>
                     </Row>

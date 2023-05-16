@@ -65,7 +65,7 @@ export default function Post() {
                     </p>
                 </Row>
                 <div style={{padding: 50}}>
-                    <Row className="d-flex justify-content-center align-items-center"><img src={post.media} style={{width: '600px'}} /></Row>
+                    <Row className="d-flex justify-content-center align-items-center"><img src={post.media} style={{width: '600px', borderRadius: 30}} /></Row>
                 </div>
             </div>
 

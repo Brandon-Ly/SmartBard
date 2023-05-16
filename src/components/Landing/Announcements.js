@@ -78,7 +78,7 @@ export default function Announcements(props) {
                 </p>
                 {announcement.media && (
                     <div className="d-flex justify-content-center align-items-center">
-                      <img src={announcement.media} style={{height: 200, width: 200}} />
+                      <img src={announcement.media} style={{height: 200, width: 200, borderRadius: 10}} />
                     </div>)}
             </Card.Body>
         </Card>
