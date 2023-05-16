@@ -39,12 +39,16 @@ export default function Announcements(props) {
 
     var settings = {
 
+        dots: true,
         infinite: true,
         centerPadding: "60px",
-        dots: true,
-        speed: 500,
         slidesToShow: slidesPerScreen,
-        slidesToScroll: 3,
+        // slidesToScroll: 3,
+        slidesToScroll: 1,
+        // speed: 500,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        pauseOnHover: true,
         prevArrow: <PrevArrow />,
         nextArrow: <NextArrow />,
     };
