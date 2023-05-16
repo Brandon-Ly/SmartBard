@@ -23,6 +23,7 @@ export default function PriorityAnnouncement(props) {
             {priority.img  ?
                 <React.Fragment>
                     <Row>
+                        {/* <h1>Priority Announcement</h1> */}
                         <h1 className="priority-announcement-title">{priority.title}</h1>
                     </Row>
                     <Row>

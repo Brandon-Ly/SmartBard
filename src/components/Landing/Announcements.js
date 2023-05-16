@@ -47,7 +47,6 @@ export default function Announcements(props) {
         slidesToScroll: 3,
         prevArrow: <PrevArrow />,
         nextArrow: <NextArrow />,
-
     };
 
 
@@ -57,7 +56,8 @@ export default function Announcements(props) {
             <h1 style={{ 
                         whiteSpace: 'nowrap',
                         textOverflow: 'ellipsis',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        textAlign: 'center'
                         }}>{announcement.title}</h1>
             <Card.Body >
                 <p style={{
@@ -72,7 +72,7 @@ export default function Announcements(props) {
     return (
         <React.Fragment>
             <Container>
-                <h1>Announcements</h1>
+                <h1 style={{textAlign: 'center'}}>Announcements</h1>
                 <Slider {...settings} >
                     {announcements}
                 </Slider>
