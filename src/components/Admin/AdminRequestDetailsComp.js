@@ -173,7 +173,8 @@ export default function AdminRequestDetailsComp(props) {
                             <Form.Label className="fw-bold">Media</Form.Label>
                             <Row xs="auto">
                                 <Col>
-                                    <Form.Control type="file" readOnly/>
+                                    <Form.Control type="file" disabled/>
+                                    {post.media ? <img src={post.media} style={{ width: '200px', height: '200px', marginTop: '10px' }}/> : <div style={{padding: 20}}>No image Found</div>}
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -207,7 +208,7 @@ export default function AdminRequestDetailsComp(props) {
                             {readMode ? <Row className="float-end">
                                 <Col>
 
-                                { status === "approved" && post.priority != true ? 
+                                { status === "approved" && post.priority !== true ? 
                                 <Button className="adminButtons" variant="info" onClick={() => { handleMakePriority()
                                 }}>
                                     Make Priority

@@ -11,10 +11,11 @@ import {API_URL} from "../../common/constants";
 export default function AdminRequestTable(props) {
 
     const [requests, setRequests] = useState([]);
+    const filters = props.filteredObject;
 
     const fetchData = async () => {
         try {
-          const response = await axios.get(`${API_URL}/announcements?status=${props.status}&datefrom=2000-01-01&dateto=2050-01-01`, {
+          const response = await axios.get(`${API_URL}/announcements?status=${props.status}`, {
               headers: {
                   'Authorization': `Bearer ${localStorage.getItem('id_token')}`
               },
@@ -29,6 +30,30 @@ export default function AdminRequestTable(props) {
       useEffect(() => {
           fetchData();
         }, [])
+
+    const filteredRequests = requests.filter(item => {
+        const isTitleMatch = item.title.toLowerCase().includes(filters.title.toLowerCase())
+        const isDateMatch = isDateInRange(item.datefrom, item.dateto, filters.datefrom, filters.dateto);
+        const isPriorityMatch = filters.priority ? item.priority : true;
+        return isTitleMatch && isDateMatch && isPriorityMatch;
+        
+        });
+
+    function isDateInRange(itemDateFrom, itemDateTo, filterDateFrom, filterDateTo) {
+
+        const start = filterDateFrom ? new Date(filterDateFrom) : null;
+        const end = filterDateTo ? new Date(filterDateTo) : null;
+    
+        if (start && end) {
+            return new Date(itemDateFrom) >= start && new Date(itemDateTo) <= end;
+        } else if (start) {
+            return new Date(itemDateFrom) >= start;
+        } else if (end) {
+            return new Date(itemDateTo) <= end;
+        } else {
+            return true;
+        }
+        }
 
 
     const navigate = useNavigate();
@@ -52,7 +77,7 @@ export default function AdminRequestTable(props) {
                     </tr>
                     </thead>
                     <tbody>
-                    {requests.map((request) => (
+                    {filteredRequests.map((request) => (
                         <tr key={request.title} className="requestTableRow">
                             <td>{request.title}</td>
                             <td>

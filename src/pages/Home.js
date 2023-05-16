@@ -12,7 +12,7 @@ export default function Home() {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_URL}/announcements?status=approved&datefrom=2000-01-01&dateto=2050-01-01`, {
+        const response = await axios.get(`${API_URL}/announcements`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('id_token')}`
             },
@@ -45,6 +45,8 @@ export default function Home() {
           console.log("Data is empty");
         }
       }, [data])
+
+
 
 
     return (

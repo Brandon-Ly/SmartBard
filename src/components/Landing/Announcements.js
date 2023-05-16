@@ -49,6 +49,13 @@ export default function Announcements(props) {
         nextArrow: <NextArrow />,
     };
 
+    function truncateText(text, length) {
+        if (text.length <= length) {
+            return text;
+        }
+        return text.substring(0, length) + " . . . ";
+    }
+
 
 
     const announcements = data.map((announcement) => {
@@ -59,12 +66,16 @@ export default function Announcements(props) {
                         overflow: 'hidden',
                         textAlign: 'center'
                         }}>{announcement.title}</h1>
-            <Card.Body >
+            <Card.Body style={{display: 'flex', flexDirection: 'column', height: '300px'}} >
                 <p style={{
-                    fontSize: fontSizeNumber,
-                    height: '300px',
-                    overflow: 'auto'
-                }}>{announcement.body}</p>
+                    fontSize: fontSizeNumber
+                }}>
+                    {truncateText(announcement.body, 40)}
+                </p>
+                {announcement.media && (
+                    <div className="d-flex justify-content-center align-items-center">
+                      <img src={announcement.media} style={{height: 200, width: 200}} />
+                    </div>)}
             </Card.Body>
         </Card>
     })
