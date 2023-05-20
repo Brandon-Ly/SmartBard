@@ -14,7 +14,7 @@ import AdminRequestTable from "./AdminRequestTable";
 import { useNavigate } from "react-router-dom";
 import "../Interface/Style.css";
 
-export default function RequestComp() {
+export default function AdminRequestComp() {
   const navigate = useNavigate();
   const handleCreateRequest = function () {
     navigate("/create");

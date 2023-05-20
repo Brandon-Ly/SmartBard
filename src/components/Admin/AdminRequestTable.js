@@ -15,7 +15,7 @@ export default function AdminRequestTable(props) {
 
     const fetchData = async () => {
         try {
-          const response = await axios.get(`${API_URL}/announcements?status=${props.status}&datefrom=2000-01-01&dateto=2050-01-01`, {
+          const response = await axios.get(`${API_URL}/announcements?status=${props.status}`, {
               headers: {
                   'Authorization': `Bearer ${localStorage.getItem('id_token')}`
               },

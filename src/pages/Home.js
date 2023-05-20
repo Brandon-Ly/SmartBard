@@ -47,6 +47,8 @@ export default function Home() {
       }, [data])
 
 
+
+
     return (
         <React.Fragment>
             <PriorityAnnouncement priorityPost={foundPost}/>

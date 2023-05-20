@@ -10,7 +10,7 @@ import "../Interface/Style.css";
 import axios from "axios";
 import { API_URL } from "../../common/constants";
 
-export default function RequestCreate() {
+export default function RequestCreateComp() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -48,7 +48,7 @@ export default function RequestCreate() {
       })
       .then((response) => {
         console.log(response.data);
-        navigate("/admin");
+        navigate(-1);
       })
       .catch((error) => {
         console.error(error);
@@ -124,6 +124,7 @@ export default function RequestCreate() {
                   <Form.Control
                     name="file"
                     type="file"
+                    accept=".png, .jpg, .jpeg, .gif"
                     onChange={handleFileChange}
                   />
                 </Col>
