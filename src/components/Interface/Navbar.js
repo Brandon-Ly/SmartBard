@@ -37,7 +37,7 @@ export default function NavBar() {
                         <React.Fragment></React.Fragment>
                         :
                         <React.Fragment>
-                            <Button onClick={handleLogout} style={{
+                            <Button onClick={handleLogout} id="logOut-Button" style={{
                                 backgroundColor: theme.foreground,
                                 color: theme.text,
                                 border: theme.foreground,
