@@ -25,18 +25,27 @@ export default function PriorityAnnouncement(props) {
                     <Row>
                         <h1 className="priority-announcement-title">{priority.title}</h1>
                     </Row>
-                    <Row>
+                    <Row className="align-items-center">
                         <Column>
                             <div className="priority-announcement-text"
                                  style={{fontSize: fontSizeNumber, wordWrap: 'break-word'}}>{priority.body}</div>
                         </Column>
                         <Column className="m-auto">
-                            <Image src={priority.media} className="d-block mx-auto" style={{
+                            <div
+                            className="image-container"
+                            style={{ padding: '20px', display: 'inline-block' }}
+                            >
+                            <Image
+                            src={priority.media}
+                            className="d-block mx-auto"
+                            style={{
                                 maxHeight: '300px',
                                 maxWidth: '350px',
                                 minHeight: '300px',
-                                minWidth: '350px'
-                            }}/>
+                                minWidth: '350px',
+                            }}
+                            />
+                        </div>
                         </Column>
                     </Row>
                 </React.Fragment>

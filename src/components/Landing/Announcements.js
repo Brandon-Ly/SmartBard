@@ -60,6 +60,8 @@ export default function Announcements(props) {
 
 
     const announcements = data.map((announcement) => {
+
+
         return <Card style={{border: '2px solid black'}} className="slide-post" onDoubleClick={() => navigate(`/home/${announcement.announcementid}`)}>
             <h1 style={{ 
                         whiteSpace: 'nowrap',
@@ -73,8 +75,8 @@ export default function Announcements(props) {
                     {truncateText(announcement.body, 40)}
                 </p>
                 {announcement.media && (
-                    <div className="d-flex justify-content-center align-items-center">
-                      <img src={announcement.media} style={{height: 200, width: 200}} />
+                    <div className="d-flex justify-content-center align-items-center" style={{overflow: 'hidden'}} >
+                      <img src={announcement.media} style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'contain'}} />
                     </div>)}
             </Card.Body>
         </Card>

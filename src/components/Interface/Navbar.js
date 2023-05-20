@@ -41,7 +41,7 @@ export default function NavBar() {
     }, [isAdmin])
 
     return (
-        <Navbar style={{ backgroundColor: theme.background }} className="custom-navbar" variant="light" expand="lg">
+        <Navbar style={{ backgroundColor: theme.background }} className="custom-navbar" variant="light" expand="lg" expanded={true} >
   <Container>
     <Navbar.Brand style={{ cursor: 'pointer' }} onClick={() => navigate(LoginPage ? '/' : '/home')}>
       <img src={logoPath} alt="overbrook logo" height="50px" width="250px" />
