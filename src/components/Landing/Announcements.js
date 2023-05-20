@@ -4,7 +4,7 @@ import {Card, Container} from "react-bootstrap"
 import {useNavigate} from "react-router-dom"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import "../Interface/Style.css"
+import styles from "../Interface/Style.css"
 import FontContext from '../Settings/Font-Context';
 
 export default function Announcements(props) {
@@ -14,15 +14,24 @@ export default function Announcements(props) {
     const navigate = useNavigate();
     const fontSizeNumber = useContext(FontContext);
     var slidesPerScreen = Math.min(data.length, 3)
+    const arrowStyles = {
+        prevArrow: styles["slick-arrow-prev"],
+        nextArrow: styles["slick-arrow-next"]
+    };
 
     function PrevArrow(props) {
         const { className, style, onClick } = props;
         return (
             <div
             className={className}
-            style={{ ...style, display: "block", background: "black" }}
+            style={{ ...style }}
             onClick={onClick}
             />
+            // <span
+            //     className={className}
+            //     style={{ ...style, display: "block", background: "black" }}
+            //     onClick={onClick}
+            // />
             );
     }
 
@@ -31,7 +40,7 @@ export default function Announcements(props) {
         return (
             <div
             className={className}
-            style={{ ...style, display: "block", background: "black" }}
+            style={{ ...style, display: "block", background: "black", padding: "1px", width: "23px"}}
             onClick={onClick}
             />
             );
@@ -49,7 +58,7 @@ export default function Announcements(props) {
         autoplay: true,
         autoplaySpeed: 5000,
         pauseOnHover: true,
-        prevArrow: <PrevArrow />,
+        prevArrow: <PrevArrow className={arrowStyles.prevArrow}/>,
         nextArrow: <NextArrow />,
     };
 

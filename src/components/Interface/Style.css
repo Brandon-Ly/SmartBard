@@ -36,6 +36,16 @@ div {
     border: 1px solid black;
 }
 
+.slick-arrow-prev,
+.slick-arrow-next
+{
+    display: block;
+    background: black;
+    padding: 1px;
+    width: 23px;
+    /* color: #EAB547; */
+}
+
 
 .link {
     text-decoration: none;

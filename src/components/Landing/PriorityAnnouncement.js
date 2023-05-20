@@ -36,7 +36,8 @@ export default function PriorityAnnouncement(props) {
                                 maxWidth: '350px',
                                 minHeight: '300px',
                                 minWidth: '350px',
-                                borderRadius: 10
+                                borderRadius: 25,
+                                padding: '10px'
                             }}/>
                         </Column>
                     </Row>
