@@ -19,9 +19,9 @@ export default function Home() {
             withCredentials: true,
         });
         setData(response.data);
-        console.log(data);
+        
       } catch (error) {
-        console.log(error);
+        
       }
     }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -8,11 +8,13 @@ import queryString from "query-string";
 import axios from "axios";
 import useAuth from "../../hooks/UseAuth.js";
 import smartBardLogo from "../../images/smartbard.png";
+import ThemeContext from "../Settings/Theme-Context.js";
 
 function LoginComp() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
+  const theme = useContext(ThemeContext);
 
   const clientId = process.env.REACT_APP_COGNITO_CLIENTID;
   const redirectUri = process.env.REACT_APP_SMARTBARD_UI_URL;
@@ -103,7 +105,7 @@ function LoginComp() {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <Container className="justify-content-center align-items-center vh-80">
+        <Container className="justify-content-center align-items-center">
           <Row className="justify-content-center">
             <Col xs={12} className="text-center">
               <img src={smartBardLogo} style={{ maxWidth: '100%', height: 'auto', padding: '50px' }} alt="Login Image" />
@@ -116,6 +118,11 @@ function LoginComp() {
                 onClick={handleLoginClick}
                 id="loginButton"
                 size="lg"
+                style ={{
+                  backgroundColor: theme.foreground,
+                  color: theme.text,
+                  border: theme.foreground
+                }}
               >
                 Login
               </Button>

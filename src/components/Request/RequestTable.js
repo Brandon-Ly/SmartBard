@@ -81,6 +81,7 @@ export default function RequestTable(props) {
                     bordered
                     className="requestTable"
                     size="sm"
+                    
                 >
                     <thead>
                     <tr>

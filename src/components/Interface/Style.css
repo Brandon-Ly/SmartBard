@@ -18,6 +18,7 @@
 .priority-announcement-title {
     font-family: Arial;
     font-size: 64px;
+
 }
 
 div {
@@ -61,6 +62,10 @@ div {
 }
 
 .font-size-setting {
+    padding-bottom: 20px;
+}
+
+.font-color-setting {
     padding-bottom: 20px;
 }
 

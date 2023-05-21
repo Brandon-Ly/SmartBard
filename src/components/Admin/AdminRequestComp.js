@@ -20,9 +20,12 @@ export default function AdminRequestComp() {
     navigate("/create");
   };
 
+  const currentYear = new Date().getFullYear();
+  const defaultDateFrom = `${currentYear}-01-01`;
+
   const [formData, setFormData] = useState({
     title: "",
-    datefrom: "",
+    datefrom: defaultDateFrom,
     dateto: "",
     priority: false,
   });

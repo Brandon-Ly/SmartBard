@@ -59,7 +59,7 @@ export default function RequestDetailsComp(props) {
       };
 
     return (
-        <Container className="priority-announcement">
+        <Container className="justify-content-center align-items-center vh-100" style={{marginTop: '10px', padding: '20px'}}>
             <Card className="shadow-sm">
                 <Card.Body>
                     <Form>
