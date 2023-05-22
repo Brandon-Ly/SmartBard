@@ -11,7 +11,7 @@ import "./Style.css";
 export default function NavBar() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { isAdmin, userID, setIsAdmin, setUserID, logout } = useAuth();
+  const { isAdmin, userID, setIsAdmin, setUserID, logout, validateLogin } = useAuth();
   const theme = useContext(ThemeContext);
 
   const LoginPage = pathname === "/" ? true : false;
@@ -25,6 +25,7 @@ export default function NavBar() {
 
   const fetchAdmin = async () => {
     try {
+      await validateLogin();
       const response = await axios.get(`${API_URL}/users/self`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("id_token")}`,

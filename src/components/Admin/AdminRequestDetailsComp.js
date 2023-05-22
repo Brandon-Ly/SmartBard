@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import "../Interface/Style.css";
 import axios from 'axios';
 import {API_URL} from "../../common/constants";
+import useAuth from "../../hooks/UseAuth";
 
 export default function AdminRequestDetailsComp(props) {
 
@@ -17,6 +18,7 @@ export default function AdminRequestDetailsComp(props) {
       });
     const [readMode, setreadMode] =  useState(true);
     const navigate = useNavigate();
+    const { validateLogin } = useAuth();
 
     let data = props.data;
     let postID = props.postID;
@@ -28,12 +30,13 @@ export default function AdminRequestDetailsComp(props) {
         return <div>Loading. . .</div>;
     }
 
-    const handleMakePriority = () => {
+    const handleMakePriority = async () => {
 
         //Set current priority post to false
         const foundPriorityPost= data.find(item => item.priority === true);
         console.log(foundPriorityPost);
         if (foundPriorityPost !== undefined){
+        await validateLogin();
         axios.put(`${API_URL}/announcements/${foundPriorityPost.announcementid}`, {
             priority: false
         }, {
@@ -50,6 +53,7 @@ export default function AdminRequestDetailsComp(props) {
         })}
 
         //Set the new post to be priority
+        await validateLogin();
         axios.put(`${API_URL}/announcements/${postID}`, {
             priority: true
         }, {
@@ -67,7 +71,8 @@ export default function AdminRequestDetailsComp(props) {
         })
     }
 
-    const handleAccept = () => {
+    const handleAccept = async () => {
+        await validateLogin();
         axios.put(`${API_URL}/announcements/${postID}`, {
             "status": "approved" 
         }, {
@@ -86,7 +91,8 @@ export default function AdminRequestDetailsComp(props) {
         })
     }
 
-    const handleReject = () => {
+    const handleReject = async () => {
+        await validateLogin();
         axios.put(`${API_URL}/announcements/${postID}`, {
             "status": "denied", 
             "priority": false
@@ -110,9 +116,10 @@ export default function AdminRequestDetailsComp(props) {
         setreadMode(false)
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         formData.status = "requested"
         formData.priority = false
+        await validateLogin();
         axios.put(`${API_URL}/announcements/${postID}`, formData, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('id_token')}`

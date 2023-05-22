@@ -6,15 +6,18 @@ import "../Interface/Style.css"
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import {API_URL} from "../../common/constants";
+import useAuth from "../../hooks/UseAuth";
 
 
 export default function AdminRequestTable(props) {
 
     const [requests, setRequests] = useState([]);
     const filters = props.filteredObject;
+    const { validateLogin } = useAuth();
 
     const fetchData = async () => {
         try {
+          await validateLogin();
           const response = await axios.get(`${API_URL}/announcements?status=${props.status}`, {
               headers: {
                   'Authorization': `Bearer ${localStorage.getItem('id_token')}`
