@@ -2,7 +2,7 @@ import {useContext} from 'react';
 import AuthContext from '../components/Authentication/AuthContext.js';
 
 const useAuth = () => {
-    const {isAuthenticated, isAdmin, userID, setIsAdmin, setUserID, login, logout} = useContext(AuthContext);
+    const {isAuthenticated, isAdmin, userID, setIsAdmin, setUserID, login, logout, validateLogin} = useContext(AuthContext);
 
     return {
         isAuthenticated,
@@ -12,6 +12,7 @@ const useAuth = () => {
         setUserID,
         login,
         logout,
+        validateLogin
     };
 };
 
