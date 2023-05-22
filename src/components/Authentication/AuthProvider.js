@@ -3,12 +3,14 @@ import AuthContext from './AuthContext.js'
 import {API_URL} from "../../common/constants";
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
+import {useNavigate} from "react-router-dom";
 
 const AuthProvider = ({children}) => {
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     const [userID, setUserID] = useState(null);
+    const { navigate } = useNavigate();
 
     const login = async (accessToken) => {
         localStorage.setItem('access_token', accessToken);
@@ -39,15 +41,18 @@ const AuthProvider = ({children}) => {
     };
 
     const validateLogin = async () => {
+        console.log('login validation');
         const token = localStorage.getItem('access_token');
         const exptime = jwt_decode(token).exp;
         if (exptime * 1000 < new Date().getTime()) {
             // token is already expired - send back to home page
             logout();
+            navigate('/');
         } else if ((exptime * 1000) - 30 * 60 * 1000 < new Date().getTime()) {
             const refresh = localStorage.getItem('refresh_token');
             if (!refresh) {
                 logout();
+                navigate('/');
             }
             // token expires in less than 30 mins - exchange for new token
             const tokenEndpoint = `${process.env.REACT_APP_SMARTBARD_LOGIN_URL}/oauth2/token`;
@@ -67,6 +72,7 @@ const AuthProvider = ({children}) => {
                         encodeURIComponent(key) + "=" + encodeURIComponent(requestBody[key])
                 )
                 .join("&");
+            console.log('exchanged');
             return axios
                 .post(tokenEndpoint, urlEncodedBody, config)
                 .then((res) => {
@@ -74,6 +80,7 @@ const AuthProvider = ({children}) => {
                     localStorage.setItem('id_token', res.data.id_token);
                 })
         }
+        console.log('valid');
     }
 
     useEffect(() => {
