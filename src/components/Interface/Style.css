@@ -36,15 +36,13 @@ div {
     border: 1px solid black;
 }
 
-.slick-arrow-prev,
-.slick-arrow-next
+/* .arrow-btn-prev,
+.arrow-btn-next */
+/* button
 {
-    display: block;
-    background: black;
-    padding: 1px;
-    width: 23px;
-    /* color: #EAB547; */
-}
+    color: #EAB547;
+    border-radius: 100px;
+} */
 
 
 .link {
