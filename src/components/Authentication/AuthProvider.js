@@ -41,7 +41,6 @@ const AuthProvider = ({children}) => {
     };
 
     const validateLogin = async () => {
-        console.log('login validation');
         const token = localStorage.getItem('access_token');
         const exptime = jwt_decode(token).exp;
         if (exptime * 1000 < new Date().getTime()) {
@@ -72,7 +71,6 @@ const AuthProvider = ({children}) => {
                         encodeURIComponent(key) + "=" + encodeURIComponent(requestBody[key])
                 )
                 .join("&");
-            console.log('exchanged');
             return axios
                 .post(tokenEndpoint, urlEncodedBody, config)
                 .then((res) => {
@@ -80,7 +78,6 @@ const AuthProvider = ({children}) => {
                     localStorage.setItem('id_token', res.data.id_token);
                 })
         }
-        console.log('valid');
     }
 
     useEffect(() => {
