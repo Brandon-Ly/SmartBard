@@ -60,7 +60,7 @@ export default function Post() {
         <Container className="entire-post">
             <Row><h1 className="text-center" style={{fontSize: 48, color: fontColor}} >{post.title}</h1></Row>
             
-            <div style={{backgroundColor: '#D3D3D3'}}>
+            <div style={{borderRadius: '10px', backgroundColor: '#D3D3D3'}}>
                 <Row><p style={{fontSize: fontSizeNumber,
                     color: fontColor, 
                     padding: 50,
