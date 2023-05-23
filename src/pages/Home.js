@@ -3,15 +3,18 @@ import PriorityAnnouncement from '../components/Landing/PriorityAnnouncement';
 import Announcements from '../components/Landing/Announcements';
 import axios from 'axios';
 import {API_URL} from "../common/constants";
+import useAuth from "../hooks/UseAuth";
 
 export default function Home() {
     window.speechSynthesis.cancel()
 
     const [data, setData] = useState([]);
     const [foundPost, setFoundPost] =useState(null);
+    const { validateLogin } = useAuth();
 
     const fetchData = async () => {
       try {
+        await validateLogin();
         const response = await axios.get(`${API_URL}/announcements`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('id_token')}`
@@ -19,9 +22,9 @@ export default function Home() {
             withCredentials: true,
         });
         setData(response.data);
-        console.log(data);
+        
       } catch (error) {
-        console.log(error);
+        
       }
     }
 

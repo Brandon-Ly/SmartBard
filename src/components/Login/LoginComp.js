@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import queryString from "query-string";
 import axios from "axios";
 import useAuth from "../../hooks/UseAuth.js";
+import smartBardLogo from "../../images/smartbard.png";
+import ThemeContext from "../Settings/Theme-Context.js";
 
 function LoginComp() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
+  const theme = useContext(ThemeContext);
 
   const clientId = process.env.REACT_APP_COGNITO_CLIENTID;
   const redirectUri = process.env.REACT_APP_SMARTBARD_UI_URL;
@@ -45,7 +51,7 @@ function LoginComp() {
   function handleLoginClick() {
     const cognitoAuthUrl = `${
       process.env.REACT_APP_SMARTBARD_LOGIN_URL
-    }/login?client_id=${clientId}&response_type=code&scope=email+openid+phone+profile&redirect_uri=${replaceRedirectUrl(
+    }/logout?client_id=${clientId}&response_type=code&scope=email+openid+phone+profile&redirect_uri=${replaceRedirectUrl(
       redirectUri
     )}`;
 
@@ -95,18 +101,36 @@ function LoginComp() {
   };
 
   return (
-    <Container centered style={{ height: "300px" }}>
+    <div>
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <button
-          style={{ display: "block", margin: "auto" }}
-          onClick={handleLoginClick}
-        >
-          Login
-        </button>
+        <Container className="justify-content-center align-items-center">
+          <Row className="justify-content-center">
+            <Col xs={12} className="text-center">
+              <img src={smartBardLogo} style={{ maxWidth: '100%', height: 'auto', padding: '50px' }} alt="Login Image" />
+            </Col>
+          </Row>
+          <Row className="justify-content-center">
+            <Col xs={12} className="text-center">
+              <Button
+                variant="primary"
+                onClick={handleLoginClick}
+                id="loginButton"
+                size="lg"
+                style ={{
+                  backgroundColor: theme.foreground,
+                  color: theme.text,
+                  border: theme.foreground
+                }}
+              >
+                Login
+              </Button>
+            </Col>
+          </Row>
+        </Container>
       )}
-    </Container>
+    </div>
   );
 }
 

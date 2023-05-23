@@ -5,14 +5,16 @@ import {useNavigate} from "react-router-dom"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import "../Interface/Style.css"
-import FontContext from '../Settings/Font-Context';
+import FontSizeContext from '../Settings/FontSize-Context';
+import FontColorContext from '../Settings/FontColor-Context';
 
 export default function Announcements(props) {
 
     let data = props.data
 
     const navigate = useNavigate();
-    const fontSizeNumber = useContext(FontContext);
+    const fontSizeNumber = useContext(FontSizeContext);
+    const fontColor = useContext(FontColorContext);
     var slidesPerScreen = Math.min(data.length, 3)
 
     const PrevArrow = (props) => {
@@ -60,8 +62,11 @@ export default function Announcements(props) {
     }
 
     const announcements = data.map((announcement) => {
+
+
         return <Card style={{border: '2px solid black'}} className="slide-post" onDoubleClick={() => navigate(`/home/${announcement.announcementid}`)}>
             <h1 style={{ 
+                        color: fontColor,
                         whiteSpace: 'nowrap',
                         textOverflow: 'ellipsis',
                         overflow: 'hidden',
@@ -69,13 +74,14 @@ export default function Announcements(props) {
                         }}>{announcement.title}</h1>
             <Card.Body style={{display: 'flex', flexDirection: 'column', height: '300px'}} >
                 <p style={{
-                    fontSize: fontSizeNumber
+                    fontSize: fontSizeNumber,
+                    color: fontColor
                 }}>
                     {truncateText(announcement.body, 40)}
                 </p>
                 {announcement.media && (
-                    <div className="d-flex justify-content-center align-items-center">
-                      <img src={announcement.media} style={{height: 200, width: 200, borderRadius: 10}} />
+                    <div className="d-flex justify-content-center align-items-center" style={{overflow: 'hidden'}} >
+                      <img src={announcement.media} style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 10}} alt='preview image of post' />
                     </div>)}
             </Card.Body>
         </Card>
@@ -83,8 +89,8 @@ export default function Announcements(props) {
 
     return (
         <React.Fragment>
-            <Container>
-                <h1 style={{textAlign: 'center'}}>Announcements</h1>
+            <Container >
+                <h1 style={{color: fontColor, textAlign: 'center'}}>Announcements</h1>
                 <Slider {...settings} >
                     {announcements}
                 </Slider>

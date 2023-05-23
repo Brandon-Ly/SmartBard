@@ -18,9 +18,9 @@ export default function RequestCreateComp() {
   });
   const [fileData, setFileData] = useState({
     file: null,
-  })
+  });
 
-  
+  const errorMessage = `Character limit exceeded.`;
 
   const handleInputChange = (event) => {
     setFormData((prevState) => ({
@@ -33,9 +33,9 @@ export default function RequestCreateComp() {
     setFileData((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.files[0],
-    }))
+    }));
     console.log(fileData.file);
-  }
+  };
 
   const submitForm = (data) => {
     axios
@@ -53,7 +53,7 @@ export default function RequestCreateComp() {
       .catch((error) => {
         console.error(error);
       });
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -62,26 +62,24 @@ export default function RequestCreateComp() {
     formData.media = "";
     if (fileData.file) {
       axios
-      .post(`${API_URL}/assets`, fileData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("id_token")}`,
-          "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log(response.data);
-        formData.media = response.data.filename;
-        submitForm(formData);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-        
+        .post(`${API_URL}/assets`, fileData, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("id_token")}`,
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log(response.data);
+          formData.media = response.data.filename;
+          submitForm(formData);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     } else {
       submitForm(formData);
     }
-  
   };
 
   return (
@@ -98,7 +96,11 @@ export default function RequestCreateComp() {
                 placeholder="Enter post title"
                 value={formData.title || ""}
                 onChange={handleInputChange}
+                maxLength="100"
               />
+              <Form.Control.Feedback type="invalid">
+                {errorMessage}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBody">
@@ -111,6 +113,7 @@ export default function RequestCreateComp() {
                 placeholder="Enter post body"
                 value={formData.body || ""}
                 onChange={handleInputChange}
+                maxLength="500"
               />
             </Form.Group>
 
@@ -118,11 +121,12 @@ export default function RequestCreateComp() {
               <Form.Label className="fw-bold">Media</Form.Label>
               <Row xs="auto">
                 <Col>
-                  <Form.Control 
+                  <Form.Control
                     name="file"
                     type="file"
                     accept=".png, .jpg, .jpeg, .gif"
-                    onChange={handleFileChange} />
+                    onChange={handleFileChange}
+                  />
                 </Col>
               </Row>
             </Form.Group>

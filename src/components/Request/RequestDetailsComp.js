@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import "../Interface/Style.css";
 import axios from 'axios';
 import {API_URL} from "../../common/constants";
+import useAuth from "../../hooks/UseAuth";
 
 export default function RequestDetailsComp(props) {
 
@@ -17,6 +18,7 @@ export default function RequestDetailsComp(props) {
       });
     const [readMode, setreadMode] =  useState(true);
     const navigate = useNavigate();
+    const { validateLogin } = useAuth();
 
     let data = props.data;
     let postID = props.postID;
@@ -33,9 +35,10 @@ export default function RequestDetailsComp(props) {
         setreadMode(false)
     }
 
-    const handleSubmit = () => {
-        formData.status = "requested"
-        formData.priority = false
+    const handleSubmit = async () => {
+        formData.status = "requested";
+        formData.priority = false;
+        await validateLogin();
         axios.put(`${API_URL}/announcements/${postID}`, formData, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('id_token')}`
@@ -59,7 +62,7 @@ export default function RequestDetailsComp(props) {
       };
 
     return (
-        <Container className="priority-announcement">
+        <Container className="justify-content-center align-items-center vh-100" style={{marginTop: '10px', padding: '20px'}}>
             <Card className="shadow-sm">
                 <Card.Body>
                     <Form>

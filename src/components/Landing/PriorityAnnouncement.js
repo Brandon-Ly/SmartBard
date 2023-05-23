@@ -2,14 +2,16 @@ import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Col as Column, Container, Image, Row} from 'react-bootstrap';
 import "../Interface/Style.css";
-import FontContext from '../Settings/Font-Context';
+import FontSizeContext from '../Settings/FontSize-Context';
+import FontColorContext from '../Settings/FontColor-Context';
 
 export default function PriorityAnnouncement(props) {
 
     let priority = props.priorityPost;
 
     const navigate = useNavigate()
-    const fontSizeNumber = useContext(FontContext);
+    const fontSizeNumber = useContext(FontSizeContext);
+    const fontColor = useContext(FontColorContext);
 
     //If the announcement isn't loaded, then it'll temporarily say loading
     if (!priority || priority == null) {
@@ -23,30 +25,40 @@ export default function PriorityAnnouncement(props) {
             {priority.media  ?
                 <React.Fragment>
                     <Row>
-                        <h1 className="priority-announcement-title">{priority.title}</h1>
+                        <h1 className="priority-announcement-title" style={{fontSize: fontSizeNumber, color: fontColor}}>{priority.title}</h1>
                     </Row>
-                    <Row>
+                    <Row className="align-items-center">
                         <Column>
                             <div className="priority-announcement-text"
-                                 style={{fontSize: fontSizeNumber, wordWrap: 'break-word', borderRadius: 10}}>{priority.body}</div>
+                                 style={{fontSize: fontSizeNumber, color: fontColor, wordWrap: 'break-word', borderRadius: 10}}>{priority.body}</div>
                         </Column>
                         <Column className="m-auto">
-                            <Image src={priority.media} className="d-block mx-auto" style={{
+                            <div
+                            className="image-container"
+                            style={{ padding: '20px', display: 'inline-block' }}
+                            >
+                            <Image
+                            src={priority.media}
+                            className="d-block mx-auto"
+                            style={{
                                 maxHeight: '300px',
                                 maxWidth: '350px',
                                 minHeight: '300px',
                                 minWidth: '350px',
                                 borderRadius: 25,
                                 padding: '10px'
-                            }}/>
+                            }}
+                            alt='preview image of priority announcement'
+                            />
+                        </div>
                         </Column>
                     </Row>
                 </React.Fragment>
                 :
                 <React.Fragment>
                 <Row>
-                    <h1>{priority.title}</h1>
-                    <div className="priority-announcement-text" style={{fontSize: fontSizeNumber}}>{priority.body}</div>
+                    <h1 style={{color: fontColor}}>{priority.title}</h1>
+                    <div className="priority-announcement-text" style={{fontSize: fontSizeNumber, color: fontColor}}>{priority.body}</div>
                 </Row>
                 </React.Fragment>
             }
