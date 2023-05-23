@@ -30,7 +30,7 @@ export default function PriorityAnnouncement(props) {
                     <Row className="align-items-center">
                         <Column>
                             <div className="priority-announcement-text"
-                                 style={{fontSize: fontSizeNumber, color: fontColor, wordWrap: 'break-word', borderRadius: 10}}>{priority.body}</div>
+                                 style={{fontSize: fontSizeNumber, color: fontColor, wordWrap: 'break-word'}}>{priority.body}</div>
                         </Column>
                         <Column className="m-auto">
                             <div
@@ -58,7 +58,7 @@ export default function PriorityAnnouncement(props) {
                 <React.Fragment>
                 <Row>
                     <h1 style={{color: fontColor}}>{priority.title}</h1>
-                    <div className="priority-announcement-text" style={{fontSize: fontSizeNumber, color: fontColor}}>{priority.body}</div>
+                    <div className="priority-announcement-text" style={{fontSize: fontSizeNumber, color: fontColor, borderRadius: '10px'}}>{priority.body}</div>
                 </Row>
                 </React.Fragment>
             }
