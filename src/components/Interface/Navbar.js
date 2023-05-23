@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Container, Navbar } from "react-bootstrap";
 import ThemeContext from "../Settings/Theme-Context";
-import logoPath from "../../images/overbrook.png";
+import logoPath from "../../images/smartbard.png";
 import useAuth from "../../hooks/UseAuth";
 import axios from "axios";
 import { API_URL } from "../../common/constants";
@@ -46,19 +46,12 @@ export default function NavBar() {
         <Navbar style={{ backgroundColor: theme.background }} className="custom-navbar" variant="light" expand="lg" expanded={true} >
   <Container>
     <Navbar.Brand style={{ cursor: 'pointer' }} onClick={() => navigate(LoginPage ? '/' : '/home')}>
-      <img src={logoPath} alt="overbrook logo" height="50px" width="250px" />
+      <img src={logoPath} alt="overbrook logo" height="80px" width="80px" />
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       {!LoginPage && (
         <React.Fragment>
-          <Button onClick={handleLogout} style={{
-            backgroundColor: theme.foreground,
-            color: theme.text,
-            border: theme.foreground,
-            padding: "10px",
-            margin: "10px"
-          }}>Logout</Button>
           {isAdmin ? (
             <Button onClick={() => navigate('/admin')} style={{
               backgroundColor: theme.foreground,
@@ -76,6 +69,13 @@ export default function NavBar() {
               margin: "10px"
             }}>Request</Button>
           )}
+          <Button onClick={handleLogout} style={{
+            backgroundColor: theme.foreground,
+            color: theme.text,
+            border: theme.foreground,
+            padding: "10px",
+            margin: "10px"
+          }}>Logout</Button>
         </React.Fragment>
       )}
     </Navbar.Collapse>

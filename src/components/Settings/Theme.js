@@ -29,10 +29,11 @@ export default function UserTheme({theme, setTheme}) {
     }
 
     return (
-        <div className='theme-setting'>
+        <div className='font-size-dropdown'>
             <Container>
                 <Row>
-                    <Col xs={6} md={4}>
+                    <h5 className='font-size-dropdown'>Color Theme</h5>
+                    <Col>
                         <DropdownButton className='theme-dropdown' title="Theme">
                             <Dropdown.Item as="button">
                                 <button className='yellow-red-button'
@@ -47,9 +48,6 @@ export default function UserTheme({theme, setTheme}) {
                                         onClick={() => handleTheme('orange')}></button>
                             </Dropdown.Item>
                         </DropdownButton>
-                    </Col>
-                    <Col xs={12} md={8}>
-                        <h5 className='theme-description'> Adjust Color Theme</h5>
                     </Col>
                 </Row>
             </Container>
