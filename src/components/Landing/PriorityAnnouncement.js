@@ -30,7 +30,7 @@ export default function PriorityAnnouncement(props) {
                     <Row className="align-items-center">
                         <Column>
                             <div className="priority-announcement-text"
-                                 style={{fontSize: fontSizeNumber, color: fontColor, wordWrap: 'break-word'}}>{priority.body}</div>
+                                 style={{fontSize: fontSizeNumber, color: fontColor, wordWrap: 'break-word', borderRadius: 10}}>{priority.body}</div>
                         </Column>
                         <Column className="m-auto">
                             <div
@@ -45,6 +45,8 @@ export default function PriorityAnnouncement(props) {
                                 maxWidth: '350px',
                                 minHeight: '300px',
                                 minWidth: '350px',
+                                borderRadius: 25,
+                                padding: '10px'
                             }}
                             alt='preview image of priority announcement'
                             />
