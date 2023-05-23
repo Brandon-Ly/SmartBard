@@ -4,7 +4,7 @@ import {Card, Container} from "react-bootstrap"
 import {useNavigate} from "react-router-dom"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import styles from "../Interface/Style.css"
+import "../Interface/Style.css"
 import FontContext from '../Settings/Font-Context';
 
 export default function Announcements(props) {
@@ -14,16 +14,11 @@ export default function Announcements(props) {
     const navigate = useNavigate();
     const fontSizeNumber = useContext(FontContext);
     var slidesPerScreen = Math.min(data.length, 3)
-    const arrowStyles = {
-        prevArrow: styles["slick-arrow-prev"],
-        nextArrow: styles["slick-arrow-next"]
-    };
 
     const PrevArrow = (props) => {
         const { className, style, onClick } = props;
         return (
-            // <div className={className} style={{ ...style }} onClick={onClick}>
-            <button onClick={onClick}>
+            <button onClick={onClick} style={{ position: "absolute", top: "40%", left: "-75px" }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
                 </svg>
@@ -34,14 +29,7 @@ export default function Announcements(props) {
     function NextArrow(props) {
         const { className, style, onClick } = props;
         return (
-            // <div className={className} style={{ ...style, display: "block", background: "black", padding: "1px", width: "23px"}} onClick={onClick}
-            // <div
-            // className={className}
-            // style={{ ...style, display: "block", background: "black" }}
-            // onClick={onClick}
-            // />
-            
-            <button onClick={onClick}>
+            <button onClick={onClick} style={{ position: "absolute", top: "40%", right: "-75px" }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
                 </svg>
@@ -50,7 +38,6 @@ export default function Announcements(props) {
     }
 
     var settings = {
-        // prevArrow: <PrevArrow className={arrowStyles.prevArrow} onClick={() => slider?.current?.slickPrev}/>,
         prevArrow: <PrevArrow />,
         nextArrow: <NextArrow />,
         dots: true,
@@ -71,8 +58,6 @@ export default function Announcements(props) {
         }
         return text.substring(0, length) + " . . . ";
     }
-
-
 
     const announcements = data.map((announcement) => {
         return <Card style={{border: '2px solid black'}} className="slide-post" onDoubleClick={() => navigate(`/home/${announcement.announcementid}`)}>
