@@ -1,16 +1,16 @@
 import {useEffect, useState} from 'react';
+import jwt_decode from "jwt-decode";
+import {useNavigate} from "react-router-dom";
 import AuthContext from './AuthContext.js'
 import {API_URL} from "../../common/constants";
 import axios from 'axios';
-import jwt_decode from "jwt-decode";
-import {useNavigate} from "react-router-dom";
 
 const AuthProvider = ({children}) => {
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     const [userID, setUserID] = useState(null);
-    const { navigate } = useNavigate();
+    const {navigate} = useNavigate();
 
     const login = async (accessToken) => {
         localStorage.setItem('access_token', accessToken);
@@ -20,10 +20,10 @@ const AuthProvider = ({children}) => {
         //Call API to get user Info.
         try {
             const response = await axios.get(`${API_URL}/users/self`, {
-                headers: { 'Authorization': `Bearer ${localStorage.getItem('id_token')}` }
+                headers: {'Authorization': `Bearer ${localStorage.getItem('id_token')}`}
             });
-            
-            
+
+
             setIsAdmin(response.data.admin);
             setUserID(response.data.userid);
             localStorage.setItem('userid', JSON.stringify(response.data.userid));
@@ -90,9 +90,8 @@ const AuthProvider = ({children}) => {
     }, []);
 
     useEffect(() => {
-        console.log(isAdmin);    
+        console.log(isAdmin);
     })
-
 
     const value = {
         isAuthenticated,

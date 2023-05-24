@@ -1,9 +1,5 @@
 import React from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import {Col, Container, Dropdown, DropdownButton, Row} from 'react-bootstrap/';
 import {Themes} from "./Theme-Context";
 import '../Interface/Style.css';
 
@@ -29,12 +25,12 @@ export default function UserTheme({theme, setTheme}) {
     }
 
     return (
-        <div className='font-size-dropdown'>
+        <div className='settings-div'>
             <Container>
                 <Row>
-                    <h5 className='font-size-dropdown'>Color Theme</h5>
+                    <h5 className='settings-header'>Color Theme</h5>
                     <Col>
-                        <DropdownButton className='theme-dropdown' title="Theme">
+                        <DropdownButton className='settings-dropdown' title="Theme">
                             <Dropdown.Item as="button">
                                 <button className='yellow-red-button'
                                         onClick={() => handleTheme('main')}></button>

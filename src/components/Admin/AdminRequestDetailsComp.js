@@ -1,24 +1,19 @@
-import { useState, Fragment } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import "../Interface/Style.css";
-import axios from 'axios';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import {API_URL} from "../../common/constants";
+import {Button, Card, Col, Container, Form, Row} from "react-bootstrap/";
 import useAuth from "../../hooks/UseAuth";
+import axios from 'axios';
+import "../Interface/Style.css";
 
 export default function AdminRequestDetailsComp(props) {
 
     const [formData, setFormData] = useState({
         "priority": false
-      });
-    const [readMode, setreadMode] =  useState(true);
+    });
+    const [readMode, setreadMode] = useState(true);
     const navigate = useNavigate();
-    const { validateLogin } = useAuth();
+    const {validateLogin} = useAuth();
 
     let data = props.data;
     let postID = props.postID;
@@ -33,24 +28,25 @@ export default function AdminRequestDetailsComp(props) {
     const handleMakePriority = async () => {
 
         //Set current priority post to false
-        const foundPriorityPost= data.find(item => item.priority === true);
+        const foundPriorityPost = data.find(item => item.priority === true);
         console.log(foundPriorityPost);
-        if (foundPriorityPost !== undefined){
-        await validateLogin();
-        axios.put(`${API_URL}/announcements/${foundPriorityPost.announcementid}`, {
-            priority: false
-        }, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('id_token')}`
-            },
-            withCredentials: true,
-        })
-        .then(response => {
-            console.log(response.data)
-        })
-        .catch(error => {
-            console.error(error);
-        })}
+        if (foundPriorityPost !== undefined) {
+            await validateLogin();
+            axios.put(`${API_URL}/announcements/${foundPriorityPost.announcementid}`, {
+                priority: false
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+                },
+                withCredentials: true,
+            })
+                .then(response => {
+                    console.log(response.data)
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+        }
 
         //Set the new post to be priority
         await validateLogin();
@@ -62,39 +58,39 @@ export default function AdminRequestDetailsComp(props) {
             },
             withCredentials: true,
         })
-        .then(response => {
-            console.log(response.data)
-            navigate('/admin');
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            .then(response => {
+                console.log(response.data)
+                navigate('/admin');
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     const handleAccept = async () => {
         await validateLogin();
         axios.put(`${API_URL}/announcements/${postID}`, {
-            "status": "approved" 
+            "status": "approved"
         }, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('id_token')}`
             },
             withCredentials: true,
         })
-        .then(response => {
-            console.log(response.data)
-            navigate('/admin');
+            .then(response => {
+                console.log(response.data)
+                navigate('/admin');
 
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     const handleReject = async () => {
         await validateLogin();
         axios.put(`${API_URL}/announcements/${postID}`, {
-            "status": "denied", 
+            "status": "denied",
             "priority": false
         }, {
             headers: {
@@ -102,15 +98,14 @@ export default function AdminRequestDetailsComp(props) {
             },
             withCredentials: true,
         })
-        .then(response => {
-            console.log(response.data)
-            navigate('/admin');
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            .then(response => {
+                console.log(response.data)
+                navigate('/admin');
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
-
 
     const handleEdit = () => {
         setreadMode(false)
@@ -126,26 +121,27 @@ export default function AdminRequestDetailsComp(props) {
             },
             withCredentials: true,
         })
-        .then(response => {
-            console.log(response.data)
-            navigate('/admin');
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            .then(response => {
+                console.log(response.data)
+                navigate('/admin');
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     const handleInputChange = (event) => {
         setFormData((prevState) => (
-          {...prevState,
-          [event.target.name]: event.target.value}
+            {
+                ...prevState,
+                [event.target.name]: event.target.value
+            }
         ))
-      };
-
-
+    };
 
     return (
-        <Container className="justify-content-center align-items-center vh-100" style={{marginTop: '10px', padding: '20px'}}>
+        <Container className="justify-content-center align-items-center vh-100"
+                   style={{marginTop: '10px', padding: '20px'}}>
             <Card className="shadow-sm">
                 <Card.Body>
                     <Form>
@@ -156,7 +152,7 @@ export default function AdminRequestDetailsComp(props) {
                                 type="text"
                                 name="title"
                                 defaultValue={post.title}
-                                readOnly = {readMode}
+                                readOnly={readMode}
                                 value={formData.title}
                                 onChange={handleInputChange}
                             />
@@ -170,7 +166,7 @@ export default function AdminRequestDetailsComp(props) {
                                 name="body"
                                 style={{height: "200px"}}
                                 defaultValue={post.body}
-                                readOnly = {readMode}
+                                readOnly={readMode}
                                 value={formData.body}
                                 onChange={handleInputChange}
                             />
@@ -181,7 +177,11 @@ export default function AdminRequestDetailsComp(props) {
                             <Row xs="auto">
                                 <Col>
                                     <Form.Control type="file" disabled/>
-                                    {post.media ? <img src={post.media} style={{ width: '100%', maxHeight: '300px', marginTop: '10px' }}/> : <div style={{padding: 20}}>No image Found</div>}
+                                    {post.media ? <img src={post.media} style={{
+                                        width: '100%',
+                                        maxHeight: '300px',
+                                        marginTop: '10px'
+                                    }}/> : <div style={{padding: 20}}>No image Found</div>}
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -190,22 +190,22 @@ export default function AdminRequestDetailsComp(props) {
                             <Form.Label className="fw-bold">Date Range</Form.Label>
                             <Row xs="auto" className="align-items-center">
                                 <Col>
-                                    <Form.Control required 
+                                    <Form.Control required
                                                   type="date"
                                                   name="datefrom"
                                                   defaultValue={post.datefrom.substring(0, 10)}
                                                   value={formData.datefrom}
-                                                  readOnly = {readMode}
+                                                  readOnly={readMode}
                                                   onChange={handleInputChange}/>
                                 </Col>
                                 <Col>To</Col>
                                 <Col>
-                                    <Form.Control required 
+                                    <Form.Control required
                                                   type="date"
                                                   name="dateto"
                                                   defaultValue={post.dateto.substring(0, 10)}
                                                   value={formData.dateto}
-                                                  readOnly = {readMode}
+                                                  readOnly={readMode}
                                                   onChange={handleInputChange}/>
                                 </Col>
                             </Row>
@@ -213,52 +213,57 @@ export default function AdminRequestDetailsComp(props) {
 
                         <Form.Group className="mb-3">
                             {readMode ? <Row className="float-end">
-                                <Col>
+                                    <Col>
 
-                                { status === "approved" && post.priority !== true ? 
-                                <Button className="adminButtons" variant="info" onClick={() => { handleMakePriority()
-                                }}>
-                                    Make Priority
-                                </Button>
+                                        {status === "approved" && post.priority !== true ?
+                                            <Button className="admin-buttons" variant="info" onClick={() => {
+                                                handleMakePriority()
+                                            }}>
+                                                Make Priority
+                                            </Button>
+                                            :
+                                            <></>}
+
+                                        {status === "requested" || status === "denied" ?
+                                            <Button className="admin-buttons" variant="success" onClick={() => {
+                                                handleAccept()
+                                            }}>
+                                                Accept
+                                            </Button>
+                                            :
+                                            <></>}
+
+                                        {status === "denied" ?
+                                            <></>
+                                            :
+                                            <Button className="admin-buttons" variant="danger" onClick={() => {
+                                                handleReject()
+                                            }}>
+                                                Reject
+                                            </Button>
+                                        }
+
+
+                                        <Button className="admin-buttons" variant="primary" onClick={() => {
+                                            handleEdit()
+                                        }}>
+                                            Edit
+                                        </Button>
+                                        <Button className="admin-buttons" variant="secondary" onClick={() => {
+                                            navigate(-1)
+                                        }}>
+                                            Return
+                                        </Button>
+                                    </Col>
+                                </Row>
                                 :
-                                <></>}
-
-                                { status === "requested" || status === "denied" ?
-                                <Button className="adminButtons" variant="success" onClick={() => { handleAccept()
-                                }}>
-                                    Accept
-                                </Button>
-                                :
-                                <></>}
-
-                                { status === "denied" ? 
-                                <></>
-                                :
-                                <Button className="adminButtons" variant="danger" onClick={() => { handleReject()
-                                }}>
-                                    Reject
-                                </Button>
-                                }   
-
-                            
-                                <Button className="adminButtons" variant="primary" onClick={() => { handleEdit()
-                                }}>
-                                    Edit
-                                </Button>
-                                <Button className="adminButtons" variant="secondary" onClick={() => {
-                                    navigate(-1)
-                                }}>
-                                    Return
-                                </Button>
-                                </Col>
-                            </Row>
-                            :
-                            <Row className="float-end">
-                                <Col>
-                                    <Button className="adminButtons" variant="primary" onClick={() => { handleSubmit()
-                                    }}>Submit Changes</Button>
-                                </Col>
-                            </Row>}
+                                <Row className="float-end">
+                                    <Col>
+                                        <Button className="admin-buttons" variant="primary" onClick={() => {
+                                            handleSubmit()
+                                        }}>Submit Changes</Button>
+                                    </Col>
+                                </Row>}
                         </Form.Group>
                     </Form>
                 </Card.Body>
@@ -266,23 +271,3 @@ export default function AdminRequestDetailsComp(props) {
         </Container>
     );
 }
-
-/*
-<Button className="adminButtons" variant="success" onClick={() => {
-}}>
-    Accept
-</Button>
-<Button className="adminButtons" variant="danger" onClick={() => {
-}}>
-    Reject
-</Button>
-<Button className="adminButtons" variant="primary" onClick={() => {
-}}>
-    Edit
-</Button>
-<Button className="adminButtons" variant="secondary" onClick={() => {
-    navigate(-1)
-}}>
-    Return
-</Button>
-*/

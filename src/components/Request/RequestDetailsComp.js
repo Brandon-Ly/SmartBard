@@ -1,24 +1,19 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import "../Interface/Style.css";
-import axios from 'axios';
-import {API_URL} from "../../common/constants";
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import useAuth from "../../hooks/UseAuth";
+import {API_URL} from "../../common/constants";
+import {Button, Card, Col, Container, Form, Row} from "react-bootstrap/";
+import axios from 'axios';
+import "../Interface/Style.css";
 
 export default function RequestDetailsComp(props) {
 
     const [formData, setFormData] = useState({
         "priority": false
-      });
-    const [readMode, setreadMode] =  useState(true);
+    });
+    const [readMode, setreadMode] = useState(true);
     const navigate = useNavigate();
-    const { validateLogin } = useAuth();
+    const {validateLogin} = useAuth();
 
     let data = props.data;
     let postID = props.postID;
@@ -45,24 +40,27 @@ export default function RequestDetailsComp(props) {
             },
             withCredentials: true,
         })
-        .then(response => {
-            console.log(response.data)
-            navigate('/request');
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            .then(response => {
+                console.log(response.data)
+                navigate('/request');
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     const handleInputChange = (event) => {
         setFormData((prevState) => (
-          {...prevState,
-          [event.target.name]: event.target.value}
+            {
+                ...prevState,
+                [event.target.name]: event.target.value
+            }
         ))
-      };
+    };
 
     return (
-        <Container className="justify-content-center align-items-center vh-100" style={{marginTop: '10px', padding: '20px'}}>
+        <Container className="justify-content-center align-items-center vh-100"
+                   style={{marginTop: '10px', padding: '20px'}}>
             <Card className="shadow-sm">
                 <Card.Body>
                     <Form>
@@ -73,7 +71,7 @@ export default function RequestDetailsComp(props) {
                                 type="text"
                                 name="title"
                                 defaultValue={post.title}
-                                readOnly = {readMode}
+                                readOnly={readMode}
                                 value={formData.title}
                                 onChange={handleInputChange}
                             />
@@ -87,7 +85,7 @@ export default function RequestDetailsComp(props) {
                                 name="body"
                                 style={{height: "200px"}}
                                 defaultValue={post.body}
-                                readOnly = {readMode}
+                                readOnly={readMode}
                                 value={formData.body}
                                 onChange={handleInputChange}
                             />
@@ -97,8 +95,10 @@ export default function RequestDetailsComp(props) {
                             <Form.Label className="fw-bold">Media</Form.Label>
                             <Row xs="auto">
                                 <Col>
-                                    <Form.Control type="file" disabled />
-                                    {post.media ? <img src={post.media} style={{ width: '200px', height: '200px', marginTop: '10px' }}/> : <div style={{padding: 20}}>No image Found</div>}
+                                    <Form.Control type="file" disabled/>
+                                    {post.media ? <img src={post.media}
+                                                       style={{width: '200px', height: '200px', marginTop: '10px'}}/> :
+                                        <div style={{padding: 20}}>No image Found</div>}
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -107,22 +107,22 @@ export default function RequestDetailsComp(props) {
                             <Form.Label className="fw-bold">Date Range</Form.Label>
                             <Row xs="auto" className="align-items-center">
                                 <Col>
-                                    <Form.Control required 
+                                    <Form.Control required
                                                   type="date"
                                                   name="datefrom"
                                                   defaultValue={post.datefrom.substring(0, 10)}
                                                   value={formData.datefrom}
-                                                  readOnly = {readMode}
+                                                  readOnly={readMode}
                                                   onChange={handleInputChange}/>
                                 </Col>
                                 <Col>To</Col>
                                 <Col>
-                                    <Form.Control required 
+                                    <Form.Control required
                                                   type="date"
                                                   name="dateto"
                                                   defaultValue={post.dateto.substring(0, 10)}
                                                   value={formData.dateto}
-                                                  readOnly = {readMode}
+                                                  readOnly={readMode}
                                                   onChange={handleInputChange}/>
                                 </Col>
                             </Row>
@@ -130,26 +130,28 @@ export default function RequestDetailsComp(props) {
 
                         <Form.Group className="mb-3">
                             {readMode ? <Row className="float-end">
-                                <Col>
-                            
-                                <Button className="adminButtons" variant="primary" onClick={() => { handleEdit()
-                                }}>
-                                    Edit
-                                </Button>
-                                <Button className="adminButtons" variant="secondary" onClick={() => {
-                                    navigate(-1)
-                                }}>
-                                    Return
-                                </Button>
-                                </Col>
-                            </Row>
-                            :
-                            <Row className="float-end">
-                                <Col>
-                                    <Button className="adminButtons" variant="primary" onClick={() => { handleSubmit()
-                                    }}>Submit Changes</Button>
-                                </Col>
-                            </Row>}
+                                    <Col>
+
+                                        <Button className="admin-buttons" variant="primary" onClick={() => {
+                                            handleEdit()
+                                        }}>
+                                            Edit
+                                        </Button>
+                                        <Button className="admin-buttons" variant="secondary" onClick={() => {
+                                            navigate(-1)
+                                        }}>
+                                            Return
+                                        </Button>
+                                    </Col>
+                                </Row>
+                                :
+                                <Row className="float-end">
+                                    <Col>
+                                        <Button className="admin-buttons" variant="primary" onClick={() => {
+                                            handleSubmit()
+                                        }}>Submit Changes</Button>
+                                    </Col>
+                                </Row>}
                         </Form.Group>
                     </Form>
                 </Card.Body>
