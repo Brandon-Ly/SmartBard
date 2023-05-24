@@ -26,7 +26,7 @@ export default function AdminRequestTable(props) {
           console.log(error);
         }
       }
-  
+
       useEffect(() => {
           fetchData();
         }, [])
