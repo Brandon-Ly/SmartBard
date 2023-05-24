@@ -216,7 +216,7 @@ export default function AdminRequestDetailsComp(props) {
                                 <Col>
 
                                 { status === "approved" && post.priority !== true ? 
-                                <Button className="adminButtons" variant="info" onClick={() => { handleMakePriority()
+                                <Button className="adminButtons" variant="info" id="makePrioButton" onClick={() => { handleMakePriority()
                                 }}>
                                     Make Priority
                                 </Button>
@@ -224,7 +224,7 @@ export default function AdminRequestDetailsComp(props) {
                                 <></>}
 
                                 { status === "requested" || status === "denied" ?
-                                <Button className="adminButtons" variant="success" onClick={() => { handleAccept()
+                                <Button className="adminButtons" variant="success" id="acceptButton" onClick={() => { handleAccept()
                                 }}>
                                     Accept
                                 </Button>
@@ -234,18 +234,18 @@ export default function AdminRequestDetailsComp(props) {
                                 { status === "denied" ? 
                                 <></>
                                 :
-                                <Button className="adminButtons" variant="danger" onClick={() => { handleReject()
+                                <Button className="adminButtons" variant="danger" id="rejectButton" onClick={() => { handleReject()
                                 }}>
                                     Reject
                                 </Button>
                                 }   
 
                             
-                                <Button className="adminButtons" variant="primary" onClick={() => { handleEdit()
+                                <Button className="adminButtons" variant="primary" id="editButton" onClick={() => { handleEdit()
                                 }}>
                                     Edit
                                 </Button>
-                                <Button className="adminButtons" variant="secondary" onClick={() => {
+                                <Button className="adminButtons" variant="secondary" id="returnButton" onClick={() => {
                                     navigate(-1)
                                 }}>
                                     Return
@@ -255,7 +255,7 @@ export default function AdminRequestDetailsComp(props) {
                             :
                             <Row className="float-end">
                                 <Col>
-                                    <Button className="adminButtons" variant="primary" onClick={() => { handleSubmit()
+                                    <Button className="adminButtons" variant="primary" id="submitChangeButton" onClick={() => { handleSubmit()
                                     }}>Submit Changes</Button>
                                 </Col>
                             </Row>}

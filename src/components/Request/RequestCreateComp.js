@@ -93,6 +93,7 @@ export default function RequestCreateComp() {
                 required
                 type="text"
                 name="title"
+                id="formTitle"
                 placeholder="Enter post title"
                 value={formData.title || ""}
                 onChange={handleInputChange}
@@ -109,6 +110,7 @@ export default function RequestCreateComp() {
                 required
                 as="textarea"
                 name="body"
+                id="formBody"
                 style={{ height: "200px" }}
                 placeholder="Enter post body"
                 value={formData.body || ""}
@@ -123,6 +125,7 @@ export default function RequestCreateComp() {
                 <Col>
                   <Form.Control
                     name="file"
+                    id="formFile"
                     type="file"
                     accept=".png, .jpg, .jpeg, .gif"
                     onChange={handleFileChange}
@@ -161,7 +164,7 @@ export default function RequestCreateComp() {
             <Form.Group className="mb-3">
               <Row className="float-end">
                 <Col>
-                  <Button variant="primary" type="submit">
+                  <Button variant="primary" type="submit" id="submitButton">
                     Submit
                   </Button>
                 </Col>

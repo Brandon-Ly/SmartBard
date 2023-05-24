@@ -53,7 +53,7 @@ export default function NavBar() {
       {!LoginPage && (
         <React.Fragment>
           {isAdmin ? (
-            <Button onClick={() => navigate('/admin')} style={{
+            <Button onClick={() => navigate('/admin')} id="adminButton" style={{
               backgroundColor: theme.foreground,
               color: theme.text,
               border: theme.foreground,
@@ -61,7 +61,7 @@ export default function NavBar() {
               margin: "10px"
             }}>Admin</Button>
           ) : (
-            <Button onClick={() => navigate('/request')} style={{
+            <Button onClick={() => navigate('/request')} id="requestButton" style={{
               backgroundColor: theme.foreground,
               color: theme.text,
               border: theme.foreground,
@@ -69,7 +69,7 @@ export default function NavBar() {
               margin: "10px"
             }}>Request</Button>
           )}
-          <Button onClick={handleLogout} style={{
+          <Button onClick={handleLogout} id ="logoutButton" style={{
             backgroundColor: theme.foreground,
             color: theme.text,
             border: theme.foreground,

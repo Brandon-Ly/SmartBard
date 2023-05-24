@@ -42,7 +42,7 @@ export default function RequestComp() {
             <div class="d-flex justify-content-between">
               Announcements
               <Dropdown>
-                <Dropdown.Toggle variant="warning">Filter</Dropdown.Toggle>
+                <Dropdown.Toggle variant="warning" id="filterButton">Filter</Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Container>
                     <Row style={{ minWidth: "30vw" }}>
@@ -113,7 +113,7 @@ export default function RequestComp() {
           </Row>
           <Row className="float-end">
             <Col>
-              <Button onClick={handleCreateRequest}>Create New Request</Button>
+              <Button onClick={handleCreateRequest} id="createRequestButton">Create New Request</Button>
             </Col>
           </Row>
         </Card.Body>
