@@ -10,10 +10,12 @@ const UserPrivateRoute = () => {
     const { userID } = useAuth();
     const { postID } = useParams();
     const [announcement, setAnnouncement] = useState(null);
+    const { validateLogin } = useAuth();
 
     useEffect(() => {
         const fetchAnnouncement = async () => {
           try {
+            await validateLogin();
             const response = await axios.get(`${API_URL}/announcements/${postID}`, {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem('id_token')}`,

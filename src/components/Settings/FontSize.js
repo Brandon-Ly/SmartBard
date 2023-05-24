@@ -12,7 +12,8 @@ export default function FontSize({fontSize, setFontSize}) {
         <div className='font-size-setting'>
             <Container>
                 <Row>
-                    <Col xs={6} md={4}>
+                    <h5 className='font-size-description'>Font Size</h5>
+                    <Col>
                         <DropdownButton className='font-size-dropdown' title={fontSize}>
                             <Dropdown.Item as="button">
                                 <div onClick={() => setFontSize(12)}>12</div>
@@ -51,9 +52,6 @@ export default function FontSize({fontSize, setFontSize}) {
                                 <div onClick={() => setFontSize(72)}>72</div>
                             </Dropdown.Item>
                         </DropdownButton>
-                    </Col>
-                    <Col xs={12} md={8}>
-                        <h5 className='font-size-description'> Adjust Font Size</h5>
                     </Col>
                 </Row>
             </Container>

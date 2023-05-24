@@ -14,16 +14,14 @@ export default function FontColor({fontColor, setFontColor}) {
       };
     
     return (
-        <div className='theme-setting'>
+        <div className='font-size-description'>
             <Container>
                 <Row>
-                    <Col xs={6} md={4}>
+                    <h5 className='font-size-description'>Text Color</h5>
+                    <Col>
                         <DropdownButton title='Select Text Color'>
                             <ChromePicker color={fontColor} onChange={handleChange} />
                         </DropdownButton>
-                    </Col>
-                    <Col xs={12} md={8}>
-                        <h5 className='theme-description'> Adjust Text Color</h5>
                     </Col>
                 </Row>
             </Container>

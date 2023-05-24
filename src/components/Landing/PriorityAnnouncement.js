@@ -45,6 +45,8 @@ export default function PriorityAnnouncement(props) {
                                 maxWidth: '350px',
                                 minHeight: '300px',
                                 minWidth: '350px',
+                                borderRadius: 25,
+                                padding: '10px'
                             }}
                             alt='preview image of priority announcement'
                             />
@@ -56,7 +58,7 @@ export default function PriorityAnnouncement(props) {
                 <React.Fragment>
                 <Row>
                     <h1 style={{color: fontColor}}>{priority.title}</h1>
-                    <div className="priority-announcement-text" style={{fontSize: fontSizeNumber, color: fontColor}}>{priority.body}</div>
+                    <div className="priority-announcement-text" style={{fontSize: fontSizeNumber, color: fontColor, borderRadius: '10px'}}>{priority.body}</div>
                 </Row>
                 </React.Fragment>
             }

@@ -18,6 +18,7 @@ export default function Post() {
     const fontColor = useContext(FontColorContext);
 
     const [showModal, setShowModal] = useState(false);
+    const [text, setText] = useState("");
 
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
@@ -60,7 +61,7 @@ export default function Post() {
         <Container className="entire-post">
             <Row><h1 className="text-center" style={{fontSize: 48, color: fontColor}} >{post.title}</h1></Row>
             
-            <div style={{backgroundColor: '#D3D3D3'}}>
+            <div style={{borderRadius: '10px', backgroundColor: '#D3D3D3'}}>
                 <Row><p style={{fontSize: fontSizeNumber,
                     color: fontColor, 
                     padding: 50,
@@ -72,6 +73,14 @@ export default function Post() {
                 <div style={{padding: 50}}>
                     <Row className="d-flex justify-content-center align-items-center">{post.media && <img src={post.media} style={{width: '600px'}} alt='image for current post' />}</Row>
                 </div>
+                <TextToSpeech
+                    text={post.body}
+                    setText={(text) => {
+                        localStorage.setItem('text', text);
+                        setText(text);
+                    }
+                    }
+                />
             </div>
 
             <Row>{post.media && <Button size="lg"  style={{marginTop:20,
