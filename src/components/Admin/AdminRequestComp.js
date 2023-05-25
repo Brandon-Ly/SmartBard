@@ -37,12 +37,12 @@ export default function AdminRequestComp() {
                         <div class="d-flex justify-content-between">
                             Announcements
                             <Dropdown>
-                                <Dropdown.Toggle variant="warning">Filter</Dropdown.Toggle>
+                                <Dropdown.Toggle variant="warning" id='filter-button'>Filter</Dropdown.Toggle>
                                 <Dropdown.Menu>
                                     <Container>
                                         <Row style={{minWidth: "30vw"}}>
                                             <Form>
-                                                <Form.Group className="mb-3" controlId="formTitle">
+                                                <Form.Group className="mb-3" controlId="form-title">
                                                     <Form.Label className="fw-bold">Title</Form.Label>
                                                     <Form.Control
                                                         type="text"
@@ -53,7 +53,7 @@ export default function AdminRequestComp() {
                                                     />
                                                 </Form.Group>
 
-                                                <Form.Group className="mb-3" controlId="DateRange">
+                                                <Form.Group className="mb-3" controlId="date-range">
                                                     <Form.Label className="fw-bold">
                                                         Date Range
                                                     </Form.Label>
@@ -108,7 +108,7 @@ export default function AdminRequestComp() {
                     </Row>
                     <Row className="float-end">
                         <Col>
-                            <Button onClick={handleCreateRequest}>Create New Request</Button>
+                            <Button onClick={handleCreateRequest} id='admin-create-request-button'>Create New Request</Button>
                         </Col>
                     </Row>
                 </Card.Body>

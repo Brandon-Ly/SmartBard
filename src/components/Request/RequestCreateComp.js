@@ -83,12 +83,13 @@ export default function RequestCreateComp() {
             <Card className="shadow-sm">
                 <Card.Body>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3" controlId="formTitle">
+                        <Form.Group className="mb-3" controlId="form-title">
                             <Form.Label className="fw-bold">Title</Form.Label>
                             <Form.Control
                                 required
                                 type="text"
                                 name="title"
+                                id='form-title'
                                 placeholder="Enter post title"
                                 value={formData.title || ""}
                                 onChange={handleInputChange}
@@ -99,13 +100,14 @@ export default function RequestCreateComp() {
                             </Form.Control.Feedback>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBody">
+                        <Form.Group className="mb-3" controlId="form-body">
                             <Form.Label className="fw-bold">Body</Form.Label>
                             <Form.Control
                                 required
                                 as="textarea"
                                 name="body"
                                 style={{height: "200px"}}
+                                id='form-body'
                                 placeholder="Enter post body"
                                 value={formData.body || ""}
                                 onChange={handleInputChange}
@@ -113,12 +115,13 @@ export default function RequestCreateComp() {
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formFile" xs="auto">
+                        <Form.Group className="mb-3" controlId="form-file" xs="auto">
                             <Form.Label className="fw-bold">Media</Form.Label>
                             <Row xs="auto">
                                 <Col>
                                     <Form.Control
                                         name="file"
+                                        id='form-file'
                                         type="file"
                                         accept=".png, .jpg, .jpeg, .gif"
                                         onChange={handleFileChange}
@@ -127,7 +130,7 @@ export default function RequestCreateComp() {
                             </Row>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="DateRange">
+                        <Form.Group className="mb-3" controlId="Date-range">
                             <Form.Label className="fw-bold">Date Range</Form.Label>
                             <Row xs="auto" className="align-items-center">
                                 <Col>
@@ -157,7 +160,7 @@ export default function RequestCreateComp() {
                         <Form.Group className="mb-3">
                             <Row className="float-end">
                                 <Col>
-                                    <Button variant="primary" type="submit">
+                                    <Button variant="primary" type="submit" id='submit-button'>
                                         Submit
                                     </Button>
                                 </Col>

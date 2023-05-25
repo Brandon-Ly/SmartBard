@@ -145,7 +145,7 @@ export default function AdminRequestDetailsComp(props) {
             <Card className="shadow-sm">
                 <Card.Body>
                     <Form>
-                        <Form.Group className="mb-3" controlId="formTitle">
+                        <Form.Group className="mb-3" controlId="form-title">
                             <Form.Label className="fw-bold">Title</Form.Label>
                             <Form.Control
                                 required
@@ -158,7 +158,7 @@ export default function AdminRequestDetailsComp(props) {
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBody">
+                        <Form.Group className="mb-3" controlId="form-body">
                             <Form.Label className="fw-bold">Body</Form.Label>
                             <Form.Control
                                 required
@@ -172,7 +172,7 @@ export default function AdminRequestDetailsComp(props) {
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formFile" xs="auto">
+                        <Form.Group className="mb-3" controlId="form-file" xs="auto">
                             <Form.Label className="fw-bold">Media</Form.Label>
                             <Row xs="auto">
                                 <Col>
@@ -186,7 +186,7 @@ export default function AdminRequestDetailsComp(props) {
                             </Row>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="DateRange">
+                        <Form.Group className="mb-3" controlId="date-range">
                             <Form.Label className="fw-bold">Date Range</Form.Label>
                             <Row xs="auto" className="align-items-center">
                                 <Col>
@@ -216,7 +216,7 @@ export default function AdminRequestDetailsComp(props) {
                                     <Col>
 
                                         {status === "approved" && post.priority !== true ?
-                                            <Button className="admin-buttons" variant="info" onClick={() => {
+                                            <Button className="admin-buttons" variant="info" id='priority-button' onClick={() => {
                                                 handleMakePriority()
                                             }}>
                                                 Make Priority
@@ -225,7 +225,7 @@ export default function AdminRequestDetailsComp(props) {
                                             <></>}
 
                                         {status === "requested" || status === "denied" ?
-                                            <Button className="admin-buttons" variant="success" onClick={() => {
+                                            <Button className="admin-buttons" variant="success" id='accept-button' onClick={() => {
                                                 handleAccept()
                                             }}>
                                                 Accept
@@ -236,7 +236,7 @@ export default function AdminRequestDetailsComp(props) {
                                         {status === "denied" ?
                                             <></>
                                             :
-                                            <Button className="admin-buttons" variant="danger" onClick={() => {
+                                            <Button className="admin-buttons" variant="danger" id='reject-button' onClick={() => {
                                                 handleReject()
                                             }}>
                                                 Reject
@@ -244,12 +244,12 @@ export default function AdminRequestDetailsComp(props) {
                                         }
 
 
-                                        <Button className="admin-buttons" variant="primary" onClick={() => {
+                                        <Button className="admin-buttons" variant="primary" id='edit-button' onClick={() => {
                                             handleEdit()
                                         }}>
                                             Edit
                                         </Button>
-                                        <Button className="admin-buttons" variant="secondary" onClick={() => {
+                                        <Button className="admin-buttons" variant="secondary" id='return-button' onClick={() => {
                                             navigate(-1)
                                         }}>
                                             Return
@@ -259,7 +259,7 @@ export default function AdminRequestDetailsComp(props) {
                                 :
                                 <Row className="float-end">
                                     <Col>
-                                        <Button className="admin-buttons" variant="primary" onClick={() => {
+                                        <Button className="admin-buttons" variant="primary" id='submit-button' onClick={() => {
                                             handleSubmit()
                                         }}>Submit Changes</Button>
                                     </Col>

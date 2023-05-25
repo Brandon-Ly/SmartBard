@@ -64,7 +64,7 @@ export default function RequestDetailsComp(props) {
             <Card className="shadow-sm">
                 <Card.Body>
                     <Form>
-                        <Form.Group className="mb-3" controlId="formTitle">
+                        <Form.Group className="mb-3" controlId="form-title">
                             <Form.Label className="fw-bold">Title</Form.Label>
                             <Form.Control
                                 required
@@ -77,7 +77,7 @@ export default function RequestDetailsComp(props) {
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBody">
+                        <Form.Group className="mb-3" controlId="form-body">
                             <Form.Label className="fw-bold">Body</Form.Label>
                             <Form.Control
                                 required
@@ -91,7 +91,7 @@ export default function RequestDetailsComp(props) {
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formFile" xs="auto">
+                        <Form.Group className="mb-3" controlId="form-file" xs="auto">
                             <Form.Label className="fw-bold">Media</Form.Label>
                             <Row xs="auto">
                                 <Col>
@@ -132,12 +132,12 @@ export default function RequestDetailsComp(props) {
                             {readMode ? <Row className="float-end">
                                     <Col>
 
-                                        <Button className="admin-buttons" variant="primary" onClick={() => {
+                                        <Button className="admin-buttons" variant="primary" id='edit-button' onClick={() => {
                                             handleEdit()
                                         }}>
                                             Edit
                                         </Button>
-                                        <Button className="admin-buttons" variant="secondary" onClick={() => {
+                                        <Button className="admin-buttons" variant="secondary" id='return-button' onClick={() => {
                                             navigate(-1)
                                         }}>
                                             Return
@@ -147,7 +147,7 @@ export default function RequestDetailsComp(props) {
                                 :
                                 <Row className="float-end">
                                     <Col>
-                                        <Button className="admin-buttons" variant="primary" onClick={() => {
+                                        <Button className="admin-buttons" variant="primary" id='submit-button' onClick={() => {
                                             handleSubmit()
                                         }}>Submit Changes</Button>
                                     </Col>
