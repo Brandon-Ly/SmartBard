@@ -1,10 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Routes} from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import {Button, Modal, Container, Col, Row} from 'react-bootstrap/';
 
 import AuthProvider from './components/Authentication/AuthProvider';
 import AuthPrivateRoute from './components/Authentication/AuthPrivateRoute.js';
@@ -17,7 +13,6 @@ import FontColor from './components/Settings/FontColor';
 import ThemeContext, {Themes} from './components/Settings/Theme-Context';
 import FontSizeContext from './components/Settings/FontSize-Context.js';
 import FontColorContext from './components/Settings/FontColor-Context.js';
-import Voice from './components/Settings/Voice';
 import VoiceContext from './components/Settings/Voice-Context';
 
 import Login from './pages/Login.js';
@@ -34,6 +29,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+
     const [theme, setTheme] = useState(Themes.main);
     const [fontSize, setFontSize] = useState(24);
     const [fontColor, setFontColor] = useState('#000000');
@@ -70,7 +66,6 @@ function App() {
         }, 10);
     }, []);
 
-
     return (
         <div style={{position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, overflowY: 'auto'}}>
             <AuthProvider>
@@ -81,41 +76,42 @@ function App() {
                                 <NavBar/>
                                 {isLoading ? (<div>Loading. . .</div>) : (
                                     <Routes>
-                                        <Route index element={<Login/>} />
-                                        <Route element={<AuthPrivateRoute />}>
-                                            <Route path='/home' element={<Home />}/>
-                                            <Route path='/home' element={<Home/>} 
-                                                onEnter={window.speechSynthesis.cancel()}
-                                                onLeave={window.speechSynthesis.cancel()}
-                                                />
+                                        <Route index element={<Login/>}/>
+                                        <Route element={<AuthPrivateRoute/>}>
+                                            <Route path='/home' element={<Home/>}/>
+                                            <Route path='/home' element={<Home/>}
+                                                   onEnter={window.speechSynthesis.cancel()}
+                                                   onLeave={window.speechSynthesis.cancel()}
+                                            />
                                             <Route path='/home/:postID' element={<Post/>}
-                                                onEnter={window.speechSynthesis.cancel()}
-                                                onLeave={window.speechSynthesis.cancel()}
-                                                />
+                                                   onEnter={window.speechSynthesis.cancel()}
+                                                   onLeave={window.speechSynthesis.cancel()}
+                                            />
                                             <Route path='/request' element={<Request/>}/>
-                                            <Route element={<UserPrivateRoute />}>
+                                            <Route element={<UserPrivateRoute/>}>
                                                 <Route path='/request/:status/:postID' element={<RequestDetails/>}
-                                                onEnter={window.speechSynthesis.cancel()}
-                                                onLeave={window.speechSynthesis.cancel()}
+                                                       onEnter={window.speechSynthesis.cancel()}
+                                                       onLeave={window.speechSynthesis.cancel()}
                                                 />
                                             </Route>
                                             <Route path='/create' element={<RequestCreate/>}
-                                                onEnter={window.speechSynthesis.cancel()}
-                                                onLeave={window.speechSynthesis.cancel()}
+                                                   onEnter={window.speechSynthesis.cancel()}
+                                                   onLeave={window.speechSynthesis.cancel()}
                                             />
                                             <Route element={<AdminPrivateRoute/>}>
                                                 <Route path='/admin' element={<Admin/>}
-                                                    onEnter={window.speechSynthesis.cancel()}
-                                                    onLeave={window.speechSynthesis.cancel()}
+                                                       onEnter={window.speechSynthesis.cancel()}
+                                                       onLeave={window.speechSynthesis.cancel()}
                                                 />
-                                                <Route path='/adminrequest/:status/:postID' element={<AdminRequestDetails/>}
-                                                    onEnter={window.speechSynthesis.cancel()}
-                                                    onLeave={window.speechSynthesis.cancel()}
+                                                <Route path='/adminrequest/:status/:postID'
+                                                       element={<AdminRequestDetails/>}
+                                                       onEnter={window.speechSynthesis.cancel()}
+                                                       onLeave={window.speechSynthesis.cancel()}
                                                 />
                                             </Route>
-                                            <Route path="*" element={<Login />}
-                                                onEnter={window.speechSynthesis.cancel()}
-                                                onLeave={window.speechSynthesis.cancel()}
+                                            <Route path="*" element={<Login/>}
+                                                   onEnter={window.speechSynthesis.cancel()}
+                                                   onLeave={window.speechSynthesis.cancel()}
                                             />
                                         </Route>
 
@@ -148,7 +144,7 @@ function App() {
                                                         setFontColor={(color) => {
                                                             localStorage.setItem('fontColor', JSON.stringify(color));
                                                             setFontColor(color);
-                                                        }} 
+                                                        }}
                                                     />
                                                 </Col>
                                             </Row>
@@ -167,7 +163,7 @@ function App() {
 
                                                 </Col>
                                             </Row>
-                                            
+
                                         </Container>
                                         <br></br>
                                         {/* <Container>
@@ -191,13 +187,13 @@ function App() {
                                     </Modal.Body>
                                 </Modal>
 
-                                <div style={{position: 'fixed', bottom: '20px', right: '20px'}}>
+                                <div style={{position: 'fixed', bottom: '20px', left: '20px'}}>
                                     <Button className='border border-success rounded-circle' size='sm'
-                                            onClick={handleShow}><img  
-                                                                    className='accessibility-logo' 
-                                                                    src={settingsCog}
-                                                                    alt="accessibility button"
-                                                                    />
+                                            onClick={handleShow}><img
+                                        className='accessibility-logo'
+                                        src={settingsCog}
+                                        alt="accessibility button"
+                                    />
                                     </Button>
                                 </div>
                             </VoiceContext.Provider>

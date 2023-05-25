@@ -1,22 +1,17 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import {Col, Container, Dropdown, DropdownButton, Row} from 'react-bootstrap/';
 import '../Interface/Style.css';
 
 export default function SpeechVoices({voice, setVoice}) {
     const voices = speechSynthesis.getVoices();
 
-
     return (
-        <div className='font-size-setting'>
+        <div className='settings-div'>
             <Container>
                 <Row>
-                    <h5 className='font-size-description'>Voice</h5>
+                    <h5 className='settings-header'>Voice</h5>
                     <Col>
-                        <DropdownButton className='font-size-dropdown' title={voice} drop='down-centered'>
+                        <DropdownButton className='settings-dropdown' title={voice} drop='down-centered'>
                             <Dropdown.Item as="button">
                                 <div onClick={() => setVoice(voices[1].name)}>{voices[1].name}</div>
                             </Dropdown.Item>

@@ -1,20 +1,16 @@
 import React from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import {Col, Container, Dropdown, DropdownButton, Row} from 'react-bootstrap/';
 import '../Interface/Style.css';
 
 export default function FontSize({fontSize, setFontSize}) {
 
     return (
-        <div className='font-size-setting'>
+        <div className='settings-div'>
             <Container>
                 <Row>
-                    <h5 className='font-size-description'>Font Size</h5>
+                    <h5 className='settings-header'>Font Size</h5>
                     <Col>
-                        <DropdownButton className='font-size-dropdown' title={fontSize}>
+                        <DropdownButton className='settings-dropdown' title={fontSize}>
                             <Dropdown.Item as="button">
                                 <div onClick={() => setFontSize(12)}>12</div>
                             </Dropdown.Item>
