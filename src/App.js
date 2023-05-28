@@ -188,13 +188,7 @@ function App() {
                                 </Modal>
 
                                 <div style={{position: 'fixed', bottom: '20px', left: '20px'}}>
-                                    <Button className='border border-success rounded-circle' size='sm'
-                                            onClick={handleShow}><img
-                                        className='accessibility-logo'
-                                        src={settingsCog}
-                                        alt="accessibility button"
-                                    />
-                                    </Button>
+                                    <img className='accessibility-logo' src={settingsCog} onClick={handleShow}></img>
                                 </div>
                             </VoiceContext.Provider>
                         </FontColorContext.Provider>
