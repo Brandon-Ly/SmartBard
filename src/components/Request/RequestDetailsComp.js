@@ -30,11 +30,6 @@ export default function RequestDetailsComp(props) {
         return <div>Loading. . .</div>;
     }
 
-
-    const handleEdit = () => {
-        setreadMode(false)
-    }
-
     const handleSubmit = async () => {
         formData.status = "requested";
         formData.priority = false;
@@ -131,11 +126,6 @@ export default function RequestDetailsComp(props) {
                         <Form.Group className="mb-3">
                             {readMode ? <Row className="float-end">
                                 <Col>
-                            
-                                <Button className="adminButtons" variant="primary" onClick={() => { handleEdit()
-                                }}>
-                                    Edit
-                                </Button>
                                 <Button className="adminButtons" variant="secondary" onClick={() => {
                                     navigate(-1)
                                 }}>
