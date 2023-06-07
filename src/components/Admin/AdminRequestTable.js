@@ -1,34 +1,60 @@
-import { useState, useEffect} from 'react';
-import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../Interface/Style.css"
+import {useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
-import axios from 'axios';
 import {API_URL} from "../../common/constants";
-
+import {Button, Table} from "react-bootstrap/";
+import useAuth from "../../hooks/UseAuth";
+import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../Interface/Style.css";
 
 export default function AdminRequestTable(props) {
 
     const [requests, setRequests] = useState([]);
+    const filters = props.filteredObject;
+    const {validateLogin} = useAuth();
 
     const fetchData = async () => {
         try {
-          const response = await axios.get(`${API_URL}/announcements?status=${props.status}&datefrom=2000-01-01&dateto=2050-01-01`, {
-              headers: {
-                  'Authorization': `Bearer ${localStorage.getItem('id_token')}`
-              },
-              withCredentials: true,
-          });
-          setRequests(response.data);
+            await validateLogin();
+            const response = await axios.get(`${API_URL}/announcements?status=${props.status}`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('id_token')}`
+                },
+                withCredentials: true,
+            });
+            setRequests(response.data);
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
-      }
-  
-      useEffect(() => {
-          fetchData();
-        }, [])
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    const filteredRequests = requests.filter(item => {
+        const isTitleMatch = item.title.toLowerCase().includes(filters.title.toLowerCase())
+        const isDateMatch = isDateInRange(item.datefrom, item.dateto, filters.datefrom, filters.dateto);
+        const isPriorityMatch = filters.priority ? item.priority : true;
+        return isTitleMatch && isDateMatch && isPriorityMatch;
+
+    });
+
+    function isDateInRange(itemDateFrom, itemDateTo, filterDateFrom, filterDateTo) {
+
+        const start = filterDateFrom ? new Date(filterDateFrom) : null;
+        const end = filterDateTo ? new Date(filterDateTo) : null;
+
+        if (start && end) {
+            return new Date(itemDateFrom) >= start && new Date(itemDateTo) <= end;
+        } else if (start) {
+            return new Date(itemDateFrom) >= start;
+        } else if (end) {
+            return new Date(itemDateTo) <= end;
+        } else {
+            return true;
+        }
+    }
 
 
     const navigate = useNavigate();
@@ -39,10 +65,10 @@ export default function AdminRequestTable(props) {
 
     return (
         <section>
-            <div className="requestTableDiv">
+            <div className="request-table-div">
                 <Table
                     bordered
-                    className="requestTable"
+                    className="request-table"
                     size="sm"
                 >
                     <thead>
@@ -52,11 +78,11 @@ export default function AdminRequestTable(props) {
                     </tr>
                     </thead>
                     <tbody>
-                    {requests.map((request) => (
-                        <tr key={request.title} className="requestTableRow">
+                    {filteredRequests.map((request) => (
+                        <tr key={request.title} className="request-table-row">
                             <td>{request.title}</td>
                             <td>
-                                <Button className="requestDetailButton" variant="success"
+                                <Button className="request-detail-button" variant="success"
                                         onClick={() => handleCreateDetails(request.announcementid)}>Details</Button>
                             </td>
                         </tr>

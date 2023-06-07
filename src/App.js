@@ -1,16 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Routes} from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Container from 'react-bootstrap/Container';
+import {Button, Modal, Container, Col, Row} from 'react-bootstrap/';
 
 import AuthProvider from './components/Authentication/AuthProvider';
-import PrivateRoute from './components/Authentication/PrivateRoute.js';
+import AuthPrivateRoute from './components/Authentication/AuthPrivateRoute.js';
+import AdminPrivateRoute from './components/Authentication/AdminPrivateRoute';
+import UserPrivateRoute from './components/Authentication/UserPrivateRoute';
 import NavBar from './components/Interface/Navbar';
 import FontSize from './components/Settings/FontSize';
 import Theme from './components/Settings/Theme';
+import FontColor from './components/Settings/FontColor';
 import ThemeContext, {Themes} from './components/Settings/Theme-Context';
-import FontContext from './components/Settings/Font-Context.js';
+import FontSizeContext from './components/Settings/FontSize-Context.js';
+import FontColorContext from './components/Settings/FontColor-Context.js';
+import VoiceContext from './components/Settings/Voice-Context';
 
 import Login from './pages/Login.js';
 import Home from './pages/Home.js';
@@ -26,10 +29,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+
     const [theme, setTheme] = useState(Themes.main);
-    const [show, setShow] = useState(false);
     const [fontSize, setFontSize] = useState(24);
+    const [fontColor, setFontColor] = useState('#000000');
+    const [show, setShow] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [voice, setVoice] = useState("Daria");
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
@@ -42,10 +48,16 @@ function App() {
         if ((JSON.parse(localStorage.getItem('fontSize'))) == null) {
             localStorage.setItem('fontSize', JSON.stringify(fontSize));
         }
+        if ((JSON.parse(localStorage.getItem('fontColor'))) == null) {
+            console.log("setting color to default");
+            localStorage.setItem('fontColor', JSON.stringify(fontColor));
+        }
         const retrievedTheme = JSON.parse(localStorage.getItem('theme'));
         const retrievedFontSize = localStorage.getItem('fontSize');
+        const retrievedFontColor = JSON.parse(localStorage.getItem('fontColor'));
         setTheme(retrievedTheme);
         setFontSize(parseInt(retrievedFontSize));
+        setFontColor(retrievedFontColor);
     }, [])
 
     useEffect(() => {
@@ -55,66 +67,133 @@ function App() {
     }, []);
 
     return (
-        <div>
+        <div style={{position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, overflowY: 'auto'}}>
             <AuthProvider>
-                <FontContext.Provider value={fontSize}>
+                <FontSizeContext.Provider value={fontSize}>
                     <ThemeContext.Provider value={theme}>
-                        <NavBar/>
-                        {isLoading ? (<div>Loading. . .</div>) : (
-                            <Routes>
-                                <Route index element={<Login/>}/>
-                                <Route path='/home' element={
-                                    <PrivateRoute>
-                                        <Home/>
-                                    </PrivateRoute>}/>
-                                <Route path='/home' element={<Home/>} onEnter={window.speechSynthesis.cancel()}/>
-                                <Route path='/home/:postID' element={<Post/>}
-                                       onEnter={window.speechSynthesis.cancel()}
-                                       onLeave={window.speechSynthesis.cancel()}/>
-                                <Route path='/request' element={<Request/>}/>
-                                <Route path='/request/:postID' element={<RequestDetails/>}/>
-                                <Route path='/create' element={<RequestCreate/>}/>
-                                <Route path='/admin' element={<Admin/>}/>
-                                <Route path='/adminrequest/:status/:postID' element={<AdminRequestDetails/>}/>
-                            </Routes>
-                        )}
+                        <FontColorContext.Provider value={fontColor}>
+                            <VoiceContext.Provider value={voice}>
+                                <NavBar/>
+                                {isLoading ? (<div>Loading. . .</div>) : (
+                                    <Routes>
+                                        <Route index element={<Login/>}/>
+                                        <Route element={<AuthPrivateRoute/>}>
+                                            <Route path='/home' element={<Home/>}/>
+                                            <Route path='/home' element={<Home/>}
+                                                   onEnter={window.speechSynthesis.cancel()}
+                                                   onLeave={window.speechSynthesis.cancel()}
+                                            />
+                                            <Route path='/home/:postID' element={<Post/>}
+                                                   onEnter={window.speechSynthesis.cancel()}
+                                                   onLeave={window.speechSynthesis.cancel()}
+                                            />
+                                            <Route path='/request' element={<Request/>}/>
+                                            <Route element={<UserPrivateRoute/>}>
+                                                <Route path='/request/:status/:postID' element={<RequestDetails/>}
+                                                       onEnter={window.speechSynthesis.cancel()}
+                                                       onLeave={window.speechSynthesis.cancel()}
+                                                />
+                                            </Route>
+                                            <Route path='/create' element={<RequestCreate/>}
+                                                   onEnter={window.speechSynthesis.cancel()}
+                                                   onLeave={window.speechSynthesis.cancel()}
+                                            />
+                                            <Route element={<AdminPrivateRoute/>}>
+                                                <Route path='/admin' element={<Admin/>}
+                                                       onEnter={window.speechSynthesis.cancel()}
+                                                       onLeave={window.speechSynthesis.cancel()}
+                                                />
+                                                <Route path='/adminrequest/:status/:postID'
+                                                       element={<AdminRequestDetails/>}
+                                                       onEnter={window.speechSynthesis.cancel()}
+                                                       onLeave={window.speechSynthesis.cancel()}
+                                                />
+                                            </Route>
+                                            <Route path="*" element={<Login/>}
+                                                   onEnter={window.speechSynthesis.cancel()}
+                                                   onLeave={window.speechSynthesis.cancel()}
+                                            />
+                                        </Route>
 
-                        <Modal show={show} onHide={handleClose} centered>
-                            <Modal.Header closeButton>
-                                <Modal.Title>
-                                    Accessibility Settings
-                                </Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <Container>
-                                    <h4>Content Settings</h4>
-                                    <FontSize
-                                        fontSize={fontSize}
-                                        setFontSize={(number) => {
-                                            localStorage.setItem('fontSize', number);
-                                            setFontSize(number);
-                                        }
-                                        }
-                                    />
-                                </Container>
-                                <Container>
-                                    <Theme
-                                        theme={theme}
-                                        setTheme={(newTheme) => {
-                                            localStorage.setItem('theme', newTheme);
-                                            setTheme(newTheme);
-                                        }
-                                        }
-                                    />
-                                </Container>
-                            </Modal.Body>
-                        </Modal>
+                                    </Routes>
+                                )}
 
-                        <Button className='border border-success rounded-circle float-end' size='sm'
-                                onClick={handleShow}><img className='accessibility-logo' src={settingsCog}
-                                                          alt="accessibility button"/></Button>
+                                <Modal show={show} onHide={handleClose} centered>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>
+                                            Accessibility Settings
+                                        </Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <Container>
+                                            <h4>Content Settings</h4>
+                                            <Row>
+                                                <Col>
+                                                    <FontSize
+                                                        fontSize={fontSize}
+                                                        setFontSize={(number) => {
+                                                            localStorage.setItem('fontSize', number);
+                                                            setFontSize(number);
+                                                        }
+                                                        }
+                                                    />
+                                                </Col>
+                                                <Col>
+                                                    <FontColor
+                                                        fontColor={fontColor}
+                                                        setFontColor={(color) => {
+                                                            localStorage.setItem('fontColor', JSON.stringify(color));
+                                                            setFontColor(color);
+                                                        }}
+                                                    />
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col>
+                                                    <Theme
+                                                        theme={theme}
+                                                        setTheme={(newTheme) => {
+                                                            localStorage.setItem('theme', newTheme);
+                                                            setTheme(newTheme);
+                                                        }
+                                                        }
+                                                    />
+                                                </Col>
+                                                <Col>
+
+                                                </Col>
+                                            </Row>
+
+                                        </Container>
+                                        <br></br>
+                                        {/* <Container>
+                                            <h4>Voice Settings</h4>
+                                            <Row>
+                                                <Col>
+                                                    <Voice
+                                                        voice={voice}
+                                                        setVoice={(newVoice) => {
+                                                            localStorage.setItem('voice', newVoice);
+                                                            setVoice(newVoice);
+                                                        }
+                                                        }
+                                                    />
+                                                </Col>
+                                                <Col>
+                                                    
+                                                </Col>
+                                            </Row>
+                                        </Container> */}
+                                    </Modal.Body>
+                                </Modal>
+
+                                <div style={{position: 'fixed', bottom: '20px', left: '20px'}}>
+                                    <img className='accessibility-logo' src={settingsCog} onClick={handleShow}></img>
+                                </div>
+                            </VoiceContext.Provider>
+                        </FontColorContext.Provider>
                     </ThemeContext.Provider>
-                </FontContext.Provider>
+                </FontSizeContext.Provider>
             </AuthProvider>
         </div>
     );

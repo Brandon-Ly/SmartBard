@@ -1,13 +1,12 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-
-.priority-announcement {
+.request-container {
     margin-top: 10px;
     padding: 20px;
 }
 
-.priority-announcement-text {
+.request-div {
     width: 800px;
     height: 300px;
     overflow: auto;
@@ -15,9 +14,10 @@
 
 }
 
-.priority-announcement-title {
+.request-row-header {
     font-family: Arial;
     font-size: 64px;
+
 }
 
 div {
@@ -35,7 +35,6 @@ div {
 .slick-slide .card {
     border: 1px solid black;
 }
-
 
 .link {
     text-decoration: none;
@@ -60,19 +59,19 @@ div {
     background: linear-gradient(-90deg, #006ddb 50%, #db6d00 50%);
 }
 
-.font-size-setting {
+.post-container {
+    padding: 50px;
+}
+
+.settings-div {
     padding-bottom: 20px;
 }
 
-.font-size-description {
+.settings-header {
     text-align: center;
 }
 
-.theme-setting {
-    padding-bottom: 20px;
-}
-
-.theme-description {
+.settings-dropdown {
     text-align: center;
 }
 
@@ -81,33 +80,33 @@ div {
     max-height: 35px;
 }
 
-.formGroup {
+.request-row {
     margin-bottom: 15px;
 }
 
-.requestTableDiv {
+.request-table-div {
     height: 55vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-.requestTable {
+.request-table {
     border: 4px solid #ddd;
     border-collapse: collapse;
     border-radius: 4px;
     border-spacing: 0;
 }
 
-.requestTableRow {
+.request-table-row {
     vertical-align: middle;
 }
 
-.requestDetailButton {
+.request-detail-button {
     text-align: center;
     margin: auto;
     display: block;
 }
 
-.adminButtons {
+.admin-buttons {
     margin-left: 10px;
 }
