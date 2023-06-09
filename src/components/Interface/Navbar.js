@@ -19,14 +19,14 @@ export default function NavBar() {
 
     const handleLogout = function () {
         navigate("/");
-        logout();
+        logout;
         localStorage.removeItem("id_token");
         localStorage.removeItem("refresh_token");
     };
 
     const fetchAdmin = async () => {
         try {
-            await validateLogin();
+            await validateLogin;
             const response = await axios.get(`${API_URL}/users/self`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("id_token")}`,
@@ -36,7 +36,7 @@ export default function NavBar() {
             setUserID(response.data.userid);
         } catch (error) {
             console.error("Failed to fetch user info", error);
-            logout(); // Logout if there's an error
+            logout; // Logout if there's an error
         }
     };
     useEffect(() => {

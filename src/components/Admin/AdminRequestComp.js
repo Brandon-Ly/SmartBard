@@ -34,7 +34,7 @@ export default function AdminRequestComp() {
             <Card className="shadow-sm">
                 <Card.Body>
                     <Card.Title className="fw-bold">
-                        <div class="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between">
                             Announcements
                             <Dropdown>
                                 <Dropdown.Toggle variant="warning" id='filter-button'>Filter</Dropdown.Toggle>

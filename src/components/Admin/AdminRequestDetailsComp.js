@@ -68,7 +68,7 @@ export default function AdminRequestDetailsComp(props) {
     }
 
     const handleAccept = async () => {
-        await validateLogin();
+        await validateLogin;
         axios.put(`${API_URL}/announcements/${postID}`, {
             "status": "approved"
         }, {
@@ -88,7 +88,7 @@ export default function AdminRequestDetailsComp(props) {
     }
 
     const handleReject = async () => {
-        await validateLogin();
+        await validateLogin;
         axios.put(`${API_URL}/announcements/${postID}`, {
             "status": "denied",
             "priority": false
