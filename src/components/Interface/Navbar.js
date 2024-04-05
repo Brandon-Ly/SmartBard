@@ -48,7 +48,7 @@ export default function NavBar() {
                 expanded={true}>
             <Container>
                 <Navbar.Brand style={{cursor: 'pointer'}} onClick={() => navigate(LoginPage ? '/' : '/home')}>
-                    <img src={logo} alt="overbrook logo" height="80px" width="80px"/>
+                    <img src={logo} alt="OSB logo" height="80px" width="80px"/>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
